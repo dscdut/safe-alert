@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 //* commit convention: <type>[optional scope]: <description>
 
 module.exports = {
@@ -20,7 +18,7 @@ module.exports = {
                 'test', // test
                 'revert', // revert a previous commit
                 'ci', // change ci/cd config
-                'build', // changes that affect the build system or external dependencies 
+                'build', // changes that affect the build system or external dependencies
                 'db', // changes that affect the database
             ],
         ],
