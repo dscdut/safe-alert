@@ -1,0 +1,79 @@
+version: '3.8'
+
+networks:
+    app-network:
+        driver: bridge
+
+services:
+    api:
+        container_name: backend-api
+        restart: on-failure
+        image: base
+        ports:
+            - '3000:3000'
+        env_file:
+            - .env
+        environment:
+            - DB_HOST=postgres-db
+        volumes:
+            - type: bind
+              source: .
+              target: /home/app
+            - /home/app/node_modules
+        depends_on:
+            - base
+            - init_db
+        networks:
+            - app-network
+        command: sh -c 'npm install && npm run dev'
+
+    base:
+        build: .
+        image: base
+        env_file:
+            - .env
+        environment:
+            - DB_HOST=postgres-db
+        depends_on:
+            - db
+        networks:
+            - app-network
+
+    db:
+        container_name: postgres-db
+        image: postgres
+        restart: always
+        env_file:
+            - .env
+        ports:
+            - '5432:5432'
+        networks:
+            - app-network
+
+    init_db:
+        image: base
+        command: sh -c 'yarn db:reset'
+        env_file:
+            - .env
+        environment:
+            - DB_HOST=postgres-db
+        depends_on:
+            - db
+            - base
+        networks:
+            - app-network
+
+    pgadmin:
+        container_name: mypgadmin
+        image: dpage/pgadmin4
+        restart: always
+        env_file:
+            - .env
+        ports:
+            - '5050:80'
+        networks:
+            - app-network
+        links:
+            - db:pg-server
+        logging:
+            driver: 'none'
