@@ -66,6 +66,16 @@ $ npm start
 
 Access `localhost:3000/docs` to view the Swagger Docs
 
+### Husky
+
+Run the following command when you first clone the repo
+
+```bash
+$ cd backend
+
+$ npm run prepare
+```
+
 ### Commit convention
 
 View the `commitlint.config.js` file to follow commit convention
