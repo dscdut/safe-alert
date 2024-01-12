@@ -55,7 +55,10 @@ class Service {
     }
 
     async login(loginDto) {
-        const user = await this.userRepository.findByEmail(loginDto.email);
+        const user = await this.userRepository.findBy(
+            'phone_number',
+            loginDto.phone_number,
+        );
 
         const foundUser = joinUserRoles(user);
         if (
@@ -68,7 +71,7 @@ class Service {
             };
         }
 
-        throw new UnAuthorizedException('Email or password is incorrect');
+        throw new UnAuthorizedException('phoneNumber or password is incorrect');
     }
 
     #getUserInfo = user => pick(user, ['_id', 'email', 'roles']);
