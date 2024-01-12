@@ -1,6 +1,22 @@
 import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repository';
 
 class Repository extends DataRepository {
+    findBy(column, value) {
+        return this.query()
+            .whereNull('users.deleted_at')
+            .where(`users.${column}`, '=', value)
+            .select(
+                'users.id',
+                'users.email',
+                'users.password',
+                { phoneNumber: 'users.phone_number' },
+                { fullName: 'users.full_name' },
+                { createdAt: 'users.created_at' },
+                { updatedAt: 'users.updated_at' },
+                { deletedAt: 'users.deleted_at' },
+            );
+    }
+
     findByEmail(email) {
         return this.query()
             .innerJoin('users_roles', 'users_roles.user_id', 'users.id')
@@ -37,7 +53,10 @@ class Repository extends DataRepository {
     }
 
     findRoles(id) {
-        return this.query().innerJoin('users_roles', 'users_roles.user_id', 'users.id').where('users.id', '=', id).select('roles.name');
+        return this.query()
+            .innerJoin('users_roles', 'users_roles.user_id', 'users.id')
+            .where('users.id', '=', id)
+            .select('roles.name');
     }
 }
 
