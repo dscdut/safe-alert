@@ -9,7 +9,10 @@ ApiDocument.addModel('RegisterDto', {
     confirmPassword: SwaggerDocument.ApiProperty({ type: 'string' }),
 });
 
-export const LoginDto = body => ({
+export const RegisterDto = body => ({
+    full_name: body.fullName,
     email: body.email,
+    phone_number: body.phoneNumber,
     password: body.password,
+    confirm_password: body.confirmPassword,
 });

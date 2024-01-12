@@ -1,3 +1,4 @@
+import { RegisterDto } from 'core/modules/auth/dto/register.dto';
 import { AuthService } from '../../modules/auth/service/auth.service';
 import { LoginDto } from '../../modules/auth';
 import { ValidHttpResponse } from '../../../packages/handler/response/validHttp.response';
@@ -8,7 +9,7 @@ class Controller {
     }
 
     register = async req => {
-        const data = await this.service.register(req.body);
+        const data = await this.service.register(RegisterDto(req.body));
         return ValidHttpResponse.toOkResponse(data);
     };
 

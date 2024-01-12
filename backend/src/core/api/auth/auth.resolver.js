@@ -1,5 +1,6 @@
 import { LoginInterceptor } from 'core/modules/auth';
 import { Module } from 'packages/handler/Module';
+import { RegisterInterceptor } from 'core/modules/auth/interceptor/register.interceptor';
 import { AuthController } from './auth.controller';
 
 export const AuthResolver = Module.builder()
@@ -12,6 +13,7 @@ export const AuthResolver = Module.builder()
         {
             route: '/register',
             method: 'post',
+            interceptors: [RegisterInterceptor],
             body: 'RegisterDto',
             controller: AuthController.register,
         },
