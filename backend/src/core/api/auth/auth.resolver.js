@@ -6,9 +6,15 @@ export const AuthResolver = Module.builder()
     .addPrefix({
         prefixPath: '/auth',
         tag: 'auth',
-        module: 'AuthModule'
+        module: 'AuthModule',
     })
     .register([
+        {
+            route: '/register',
+            method: 'post',
+            body: 'RegisterDto',
+            controller: AuthController.register,
+        },
         {
             route: '/',
             method: 'post',
