@@ -1,0 +1,4 @@
+bricks:
+  bloc: ^0.3.0
+  cubit: ^0.2.0
+  feature_route_bloc: ^0.3.0
