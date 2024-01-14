@@ -40,6 +40,7 @@ abstract class ColorStyles {
   static const Color limeGreen = Color(0xFF38E54D);
   static const Color metallicViolet = Color(0xFF610094);
   static const Color background = Color(0xFFF9F9F9);
+  static const Color splashBackground = Color(0xFFE30D16);
   static const Color antiFlashWhite = Color(0xFFEFF4F7);
   static Color scaffoldBackgroundColor = Colors.grey[50]!;
   // static const Color lavenderSilver = Color(0xFFFDEFEF);
