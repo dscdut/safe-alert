@@ -13,6 +13,16 @@ abstract class ValidatorUtil {
     return null;
   }
 
+  static String? validatePhoneNumber(String? value) {
+    if (value != null) {
+      if (!value.isPhoneNumber || value.length < 10) {
+        return LocaleKeys.validator_invalid_phone_number.tr();
+      }
+    }
+
+    return null;
+  }
+
   static String? validatePassword(String? value) {
     if (value != null) {
       if (value.length < 8) {

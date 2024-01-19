@@ -30,6 +30,7 @@ class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
+  $AssetsIconsRegisterGen get register => const $AssetsIconsRegisterGen();
 }
 
 class $AssetsImagesGen {
@@ -60,6 +61,25 @@ class $AssetsIconsLauncherGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [appIcon];
+}
+
+class $AssetsIconsRegisterGen {
+  const $AssetsIconsRegisterGen();
+
+  /// File path: assets/icons/register/app_icon.png
+  AssetGenImage get appIcon =>
+      const AssetGenImage('assets/icons/register/app_icon.png');
+
+  /// File path: assets/icons/register/hide.png
+  AssetGenImage get hide =>
+      const AssetGenImage('assets/icons/register/hide.png');
+
+  /// File path: assets/icons/register/show.png
+  AssetGenImage get show =>
+      const AssetGenImage('assets/icons/register/show.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [appIcon, hide, show];
 }
 
 class $AssetsImagesLottieGen {
@@ -144,7 +164,16 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider() => AssetImage(_assetName);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
 
   String get path => _assetName;
 

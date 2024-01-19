@@ -41,6 +41,9 @@ abstract class ColorStyles {
   static const Color metallicViolet = Color(0xFF610094);
   static const Color background = Color(0xFFF9F9F9);
   static const Color antiFlashWhite = Color(0xFFEFF4F7);
+  static const Color mainThemColor = Color(0xFFE30D16);
+  static const Color textFieldBackground = Color(0xFFD3D3D3);
+  static const Color hightLightText = Color(0xFFFF7F50);
   static Color scaffoldBackgroundColor = Colors.grey[50]!;
   // static const Color lavenderSilver = Color(0xFFFDEFEF);
 

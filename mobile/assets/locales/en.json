@@ -3,8 +3,12 @@
     "notification": "Notification",
     "success": "Success",
     "error_occur": "An error has occurred, please try again later",
+    "full_name": "Full name",
     "email_address": "Email Address",
-    "password": "Password"
+    "phone_number": "Phone number",
+    "password": "Password",
+    "confirm_password": "Confirm password",
+    "you_have_an_account": "You have an account?"
   },
   "button": {
     "cancel": "Cancel",
@@ -18,16 +22,20 @@
   },
   "auth": {
     "welcome_back": "Nice to have you back!",
-    "sign_in": "Sign in"
+    "thank_you_for_registering": "Thank you for registering",
+    "sign_in": "Sign in",
+    "sign_up": "Sign up"
   },
   "validator": {
     "email_required": "Please enter your email",
     "password_required": "Please enter your password",
     "invalid_email": "Invalid email address",
     "incorrect_email_password": "Incorrect email or password",
+    "invalid_phone_number": "Incorrect phone number",
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
-    "not_match_password": "Password and confirm password not match"
+    "not_match_password": "Password and confirm password not match",
+    "email_or_phone_number_exists": "Email or phone number already exists"
   },
   "loading": {
     "ads": "Loading ads..."
