@@ -6,4 +6,9 @@ extension StringExtension on String? {
   }
 
   bool get isNullOrEmpty => this == null || this!.isEmpty;
+
+  bool get isPhoneNumber {
+    return RegExp(r'^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$')
+        .hasMatch(this!);
+  }
 }

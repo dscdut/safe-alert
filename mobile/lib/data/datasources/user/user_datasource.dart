@@ -2,6 +2,7 @@ import 'package:flutter_template/data/datasources/user/local/user_datasource.dar
 import 'package:flutter_template/data/datasources/user/remote/user_datasource.dart';
 import 'package:flutter_template/data/dtos/auth/login_by_email_request_dto.dart';
 import 'package:flutter_template/data/dtos/auth/login_response_dto.dart';
+import 'package:flutter_template/data/dtos/auth/register_response_dto.dart';
 import 'package:flutter_template/data/models/user_model.dart';
 import 'package:injectable/injectable.dart';
 
@@ -27,5 +28,9 @@ class UserDataSource {
 
   UserModel? getUserInfo() {
     return _localDataSource.getUserInfo();
+  }
+
+  Future<void> registerByEmailAndPhoneNumber(RegisterDTO params) async {
+    await _remoteDataSource.registerByEmailAndPhoneNumber(params);
   }
 }
