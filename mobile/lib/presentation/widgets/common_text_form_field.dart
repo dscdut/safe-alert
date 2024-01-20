@@ -82,7 +82,8 @@ class CommonTextFormField extends StatelessWidget {
         if (labelText != null)
           Text(
             labelText!,
-            style: labelStyle ?? context.labelLarge.copyWith(fontWeight: FontWeight.w500),
+            style: labelStyle ??
+                context.labelLarge.copyWith(fontWeight: FontWeight.w500),
           ),
         if (labelText != null)
           const SizedBox(
@@ -163,7 +164,8 @@ class CommonTextFormField extends StatelessWidget {
             helperText: extendField ? '' : null,
             helperStyle: extendField ? context.bodySmall : null,
             errorText: errorText == '' || errorText == null ? null : errorText,
-            errorStyle: context.bodySmall.copyWith(color: Colors.red, height: 0),
+            errorStyle:
+                context.bodySmall.copyWith(color: Colors.red, height: 0),
           ),
         ),
       ],

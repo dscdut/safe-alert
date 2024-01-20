@@ -4,7 +4,11 @@
     "success": "Success",
     "error_occur": "An error has occurred, please try again later",
     "email_address": "Email Address",
-    "password": "Password"
+    "phone_number": "Phone number",
+    "password": "Password",
+    "remember_me": "Remember me",
+    "forgot_password": "Forgot password?",
+    "dont_have_account": "Don't have an account?"
   },
   "button": {
     "cancel": "Cancel",
@@ -24,6 +28,8 @@
     "email_required": "Please enter your email",
     "password_required": "Please enter your password",
     "invalid_email": "Invalid email address",
+    "invalid_phone_number": "Invalid phone number",
+    "incorrect_phone_number_password": "Incorrect phone number or password",
     "incorrect_email_password": "Incorrect email or password",
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",

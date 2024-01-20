@@ -5,7 +5,11 @@ abstract class  LocaleKeys {
   static const texts_success = 'texts.success';
   static const texts_error_occur = 'texts.error_occur';
   static const texts_email_address = 'texts.email_address';
+  static const texts_phone_number = 'texts.phone_number';
   static const texts_password = 'texts.password';
+  static const texts_remember_me = 'texts.remember_me';
+  static const texts_forgot_password = 'texts.forgot_password';
+  static const texts_dont_have_account = 'texts.dont_have_account';
   static const texts = 'texts';
   static const button_cancel = 'button.cancel';
   static const button_confirm = 'button.confirm';
@@ -21,9 +25,12 @@ abstract class  LocaleKeys {
   static const validator_email_required = 'validator.email_required';
   static const validator_password_required = 'validator.password_required';
   static const validator_invalid_email = 'validator.invalid_email';
+  static const validator_invalid_phone_number = 'validator.invalid_phone_number';
+  static const validator_incorrect_phone_number_password = 'validator.incorrect_phone_number_password';
   static const validator_incorrect_email_password = 'validator.incorrect_email_password';
   static const validator_invalid_password = 'validator.invalid_password';
   static const validator_field_required = 'validator.field_required';
+  static const validator_wrong_password = 'validator.wrong_password';
   static const validator_not_match_password = 'validator.not_match_password';
   static const validator = 'validator';
   static const loading_ads = 'loading.ads';

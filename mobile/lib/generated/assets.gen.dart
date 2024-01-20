@@ -8,10 +8,24 @@
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 
 class $AssetsFontsGen {
   const $AssetsFontsGen();
+
+  /// File path: assets/fonts/Montserrat-Bold.ttf
+  String get montserratBold => 'assets/fonts/Montserrat-Bold.ttf';
+
+  /// File path: assets/fonts/Montserrat-Medium.ttf
+  String get montserratMedium => 'assets/fonts/Montserrat-Medium.ttf';
+
+  /// File path: assets/fonts/Montserrat-Regular.ttf
+  String get montserratRegular => 'assets/fonts/Montserrat-Regular.ttf';
+
+  /// File path: assets/fonts/Montserrat-SemiBold.ttf
+  String get montserratSemiBold => 'assets/fonts/Montserrat-SemiBold.ttf';
 
   /// File path: assets/fonts/Mulish-Bold.ttf
   String get mulishBold => 'assets/fonts/Mulish-Bold.ttf';
@@ -23,19 +37,42 @@ class $AssetsFontsGen {
   String get mulishRegular => 'assets/fonts/Mulish-Regular.ttf';
 
   /// List of all assets
-  List<String> get values => [mulishBold, mulishMedium, mulishRegular];
+  List<String> get values => [
+        montserratBold,
+        montserratMedium,
+        montserratRegular,
+        montserratSemiBold,
+        mulishBold,
+        mulishMedium,
+        mulishRegular
+      ];
 }
 
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
+
+  /// File path: assets/icons/lock.png
+  AssetGenImage get lock => const AssetGenImage('assets/icons/lock.png');
+
+  /// File path: assets/icons/phone.png
+  AssetGenImage get phone => const AssetGenImage('assets/icons/phone.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [lock, phone];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/logo.svg
+  SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
+
   $AssetsImagesLottieGen get lottie => const $AssetsImagesLottieGen();
+
+  /// List of all assets
+  List<SvgGenImage> get values => [logo];
 }
 
 class $AssetsLocalesGen {
@@ -144,7 +181,69 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider() => AssetImage(_assetName);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    SvgTheme theme = const SvgTheme(),
+    ColorFilter? colorFilter,
+    Clip clipBehavior = Clip.hardEdge,
+    @deprecated Color? color,
+    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
+    @deprecated bool cacheColorFilter = false,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      theme: theme,
+      colorFilter: colorFilter,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+    );
+  }
 
   String get path => _assetName;
 

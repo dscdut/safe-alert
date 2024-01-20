@@ -13,9 +13,19 @@ abstract class ValidatorUtil {
     return null;
   }
 
+  static String? validatePhoneNumber(String? value) {
+    if (value != null) {
+      if (!value.isPhoneNumber) {
+        return LocaleKeys.validator_invalid_phone_number.tr();
+      }
+    }
+
+    return null;
+  }
+
   static String? validatePassword(String? value) {
     if (value != null) {
-      if (value.length < 8) {
+      if (value.length < 6) {
         return LocaleKeys.validator_invalid_password.tr();
       }
     }

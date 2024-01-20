@@ -110,7 +110,9 @@ class CommonRoundedButton extends StatelessWidget {
                           ),
                         Text(
                           content,
-                          style: context.labelLarge.copyWith(fontWeight: FontWeight.w700),
+                          style: textStyle ??
+                              context.labelLarge
+                                  .copyWith(fontWeight: FontWeight.w700),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),

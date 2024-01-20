@@ -5,5 +5,11 @@ extension StringExtension on String? {
     ).hasMatch(this!);
   }
 
+  bool get isPhoneNumber {
+    return RegExp(
+      r'^\d{10}$',
+    ).hasMatch(this!);
+  }
+
   bool get isNullOrEmpty => this == null || this!.isEmpty;
 }

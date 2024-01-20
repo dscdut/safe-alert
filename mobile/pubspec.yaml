@@ -153,7 +153,14 @@ flutter:
           weight: 500
         - asset: assets/fonts/Mulish-Bold.ttf
           weight: 700
-
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Montserrat-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
 flutter_gen:
   output: lib/generated/
   integrations:

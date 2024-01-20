@@ -20,7 +20,11 @@ class CodegenLoader extends AssetLoader{
     "success": "Success",
     "error_occur": "An error has occurred, please try again later",
     "email_address": "Email Address",
-    "password": "Password"
+    "phone_number": "Phone number",
+    "password": "Password",
+    "remember_me": "Remember me",
+    "forgot_password": "Forgot password?",
+    "dont_have_account": "Don't have an account?"
   },
   "button": {
     "cancel": "Cancel",
@@ -40,6 +44,8 @@ class CodegenLoader extends AssetLoader{
     "email_required": "Please enter your email",
     "password_required": "Please enter your password",
     "invalid_email": "Invalid email address",
+    "invalid_phone_number": "Invalid phone number",
+    "incorrect_phone_number_password": "Incorrect phone number or password",
     "incorrect_email_password": "Incorrect email or password",
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
@@ -55,7 +61,11 @@ static const Map<String,dynamic> vi = {
     "success": "Thành công",
     "error_occur": "Đã có lỗi xảy ra, vui lòng thử lại sau",
     "email_address": "Email",
-    "password": "Mật khẩu"
+    "phone_number": "Số điện thoại",
+    "password": "Mật khẩu",
+    "remember_me": "Nhớ mật khẩu",
+    "forgot_password": "Quên mật khẩu?",
+    "dont_have_account": "Chưa có tài khoản?"
   },
   "button": {
     "cancel": "Hủy",
@@ -75,13 +85,15 @@ static const Map<String,dynamic> vi = {
     "email_required": "Vui lòng nhập email",
     "password_required": "Vui lòng nhập mật khẩu",
     "invalid_email": "Không đúng định dạng email",
+    "invalid_phone_number": "Không đúng định dạng số điện thoại",
+    "incorrect_phone_number_password": "Số điện thoại hoặc mật khẩu không đúng",
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
     "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp"
   },
   "loading": {
-    "ads": "Đang tải quảng cáo ..."
+    "ads": "Đang tải quảng cáo..."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

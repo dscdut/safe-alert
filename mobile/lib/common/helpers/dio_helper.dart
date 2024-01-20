@@ -1,3 +1,4 @@
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
@@ -60,6 +61,8 @@ class DioHelper {
       onSendProgress: onSendProgress,
       options: options,
     );
+
+    log(response.toString());
 
     return HttpRequestResponse(
       data: response.data,
