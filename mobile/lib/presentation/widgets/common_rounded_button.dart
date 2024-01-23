@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/common/theme/color_styles.dart';
 import 'package:flutter_template/common/theme/text_styles.dart';
 import 'package:flutter_template/presentation/widgets/loading_dot.dart';
@@ -12,7 +11,7 @@ class CommonRoundedButton extends StatelessWidget {
     this.height = 48,
     this.borderRadius = 30.0,
     this.elevation = 0,
-    this.backgroundColor = ColorStyles.mainThemColor,
+    this.backgroundColor = ColorStyles.primaryColor,
     this.disableBackgroundColor = ColorStyles.gray300,
     this.shadowColor,
     required this.content,

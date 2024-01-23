@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,7 +45,7 @@ class RegisterView extends StatelessWidget {
             email: emailController.text,
             password: passwordController.text,
             confirmPassword: confirmPasswordController.text,
-          )));
+          ),),);
     }
   }
 
@@ -57,12 +55,12 @@ class RegisterView extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: Container(
         padding: const EdgeInsets.only(top: 20),
-        color: ColorStyles.mainThemColor,
+        color: ColorStyles.primaryColor,
         child: Column(
           children: [
             Flexible(
               child: Center(
-                  child: Image.asset('assets/icons/register/app_icon.png')),
+                  child: Image.asset('assets/icons/register/app_icon.png'),),
             ),
             Flexible(
               flex: 3,
@@ -79,16 +77,12 @@ class RegisterView extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 46),
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 24,
-                      ),
+                      const SizedBox(height: 24,),
                       Text(
                         LocaleKeys.auth_sign_up.tr(),
                         style: TextStyles.s17BoldText.copyWith(fontSize: 24),
                       ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
+                      const SizedBox(height: 16.0,),
                       SizedBox(
                         height: 480,
                         child: SingleChildScrollView(
@@ -104,20 +98,16 @@ class RegisterView extends StatelessWidget {
                                 confirmPasswordController:
                                     confirmPasswordController,
                               ),
-                              const SizedBox(
-                                height: 32,
-                              ),
+                              const SizedBox(height: 32,),
                               BlocConsumer<RegisterBloc, RegisterState>(
                                   listener: (context, state) {
                                     if (state.isSuccess!) {
                                       ToastUtil.showSuccess(context,
                                           text: LocaleKeys
-                                              .auth_thank_you_for_registering
-                                              .tr());
+                                              .auth_thank_you_for_registering.tr(),);
                                     } else {
                                       if (state.error != null) {
-                                        ToastUtil.showError(context,
-                                            text: state.error);
+                                        ToastUtil.showError(context, text: state.error);
                                       }
                                     }
                                   },
@@ -129,26 +119,21 @@ class RegisterView extends StatelessWidget {
                                       content: LocaleKeys.auth_sign_in.tr(),
                                       isLoading: state.isLoading!,
                                     );
-                                  }),
-                              const SizedBox(
-                                height: 12.0,
-                              ),
+                                  },),
+                              const SizedBox(height: 12.0,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(LocaleKeys.texts_you_have_an_account
-                                      .tr()),
-                                  const SizedBox(
-                                    width: 8.0,
-                                  ),
+                                  Text(LocaleKeys.texts_you_have_an_account.tr(),),
+                                  const SizedBox(width: 8.0,),
                                   InkWell(
                                     child: Text(LocaleKeys.auth_sign_in.tr(),
                                         style: const TextStyle(
-                                            color: ColorStyles.hightLightText)),
+                                            color: ColorStyles.hightLightText,),),
                                     onTap: () {},
-                                  )
+                                  ),
                                 ],
-                              )
+                              ),
                             ],
                           ),
                         ),

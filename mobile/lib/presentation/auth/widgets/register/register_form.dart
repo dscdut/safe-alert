@@ -15,14 +15,15 @@ class RegisterForm extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
-  const RegisterForm(
-      {required this.formKey,
-      required this.fullNameController,
-      required this.phoneNumberController,
-      required this.emailController,
-      required this.passwordController,
-      required this.confirmPasswordController,
-      super.key});
+  const RegisterForm({
+    required this.formKey,
+    required this.fullNameController,
+    required this.phoneNumberController,
+    required this.emailController,
+    required this.passwordController,
+    required this.confirmPasswordController,
+    super.key,
+  });
 
   @override
   State<RegisterForm> createState() => _RegisterFormState();
@@ -45,22 +46,27 @@ class _RegisterFormState extends State<RegisterForm> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(LocaleKeys.texts_full_name.tr(),
-                    style: TextStyles.s14MediumText),
+                Text(
+                  LocaleKeys.texts_full_name.tr(),
+                  style: TextStyles.s14MediumText,
+                ),
                 CustomTextFormField(
                   controller: widget.fullNameController,
                   validator: ValidatorUtil.validateName,
                   onChanged: (value) {
                     setState(() {
                       nameErrorText = ValidatorUtil.validateName(
-                          widget.fullNameController.text);
+                        widget.fullNameController.text,
+                      );
                     });
                   },
                   errorText: nameErrorText,
                 ),
                 const SizedBox(height: 8),
-                Text(LocaleKeys.texts_phone_number.tr(),
-                    style: TextStyles.s14MediumText),
+                Text(
+                  LocaleKeys.texts_phone_number.tr(),
+                  style: TextStyles.s14MediumText,
+                ),
                 CustomTextFormField(
                   controller: widget.phoneNumberController,
                   validator: ValidatorUtil.validatePhoneNumber,
@@ -72,8 +78,10 @@ class _RegisterFormState extends State<RegisterForm> {
                   errorText: phoneErrorText,
                 ),
                 const SizedBox(height: 8),
-                Text(LocaleKeys.texts_email_address.tr(),
-                    style: TextStyles.s14MediumText),
+                Text(
+                  LocaleKeys.texts_email_address.tr(),
+                  style: TextStyles.s14MediumText,
+                ),
                 CustomTextFormField(
                   controller: widget.emailController,
                   validator: ValidatorUtil.validateEmail,
@@ -85,8 +93,10 @@ class _RegisterFormState extends State<RegisterForm> {
                   errorText: emailErrorText,
                 ),
                 const SizedBox(height: 8),
-                Text(LocaleKeys.texts_password.tr(),
-                    style: TextStyles.s14MediumText),
+                Text(
+                  LocaleKeys.texts_password.tr(),
+                  style: TextStyles.s14MediumText,
+                ),
                 CustomTextFormField(
                   controller: widget.passwordController,
                   validator: ValidatorUtil.validatePassword,
@@ -99,19 +109,25 @@ class _RegisterFormState extends State<RegisterForm> {
                   isPassword: true,
                 ),
                 const SizedBox(height: 8),
-                Text(LocaleKeys.texts_confirm_password.tr(),
-                    style: TextStyles.s14MediumText),
+                Text(
+                  LocaleKeys.texts_confirm_password.tr(),
+                  style: TextStyles.s14MediumText,
+                ),
                 CustomTextFormField(
                   controller: widget.confirmPasswordController,
                   validator: (value) {
-                    ValidatorUtil.validateConfirmPassword(
-                        value, widget.passwordController.text);
+                    return ValidatorUtil.validateConfirmPassword(
+                      value,
+                      widget.passwordController.text,
+                    );
                   },
                   onChanged: (value) {
                     setState(() {
                       confirmPasswordErrorText =
                           ValidatorUtil.validateConfirmPassword(
-                              value, widget.passwordController.text);
+                        value,
+                        widget.passwordController.text,
+                      );
                     });
                   },
                   errorText: confirmPasswordErrorText,

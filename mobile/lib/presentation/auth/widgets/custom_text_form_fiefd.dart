@@ -49,12 +49,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   onPressed: _onPressSuffixIcon,
                   icon: isObscure
                       ? const ImageIcon(
-                          AssetImage('assets/icons/register/show.png'))
+                          AssetImage('assets/icons/register/show.png'),)
                       : const ImageIcon(
-                          AssetImage('assets/icons/register/hide.png')))
+                          AssetImage('assets/icons/register/hide.png'),),)
               : null,
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(30.0))),
+              OutlineInputBorder(borderRadius: BorderRadius.circular(30.0),),),
     );
   }
 

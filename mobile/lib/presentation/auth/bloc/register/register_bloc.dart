@@ -28,12 +28,12 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         emit(state.copyWith(
             isLoading: false,
             isSuccess: false,
-            error: LocaleKeys.validator_email_or_phone_number_exists.tr()));
+            error: LocaleKeys.validator_email_or_phone_number_exists.tr(),),);
       } else {
         emit(state.copyWith(
             isLoading: false,
             isSuccess: false,
-            error: LocaleKeys.texts_error_occur.tr()));
+            error: LocaleKeys.texts_error_occur.tr(),),);
       }
     }
   }
