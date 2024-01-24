@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_template/common/theme/color_styles.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -48,10 +49,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               ? IconButton(
                   onPressed: _onPressSuffixIcon,
                   icon: isObscure
-                      ? const ImageIcon(
-                          AssetImage('assets/icons/register/show.png'),)
-                      : const ImageIcon(
-                          AssetImage('assets/icons/register/hide.png'),),)
+                      ? SvgPicture.asset('assets/icons/register/eye_open.svg')
+                      : SvgPicture.asset('assets/icons/register/eye_close.svg'),)
               : null,
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(30.0),),),

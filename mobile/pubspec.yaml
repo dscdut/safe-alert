@@ -53,6 +53,7 @@ dependencies:
   flutter_local_notifications: ^16.3.0
   dropdown_button2: ^2.3.9
   google_mobile_ads: ^4.0.0
+  flutter_svg: ^2.0.9
 
 dev_dependencies:
   flutter_test:

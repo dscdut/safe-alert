@@ -30,7 +30,7 @@ class UserDataSource {
     return _localDataSource.getUserInfo();
   }
 
-  Future<void> registerByEmailAndPhoneNumber(RegisterDTO params) async {
-    await _remoteDataSource.registerByEmailAndPhoneNumber(params);
+  Future<void> registerByEmailAndPhoneNumber(RegisterDTO params) {
+    return _remoteDataSource.registerByEmailAndPhoneNumber(params);
   }
 }
