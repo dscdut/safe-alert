@@ -24,9 +24,6 @@ class $AssetsFontsGen {
   /// File path: assets/fonts/Montserrat-Regular.ttf
   String get montserratRegular => 'assets/fonts/Montserrat-Regular.ttf';
 
-  /// File path: assets/fonts/Montserrat-SemiBold.ttf
-  String get montserratSemiBold => 'assets/fonts/Montserrat-SemiBold.ttf';
-
   /// File path: assets/fonts/Mulish-Bold.ttf
   String get mulishBold => 'assets/fonts/Mulish-Bold.ttf';
 
@@ -36,15 +33,30 @@ class $AssetsFontsGen {
   /// File path: assets/fonts/Mulish-Regular.ttf
   String get mulishRegular => 'assets/fonts/Mulish-Regular.ttf';
 
+  /// File path: assets/fonts/SF-Pro-Display-Bold.otf
+  String get sFProDisplayBold => 'assets/fonts/SF-Pro-Display-Bold.otf';
+
+  /// File path: assets/fonts/SF-Pro-Display-Medium.otf
+  String get sFProDisplayMedium => 'assets/fonts/SF-Pro-Display-Medium.otf';
+
+  /// File path: assets/fonts/SF-Pro-Display-Regular.otf
+  String get sFProDisplayRegular => 'assets/fonts/SF-Pro-Display-Regular.otf';
+
+  /// File path: assets/fonts/SF-Pro-Display-Semibold.otf
+  String get sFProDisplaySemibold => 'assets/fonts/SF-Pro-Display-Semibold.otf';
+
   /// List of all assets
   List<String> get values => [
         montserratBold,
         montserratMedium,
         montserratRegular,
-        montserratSemiBold,
         mulishBold,
         mulishMedium,
-        mulishRegular
+        mulishRegular,
+        sFProDisplayBold,
+        sFProDisplayMedium,
+        sFProDisplayRegular,
+        sFProDisplaySemibold
       ];
 }
 

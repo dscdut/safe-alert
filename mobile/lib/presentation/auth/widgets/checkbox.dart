@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/common/theme/color_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -22,15 +23,16 @@ class AuthCheckBoxState extends State<AuthCheckBox> {
         width: 16,
         height: 16,
         decoration: BoxDecoration(
-          color: ColorStyles.gray140, // White when checked, grey when unchecked
+          color: context.themeConfig
+              .textFieldColor, // White when checked, grey when unchecked
           borderRadius: BorderRadius.circular(2),
         ),
         child: isChecked
-            ? const Center(
+            ? Center(
                 child: FaIcon(
                   FontAwesomeIcons.check,
                   size: 14,
-                  color: ColorStyles.orange100,
+                  color: context.themeConfig.orangeTextColor,
                 ),
               )
             : Container(),

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/common/extensions/string_extension.dart';
 import 'package:flutter_template/common/theme/app_size.dart';
@@ -70,7 +71,7 @@ class _LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorStyles.splashBackground,
+      backgroundColor: context.themeConfig.splashBackgroundColor,
       body: Column(
         children: [
           Transform.scale(
@@ -92,11 +93,10 @@ class _LoginView extends StatelessWidget {
                       const SizedBox(height: 36),
                       Text(
                         LocaleKeys.auth_sign_in.tr(),
-                        style: const TextStyle(
-                          color: ColorStyles.charcoal,
-                          fontFamily: 'Montserrat',
+                        style: context.titleMedium.copyWith(
+                          color: context.themeConfig.defaultTextColor,
+                          fontSize: 24.sp,
                           fontWeight: FontWeight.w700,
-                          fontSize: 24,
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -114,14 +114,14 @@ class _LoginView extends StatelessWidget {
                           return Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 60),
                             child: CommonRoundedButton(
-                              textStyle: const TextStyle(
+                              textStyle: context.labelMedium.copyWith(
                                 color: Colors.white,
-                                fontFamily: 'Montserrat',
+                                fontSize: 18.sp,
                                 fontWeight: FontWeight.w500,
-                                fontSize: 18,
                               ),
                               borderRadius: 20,
-                              backgroundColor: ColorStyles.splashBackground,
+                              backgroundColor:
+                                  context.themeConfig.splashBackgroundColor,
                               onPressed: () => _submitLogin(context),
                               isLoading: state is LoginLoading,
                               content: LocaleKeys.auth_sign_in.tr(),
@@ -131,10 +131,10 @@ class _LoginView extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 32),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 60),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 60),
                         child: Divider(
-                          color: ColorStyles.gray140,
+                          color: context.themeConfig.dividerColor,
                           thickness: 1,
                           height: 1,
                         ),
@@ -147,21 +147,19 @@ class _LoginView extends StatelessWidget {
                             children: [
                               TextSpan(
                                 text: LocaleKeys.texts_dont_have_account.tr(),
-                                style: const TextStyle(
-                                  color: ColorStyles.charcoal,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14,
+                                style: context.titleSmall.copyWith(
+                                  color: context.themeConfig.defaultTextColor,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
                               const WidgetSpan(child: SizedBox(width: 8)),
                               TextSpan(
                                 text: LocaleKeys.auth_sign_up.tr(),
-                                style: const TextStyle(
-                                  color: ColorStyles.orange100,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14,
+                                style: context.titleSmall.copyWith(
+                                  color: context.themeConfig.orangeTextColor,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ],

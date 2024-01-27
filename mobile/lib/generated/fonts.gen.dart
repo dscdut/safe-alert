@@ -15,4 +15,7 @@ class FontFamily {
 
   /// Font family: Mulish
   static const String mulish = 'Mulish';
+
+  /// Font family: SFDisplay
+  static const String sFDisplay = 'SFDisplay';
 }

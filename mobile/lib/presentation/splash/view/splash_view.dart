@@ -38,7 +38,7 @@ class _SplashView extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: ColorStyles.splashBackground,
+      backgroundColor: context.themeConfig.splashBackgroundColor,
     );
   }
 }

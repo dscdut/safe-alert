@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/common/theme/color_styles.dart';
 import 'package:flutter_template/common/utils/validator_util.dart';
 import 'package:flutter_template/presentation/auth/widgets/checkbox.dart';
@@ -39,17 +40,16 @@ class _LoginFormState extends State<LoginForm> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: CommonTextFormField(
-              fillColor: ColorStyles.gray150,
+              fillColor: context.themeConfig.textFieldColor,
               borderRadius: 20,
               prefixIcon: FontAwesomeIcons.phone,
               validator: ValidatorUtil.validatePhoneNumber,
               textController: widget.phoneNumberEditController,
               labelText: LocaleKeys.texts_phone_number.tr(),
-              labelStyle: const TextStyle(
-                color: ColorStyles.charcoal,
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.w500,
+              labelStyle: context.labelMedium.copyWith(
+                color: context.themeConfig.defaultTextColor,
                 fontSize: 18,
+                fontWeight: FontWeight.w500,
               ),
               keyboardType: TextInputType.number,
             ),
@@ -60,17 +60,16 @@ class _LoginFormState extends State<LoginForm> {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: CommonTextFormField(
-                  fillColor: ColorStyles.gray150,
+                  fillColor: context.themeConfig.textFieldColor,
                   borderRadius: 20,
                   prefixIcon: FontAwesomeIcons.lock,
                   validator: ValidatorUtil.validatePassword,
                   textController: widget.passwordEditController,
                   labelText: LocaleKeys.texts_password.tr(),
-                  labelStyle: const TextStyle(
-                    color: ColorStyles.charcoal,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500,
+                  labelStyle: context.labelMedium.copyWith(
+                    color: context.themeConfig.defaultTextColor,
                     fontSize: 18,
+                    fontWeight: FontWeight.w500,
                   ),
                   keyboardType: TextInputType.text,
                   errorText: state.error,
@@ -97,21 +96,19 @@ class _LoginFormState extends State<LoginForm> {
                 const SizedBox(width: 8),
                 Text(
                   LocaleKeys.texts_remember_me.tr(),
-                  style: const TextStyle(
-                    color: ColorStyles.charcoal,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500,
+                  style: context.titleSmall.copyWith(
+                    color: context.themeConfig.defaultTextColor,
                     fontSize: 14,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 const Spacer(),
                 Text(
                   LocaleKeys.texts_forgot_password.tr(),
-                  style: const TextStyle(
-                    color: ColorStyles.orange100,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500,
+                  style: context.titleSmall.copyWith(
+                    color: context.themeConfig.orangeTextColor,
                     fontSize: 14,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],

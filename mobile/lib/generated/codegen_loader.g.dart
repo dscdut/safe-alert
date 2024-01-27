@@ -38,7 +38,8 @@ class CodegenLoader extends AssetLoader{
   },
   "auth": {
     "welcome_back": "Nice to have you back!",
-    "sign_in": "Sign in"
+    "sign_in": "Sign in",
+    "sign_up": "Sign up"
   },
   "validator": {
     "email_required": "Please enter your email",
@@ -79,7 +80,8 @@ static const Map<String,dynamic> vi = {
   },
   "auth": {
     "welcome_back": "Rất vui khi được gặp lại bạn!",
-    "sign_in": "Đăng nhập"
+    "sign_in": "Đăng nhập",
+    "sign_up": "Đăng ký"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",

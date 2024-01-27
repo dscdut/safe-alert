@@ -17,8 +17,6 @@ abstract class ColorStyles {
   static const Color red600 = Color(0xFFCC0000);
   static const Color red700 = Color(0xFF990000);
 
-  static const Color orange100 = Color(0xFFFF7F50);
-
   static const Color green100 = Color(0xFFCCFFCC);
   static const Color green200 = Color(0xFF99FF99);
   static const Color green300 = Color(0xFF66FF66);
@@ -28,16 +26,12 @@ abstract class ColorStyles {
   static const Color green700 = Color(0xFF009900);
 
   static const Color gray100 = Color(0xFFE6E6E6);
-  static const Color gray140 = Color(0xFFD9D9D9);
-  static const Color gray150 = Color(0xFFD3D3D3);
   static const Color gray200 = Color(0xFFCCCCCC);
   static const Color gray300 = Color(0xFFB3B3B3);
   static const Color gray400 = Color(0xFF999999);
   static const Color gray500 = Color(0xFF808080);
   static const Color gray600 = Color(0xFF666666);
   static const Color gray700 = Color(0xFF4D4D4D);
-
-  static const Color charcoal = Color(0xFF36454F);
 
   // New color
   static const Color zodiacBlue = Color(0xFF0F2D52);
@@ -46,7 +40,6 @@ abstract class ColorStyles {
   static const Color limeGreen = Color(0xFF38E54D);
   static const Color metallicViolet = Color(0xFF610094);
   static const Color background = Color(0xFFF9F9F9);
-  static const Color splashBackground = Color(0xFFE30D16);
   static const Color antiFlashWhite = Color(0xFFEFF4F7);
   static Color scaffoldBackgroundColor = Colors.grey[50]!;
   // static const Color lavenderSilver = Color(0xFFFDEFEF);

@@ -29,26 +29,41 @@ class ThemeSheet {
           splashColor: Colors.transparent,
           unselectedWidgetColor: themeConfig.unselectedWidgetColor,
           dividerColor: themeConfig.dividerColor,
-          fontFamily: 'Nunito',
+          fontFamily: 'SFDisplay',
           iconTheme: IconThemeData(
-            color: themeConfig.textColor,
+            color: themeConfig.defaultTextColor,
           ),
           textTheme: TextTheme(
-            displayLarge: TextStyle(fontSize: 57.sp, color: themeConfig.textColor),
-            displayMedium: TextStyle(fontSize: 45.sp, color: themeConfig.textColor),
-            displaySmall: TextStyle(fontSize: 36.sp, color: themeConfig.textColor),
-            headlineLarge: TextStyle(fontSize: 32.sp, color: themeConfig.textColor),
-            headlineMedium: TextStyle(fontSize: 28.sp, color: themeConfig.textColor),
-            headlineSmall: TextStyle(fontSize: 24.sp, color: themeConfig.textColor),
-            titleLarge: TextStyle(fontSize: 22.sp, color: themeConfig.textColor),
-            titleMedium: TextStyle(fontSize: 16.sp, color: themeConfig.textColor),
-            titleSmall: TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
-            labelLarge: TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
-            labelMedium: TextStyle(fontSize: 12.sp, color: themeConfig.textColor),
-            labelSmall: TextStyle(fontSize: 11.sp, color: themeConfig.textColor),
-            bodyLarge: TextStyle(fontSize: 16.sp, color: themeConfig.textColor),
-            bodyMedium: TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
-            bodySmall: TextStyle(fontSize: 12.sp, color: themeConfig.textColor),
+            displayLarge:
+                TextStyle(fontSize: 57.sp, color: themeConfig.defaultTextColor),
+            displayMedium:
+                TextStyle(fontSize: 45.sp, color: themeConfig.defaultTextColor),
+            displaySmall:
+                TextStyle(fontSize: 36.sp, color: themeConfig.defaultTextColor),
+            headlineLarge:
+                TextStyle(fontSize: 32.sp, color: themeConfig.defaultTextColor),
+            headlineMedium:
+                TextStyle(fontSize: 28.sp, color: themeConfig.defaultTextColor),
+            headlineSmall:
+                TextStyle(fontSize: 24.sp, color: themeConfig.defaultTextColor),
+            titleLarge:
+                TextStyle(fontSize: 22.sp, color: themeConfig.defaultTextColor),
+            titleMedium:
+                TextStyle(fontSize: 16.sp, color: themeConfig.defaultTextColor),
+            titleSmall:
+                TextStyle(fontSize: 14.sp, color: themeConfig.defaultTextColor),
+            labelLarge:
+                TextStyle(fontSize: 14.sp, color: themeConfig.defaultTextColor),
+            labelMedium:
+                TextStyle(fontSize: 12.sp, color: themeConfig.defaultTextColor),
+            labelSmall:
+                TextStyle(fontSize: 11.sp, color: themeConfig.defaultTextColor),
+            bodyLarge:
+                TextStyle(fontSize: 16.sp, color: themeConfig.defaultTextColor),
+            bodyMedium:
+                TextStyle(fontSize: 14.sp, color: themeConfig.defaultTextColor),
+            bodySmall:
+                TextStyle(fontSize: 12.sp, color: themeConfig.defaultTextColor),
           ),
           actionIconTheme: ActionIconThemeData(
             backButtonIconBuilder: (context) {
@@ -64,6 +79,12 @@ class ThemeSheet {
 class DefaultThemeConfig {
   Brightness get brightness => Brightness.light;
 
+  Color get splashBackgroundColor => const Color(0xFFE30D16);
+
+  Color get defaultTextColor => const Color(0xFF36454F);
+
+  Color get orangeTextColor => const Color(0xFFFF7F50);
+
   Color get cardColor => Colors.white;
 
   Color get dialogBackgroundColor => Colors.white;
@@ -72,7 +93,7 @@ class DefaultThemeConfig {
 
   Color get disabledColor => const Color(0xFFB5B3BC);
 
-  Color get dividerColor => const Color(0xFFE5EAF2);
+  Color get dividerColor => const Color(0xFFD9D9D9);
 
   Color get focusColor => primaryColor;
 
@@ -92,6 +113,8 @@ class DefaultThemeConfig {
 
   Color get textColor => const Color(0xFF000118);
 
+  Color get textFieldColor => const Color(0xFFD3D3D3);
+
   Color get subTextColor => const Color(0xFF9999A3);
 
   Color get abcColor => Colors.blue;
@@ -100,6 +123,15 @@ class DefaultThemeConfig {
 class DarkThemeConfig extends DefaultThemeConfig {
   @override
   Brightness get brightness => Brightness.dark;
+
+  @override
+  Color get defaultTextColor => const Color(0xFF36454F);
+
+  @override
+  Color get orangeTextColor => const Color(0xFFFF7F50);
+
+  @override
+  Color get splashBackgroundColor => const Color(0xFFE30D16);
 
   @override
   Color get cardColor => const Color(0xFF656565);
@@ -114,7 +146,7 @@ class DarkThemeConfig extends DefaultThemeConfig {
   Color get disabledColor => const Color(0xFFC5C5C5);
 
   @override
-  Color get dividerColor => const Color(0xFF303239);
+  Color get dividerColor => const Color(0xFFD9D9D9);
 
   @override
   Color get focusColor => const Color(0xFF2D2D2D);
@@ -142,6 +174,9 @@ class DarkThemeConfig extends DefaultThemeConfig {
 
   @override
   Color get textColor => ColorStyles.darkTextColor;
+
+  @override
+  Color get textFieldColor => const Color(0xFFD3D3D3);
 
   @override
   Color get unselectedWidgetColor => disabledColor;

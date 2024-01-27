@@ -36,8 +36,8 @@ class _AppState extends State<App> {
         AppLocales.vi,
       ],
       path: AppLocales.path,
-      fallbackLocale: AppLocales.vi,
-      startLocale: AppLocales.vi,
+      fallbackLocale: AppLocales.en,
+      startLocale: AppLocales.en,
       useOnlyLangCode: true,
       assetLoader: const CodegenLoader(),
       child: GestureDetector(
@@ -64,7 +64,8 @@ class _AppState extends State<App> {
             child: Builder(
               builder: (context) {
                 return BlocBuilder<AppBloc, AppState>(
-                  buildWhen: (previous, current) => previous.themeMode != current.themeMode,
+                  buildWhen: (previous, current) =>
+                      previous.themeMode != current.themeMode,
                   builder: (context, state) {
                     return MaterialApp(
                       navigatorKey: _navigatorKey,
