@@ -22,7 +22,8 @@
   },
   "auth": {
     "welcome_back": "Nice to have you back!",
-    "sign_in": "Sign in"
+    "sign_in": "Sign in",
+    "sign_up": "Sign up"
   },
   "validator": {
     "email_required": "Please enter your email",

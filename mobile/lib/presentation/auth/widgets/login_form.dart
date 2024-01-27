@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/common/theme/color_styles.dart';
 import 'package:flutter_template/common/utils/validator_util.dart';
+import 'package:flutter_template/presentation/auth/widgets/checkbox.dart';
 import 'package:flutter_template/presentation/widgets/common_text_form_field.dart';
 import 'package:flutter_template/generated/locale_keys.g.dart';
 import 'package:flutter_template/presentation/auth/bloc/login/login_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -25,7 +27,6 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   bool _isObscure = true;
-  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class _LoginFormState extends State<LoginForm> {
             child: CommonTextFormField(
               fillColor: ColorStyles.gray150,
               borderRadius: 20,
-              prefixIcon: Icons.phone,
+              prefixIcon: FontAwesomeIcons.phone,
               validator: ValidatorUtil.validatePhoneNumber,
               textController: widget.phoneNumberEditController,
               labelText: LocaleKeys.texts_phone_number.tr(),
@@ -61,7 +62,7 @@ class _LoginFormState extends State<LoginForm> {
                 child: CommonTextFormField(
                   fillColor: ColorStyles.gray150,
                   borderRadius: 20,
-                  prefixIcon: Icons.lock,
+                  prefixIcon: FontAwesomeIcons.lock,
                   validator: ValidatorUtil.validatePassword,
                   textController: widget.passwordEditController,
                   labelText: LocaleKeys.texts_password.tr(),
@@ -73,8 +74,9 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   keyboardType: TextInputType.text,
                   errorText: state.error,
-                  suffixIcon:
-                      _isObscure ? Icons.visibility_off : Icons.visibility,
+                  suffixIcon: _isObscure
+                      ? FontAwesomeIcons.solidEye
+                      : FontAwesomeIcons.solidEyeSlash,
                   onTapSuffixIcon: () {
                     setState(() {
                       _isObscure = !_isObscure;
@@ -91,20 +93,8 @@ class _LoginFormState extends State<LoginForm> {
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Row(
               children: [
-                Checkbox(
-                  visualDensity:
-                      const VisualDensity(vertical: -4, horizontal: -4),
-                  value: isChecked,
-                  onChanged: (newBool) {
-                    setState(() {
-                      isChecked = newBool!;
-                    });
-                  },
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(2)),
-                  ),
-                  activeColor: ColorStyles.gray150,
-                ),
+                const AuthCheckBox(),
+                const SizedBox(width: 8),
                 Text(
                   LocaleKeys.texts_remember_me.tr(),
                   style: const TextStyle(

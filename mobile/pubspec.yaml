@@ -54,6 +54,7 @@ dependencies:
   dropdown_button2: ^2.3.9
   google_mobile_ads: ^4.0.0
   flutter_svg: ^2.0.9
+  font_awesome_flutter: ^10.6.0
 
 dev_dependencies:
   flutter_test:

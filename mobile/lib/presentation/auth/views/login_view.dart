@@ -156,7 +156,7 @@ class _LoginView extends StatelessWidget {
                               ),
                               const WidgetSpan(child: SizedBox(width: 8)),
                               TextSpan(
-                                text: LocaleKeys.auth_sign_in.tr(),
+                                text: LocaleKeys.auth_sign_up.tr(),
                                 style: const TextStyle(
                                   color: ColorStyles.orange100,
                                   fontFamily: 'Montserrat',

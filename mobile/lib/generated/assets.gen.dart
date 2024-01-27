@@ -52,15 +52,6 @@ class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
-
-  /// File path: assets/icons/lock.png
-  AssetGenImage get lock => const AssetGenImage('assets/icons/lock.png');
-
-  /// File path: assets/icons/phone.png
-  AssetGenImage get phone => const AssetGenImage('assets/icons/phone.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [lock, phone];
 }
 
 class $AssetsImagesGen {

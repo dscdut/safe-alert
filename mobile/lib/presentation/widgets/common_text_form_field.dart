@@ -146,6 +146,7 @@ class CommonTextFormField extends StatelessWidget {
                     onTap: onTapPrefixIcon,
                     behavior: HitTestBehavior.opaque,
                     child: Icon(
+                      size: 20,
                       prefixIcon,
                       color: prefixIconColor,
                     ),
@@ -156,6 +157,7 @@ class CommonTextFormField extends StatelessWidget {
                     onTap: onTapSuffixIcon,
                     behavior: HitTestBehavior.opaque,
                     child: Icon(
+                      size: 20,
                       suffixIcon,
                       color: suffixIconColor,
                     ),
