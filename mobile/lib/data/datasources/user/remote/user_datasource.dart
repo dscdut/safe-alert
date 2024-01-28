@@ -1,9 +1,12 @@
+import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_template/common/constants/endpoints.dart';
 import 'package:flutter_template/common/helpers/dio_helper.dart';
 import 'package:flutter_template/data/dtos/auth/login_by_email_request_dto.dart';
 import 'package:flutter_template/data/dtos/auth/login_response_dto.dart';
 import 'package:flutter_template/data/dtos/auth/register_response_dto.dart';
 import 'package:flutter_template/data/models/user_model.dart';
+import 'package:flutter_template/generated/locale_keys.g.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
@@ -27,9 +30,19 @@ class UserRemoteDataSource {
   }
 
   Future<void> registerByEmailAndPhoneNumber(RegisterDTO params) async {
-    await _dioHelper.post(
-      Endpoints.register,
-      data: params.toJson(),
-    );
+    try {
+      await _dioHelper.post(Endpoints.register, data: params.toJson());
+    } on DioException catch (exception) {
+      if (exception.response == null) {
+        throw Exception(LocaleKeys.texts_error_occur.tr());
+      } else {
+        switch (exception.response!.statusCode) {
+          case 409:
+            throw Exception(LocaleKeys.validator_email_or_phone_number_exists.tr());
+          default:
+            throw Exception(LocaleKeys.texts_error_occur.tr());
+        }
+      }
+    } 
   }
 }

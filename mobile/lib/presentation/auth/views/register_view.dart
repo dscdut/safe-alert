@@ -1,17 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template/common/theme/color_styles.dart';
-import 'package:flutter_template/common/theme/text_styles.dart';
+import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/common/utils/toast_util.dart';
 import 'package:flutter_template/data/dtos/auth/register_response_dto.dart';
 import 'package:flutter_template/data/repositories/user_repository.dart';
+import 'package:flutter_template/generated/assets.gen.dart';
 import 'package:flutter_template/generated/locale_keys.g.dart';
 import 'package:flutter_template/presentation/auth/bloc/register/register_bloc.dart';
-import 'package:flutter_template/presentation/auth/bloc/register/register_state.dart';
 import 'package:flutter_template/presentation/auth/widgets/register/register_form.dart';
 import 'package:flutter_template/presentation/widgets/common_rounded_button.dart';
-import '../../../di/di.dart';
+import 'package:flutter_template/di/di.dart';
+import 'package:flutter_template/router/app_router.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -55,19 +55,19 @@ class RegisterView extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: Container(
         padding: const EdgeInsets.only(top: 20),
-        color: ColorStyles.primaryColor,
+        color: context.themeConfig.primaryColor,
         child: Column(
           children: [
             Flexible(
               child: Center(
-                  child: Image.asset('assets/icons/register/app_icon.png'),),
+                  child: Assets.icons.register.appIcon.image(),),
             ),
             Flexible(
               flex: 3,
               child: Container(
-                decoration: const BoxDecoration(
-                  color: ColorStyles.background,
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  color: context.themeConfig.background,
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(32.0),
                     topRight: Radius.circular(32.0),
                   ),
@@ -77,12 +77,12 @@ class RegisterView extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 46),
                   child: Column(
                     children: [
-                      const SizedBox(height: 24,),
+                      const SizedBox(height: 24),
                       Text(
                         LocaleKeys.auth_sign_up.tr(),
-                        style: TextStyles.s17BoldText.copyWith(fontSize: 24),
+                        style: context.headlineSmall,
                       ),
-                      const SizedBox(height: 16.0,),
+                      const SizedBox(height: 16.0),
                       SizedBox(
                         height: 480,
                         child: SingleChildScrollView(
@@ -98,7 +98,7 @@ class RegisterView extends StatelessWidget {
                                 confirmPasswordController:
                                     confirmPasswordController,
                               ),
-                              const SizedBox(height: 32,),
+                              const SizedBox(height: 32),
                               BlocConsumer<RegisterBloc, RegisterState>(
                                   listener: (context, state) {
                                     if (state.isSuccess!) {
@@ -106,8 +106,8 @@ class RegisterView extends StatelessWidget {
                                           text: LocaleKeys
                                               .auth_thank_you_for_registering.tr(),);
                                     } else {
-                                      if (state.error != null) {
-                                        ToastUtil.showError(context, text: state.error);
+                                      if (state.errorMessage != null) {
+                                        ToastUtil.showError(context, text: state.errorMessage);
                                       }
                                     }
                                   },
@@ -120,17 +120,19 @@ class RegisterView extends StatelessWidget {
                                       isLoading: state.isLoading!,
                                     );
                                   },),
-                              const SizedBox(height: 12.0,),
+                              const SizedBox(height: 12.0),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(LocaleKeys.texts_you_have_an_account.tr(),),
-                                  const SizedBox(width: 8.0,),
+                                  const SizedBox(width: 8.0),
                                   InkWell(
                                     child: Text(LocaleKeys.auth_sign_in.tr(),
-                                        style: const TextStyle(
-                                            color: ColorStyles.hightLightText,),),
-                                    onTap: () {},
+                                        style: TextStyle(
+                                            color: context.themeConfig.hightLightText,),),
+                                    onTap: (){
+                                        Navigator.of(context).pushNamed(AppRouter.login);
+                                      },
                                   ),
                                 ],
                               ),

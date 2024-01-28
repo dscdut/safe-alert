@@ -25,7 +25,7 @@ abstract class ValidatorUtil {
 
   static String? validatePassword(String? value) {
     if (value != null) {
-      if (value.length < 8) {
+      if (!value.isValidPassword) {
         return LocaleKeys.validator_invalid_password.tr();
       }
     }

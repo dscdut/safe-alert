@@ -32,7 +32,7 @@
     "invalid_email": "Không đúng định dạng email",
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
     "invalid_phone_number": "Không đúng định dạng số điện thoại",
-    "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
+    "invalid_password": "Mật khẩu phải có độ dài trong khoảng từ 6 tới 30 và không chưa kí tự đặc biệt",
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp",
     "email_or_phone_number_exists": "Email hoặc số điện thoại đã tồn tại"
