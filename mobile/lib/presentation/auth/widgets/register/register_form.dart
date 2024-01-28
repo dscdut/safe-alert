@@ -1,11 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template/common/theme/text_styles.dart';
+import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/common/utils/validator_util.dart';
 import 'package:flutter_template/generated/locale_keys.g.dart';
 import 'package:flutter_template/presentation/auth/bloc/register/register_bloc.dart';
-import 'package:flutter_template/presentation/auth/bloc/register/register_state.dart';
 import 'package:flutter_template/presentation/auth/widgets/custom_text_form_fiefd.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -48,7 +47,7 @@ class _RegisterFormState extends State<RegisterForm> {
               children: [
                 Text(
                   LocaleKeys.texts_full_name.tr(),
-                  style: TextStyles.s14MediumText,
+                  style: context.labelLarge,
                 ),
                 CustomTextFormField(
                   controller: widget.fullNameController,
@@ -65,7 +64,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 const SizedBox(height: 8),
                 Text(
                   LocaleKeys.texts_phone_number.tr(),
-                  style: TextStyles.s14MediumText,
+                  style: context.labelLarge,
                 ),
                 CustomTextFormField(
                   controller: widget.phoneNumberController,
@@ -80,7 +79,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 const SizedBox(height: 8),
                 Text(
                   LocaleKeys.texts_email_address.tr(),
-                  style: TextStyles.s14MediumText,
+                  style: context.labelLarge,
                 ),
                 CustomTextFormField(
                   controller: widget.emailController,
@@ -95,7 +94,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 const SizedBox(height: 8),
                 Text(
                   LocaleKeys.texts_password.tr(),
-                  style: TextStyles.s14MediumText,
+                  style: context.labelLarge,
                 ),
                 CustomTextFormField(
                   controller: widget.passwordController,
@@ -111,7 +110,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 const SizedBox(height: 8),
                 Text(
                   LocaleKeys.texts_confirm_password.tr(),
-                  style: TextStyles.s14MediumText,
+                  style: context.labelLarge,
                 ),
                 CustomTextFormField(
                   controller: widget.confirmPasswordController,

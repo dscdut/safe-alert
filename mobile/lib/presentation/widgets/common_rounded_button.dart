@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/common/theme/color_styles.dart';
-import 'package:flutter_template/common/theme/text_styles.dart';
 import 'package:flutter_template/presentation/widgets/loading_dot.dart';
 
 class CommonRoundedButton extends StatelessWidget {
@@ -110,8 +110,7 @@ class CommonRoundedButton extends StatelessWidget {
                           ),
                         Text(
                           content,
-                          style: TextStyles.s17RegularText
-                              .copyWith(fontSize: 18, color: Colors.white),
+                          style: context.labelLarge.copyWith(fontSize: 18.0, color: context.themeConfig.onPrimaryTextColor),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
