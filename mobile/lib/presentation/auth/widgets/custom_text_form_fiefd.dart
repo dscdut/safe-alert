@@ -39,21 +39,21 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       onChanged: widget.onChanged,
       validator: widget.validator,
       decoration: InputDecoration(
-          errorText: widget.errorText,
-          filled: true,
-          fillColor: ColorStyles.textFieldBackground,
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-          prefixIcon: widget.prefixIcon,
-          suffixIcon: widget.isPassword
-              ? IconButton(
-                  onPressed: _onPressSuffixIcon,
-                  icon: isObscure
-                      ? Assets.icons.register.eyeClose.svg()
-                      : Assets.icons.register.eyeOpen.svg(),)
-              : null,
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(30.0),),),
+        errorText: widget.errorText,
+        filled: true,
+        fillColor: ColorStyles.textFieldBackground,
+        contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+        prefixIcon: widget.prefixIcon,
+        suffixIcon: widget.isPassword
+            ? IconButton(
+                onPressed: _onPressSuffixIcon,
+                icon: isObscure
+                    ? Assets.icons.register.eyeClose.svg()
+                    : Assets.icons.register.eyeOpen.svg(),
+              )
+            : null,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.0)),
+      ),
     );
   }
 

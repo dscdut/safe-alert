@@ -70,7 +70,7 @@ class DefaultThemeConfig {
 
   Color get primaryColor => const Color(0xFFE30D16);
 
-  Color get background => const Color(0xFFF9F9F9);
+  Color get backgroundColor => const Color(0xFFF9F9F9);
 
   Color get disabledColor => const Color(0xFFB5B3BC);
 
@@ -151,7 +151,4 @@ class DarkThemeConfig extends DefaultThemeConfig {
 
   @override
   Color get unselectedWidgetColor => disabledColor;
-
-  @override
-  Color get abcColor => Colors.red;
 }

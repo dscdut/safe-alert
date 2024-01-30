@@ -14,7 +14,7 @@ class RegisterState extends Equatable {
   RegisterState copyWith({
     bool? isLoading,
     bool? isSuccess,
-    String? errorMessage}) {
+    String? errorMessage,}) {
     return RegisterState(
       isLoading: isLoading ?? this.isLoading,
       isSuccess: isSuccess ?? this.isSuccess,

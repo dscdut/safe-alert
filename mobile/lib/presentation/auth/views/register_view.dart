@@ -38,14 +38,17 @@ class RegisterView extends StatelessWidget {
 
   void onPressSignUp(BuildContext context) {
     if (formKey.currentState!.validate()) {
-      context.read<RegisterBloc>().add(RegisterSubmit(
+      context.read<RegisterBloc>().add(
+            RegisterSubmit(
               registerDTO: RegisterDTO(
-            fullName: fullNameController.text,
-            phoneNumber: phoneNumberController.text,
-            email: emailController.text,
-            password: passwordController.text,
-            confirmPassword: confirmPasswordController.text,
-          ),),);
+                fullName: fullNameController.text,
+                phoneNumber: phoneNumberController.text,
+                email: emailController.text,
+                password: passwordController.text,
+                confirmPassword: confirmPasswordController.text,
+              ),
+            ),
+          );
     }
   }
 
@@ -60,13 +63,14 @@ class RegisterView extends StatelessWidget {
           children: [
             Flexible(
               child: Center(
-                  child: Assets.icons.register.appIcon.image(),),
+                child: Assets.icons.register.appIcon.image(),
+              ),
             ),
             Flexible(
               flex: 3,
               child: Container(
                 decoration: BoxDecoration(
-                  color: context.themeConfig.background,
+                  color: context.themeConfig.backgroundColor,
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(32.0),
                     topRight: Radius.circular(32.0),
@@ -83,8 +87,7 @@ class RegisterView extends StatelessWidget {
                         style: context.headlineSmall,
                       ),
                       const SizedBox(height: 16.0),
-                      SizedBox(
-                        height: 480,
+                      Flexible(
                         child: SingleChildScrollView(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -100,39 +103,51 @@ class RegisterView extends StatelessWidget {
                               ),
                               const SizedBox(height: 32),
                               BlocConsumer<RegisterBloc, RegisterState>(
-                                  listener: (context, state) {
-                                    if (state.isSuccess!) {
-                                      ToastUtil.showSuccess(context,
-                                          text: LocaleKeys
-                                              .auth_thank_you_for_registering.tr(),);
-                                    } else {
-                                      if (state.errorMessage != null) {
-                                        ToastUtil.showError(context, text: state.errorMessage);
-                                      }
-                                    }
-                                  },
-                                  buildWhen: (previous, current) =>
-                                      previous.isLoading != current.isLoading,
-                                  builder: (context, state) {
-                                    return CommonRoundedButton(
-                                      onPressed: () => onPressSignUp(context),
-                                      content: LocaleKeys.auth_sign_in.tr(),
-                                      isLoading: state.isLoading!,
+                                listener: (context, state) {
+                                  if (state.isSuccess!) {
+                                    ToastUtil.showSuccess(
+                                      context,
+                                      text: LocaleKeys
+                                          .auth_thank_you_for_registering
+                                          .tr(),
                                     );
-                                  },),
+                                  } else {
+                                    if (state.errorMessage != null) {
+                                      ToastUtil.showError(context,
+                                          text: state.errorMessage);
+                                    }
+                                  }
+                                },
+                                buildWhen: (previous, current) =>
+                                    previous.isLoading != current.isLoading,
+                                builder: (context, state) {
+                                  return CommonRoundedButton(
+                                    onPressed: () => onPressSignUp(context),
+                                    content: LocaleKeys.auth_sign_in.tr(),
+                                    isLoading: state.isLoading!,
+                                  );
+                                },
+                              ),
                               const SizedBox(height: 12.0),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(LocaleKeys.texts_you_have_an_account.tr(),),
+                                  Text(
+                                    LocaleKeys.texts_you_have_an_account.tr(),
+                                  ),
                                   const SizedBox(width: 8.0),
                                   InkWell(
-                                    child: Text(LocaleKeys.auth_sign_in.tr(),
-                                        style: TextStyle(
-                                            color: context.themeConfig.hightLightText,),),
-                                    onTap: (){
-                                        Navigator.of(context).pushNamed(AppRouter.login);
-                                      },
+                                    child: Text(
+                                      LocaleKeys.auth_sign_in.tr(),
+                                      style: TextStyle(
+                                        color:
+                                            context.themeConfig.hightLightText,
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      Navigator.of(context)
+                                          .pushNamed(AppRouter.login);
+                                    },
                                   ),
                                 ],
                               ),

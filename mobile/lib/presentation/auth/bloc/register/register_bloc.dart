@@ -14,8 +14,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     on<RegisterSubmit>(_onSubmitRegister);
   }
 
-  Future<void> _onSubmitRegister(
-      RegisterSubmit event, Emitter<RegisterState> emit) async {
+  Future<void> _onSubmitRegister(RegisterSubmit event, Emitter<RegisterState> emit) async {
     emit(state.copyWith(isLoading: true));
 
     try {

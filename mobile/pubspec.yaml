@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -20,7 +20,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -59,7 +59,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
+  # The 'flutter_lints' package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
@@ -77,44 +77,44 @@ dev_dependencies:
 flavorizr:
   app:
     android:
-      flavorDimensions: "flavor-type"
+      flavorDimensions: 'flavor-type'
   flavors:
     dev:
       app:
-        name: "Flutter Template DEV"
-        icon: "assets/icons/launcher/app_icon.png"
+        name: 'Flutter Template DEV'
+        icon: 'assets/icons/launcher/app_icon.png'
       android:
-        applicationId: "com.fluttertemplate.dev"
+        applicationId: 'com.fluttertemplate.dev'
         firebase:
-          config: ".firebase/dev/google-services.json"
+          config: '.firebase/dev/google-services.json'
       ios:
-        bundleId: "com.fluttertemplate.dev"
+        bundleId: 'com.fluttertemplate.dev'
         firebase:
-          config: ".firebase/dev/GoogleService-Info.plist"
+          config: '.firebase/dev/GoogleService-Info.plist'
     staging:
       app:
-        name: "Flutter Template Staging"
-        icon: "assets/icons/launcher/app_icon.png"
+        name: 'Flutter Template Staging'
+        icon: 'assets/icons/launcher/app_icon.png'
       android:
-        applicationId: "com.fluttertemplate.staging"
+        applicationId: 'com.fluttertemplate.staging'
         firebase:
-          config: ".firebase/staging/google-services.json"
+          config: '.firebase/staging/google-services.json'
       ios:
-        bundleId: "com.fluttertemplate.staging"
+        bundleId: 'com.fluttertemplate.staging'
         firebase:
-          config: ".firebase/staging/GoogleService-Info.plist"
+          config: '.firebase/staging/GoogleService-Info.plist'
     prod:
       app:
-        name: "Flutter Template"
-        icon: "assets/icons/launcher/app_icon.png"
+        name: 'Flutter Template'
+        icon: 'assets/icons/launcher/app_icon.png'
       android:
-        applicationId: "com.fluttertemplate.prod"
+        applicationId: 'com.fluttertemplate.prod'
         firebase:
-          config: ".firebase/prod/google-services.json"
+          config: '.firebase/prod/google-services.json'
       ios:
-        bundleId: "com.fluttertemplate.prod"
+        bundleId: 'com.fluttertemplate.prod'
         firebase:
-          config: ".firebase/prod/GoogleService-Info.plist"
+          config: '.firebase/prod/GoogleService-Info.plist'
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -134,15 +134,15 @@ flutter:
     - assets/images/
     - assets/images/lottie/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
+  # An image asset can refer to one or more resolution-specific 'variants', see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
 
   # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
+  # in this 'flutter' section. Each entry in this list should have a
+  # 'family' key with the font family name, and a 'fonts' key with a
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
