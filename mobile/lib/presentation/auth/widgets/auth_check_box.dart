@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/common/extensions/context_extension.dart';
-import 'package:flutter_template/common/theme/color_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AuthCheckBox extends StatefulWidget {
@@ -35,7 +34,7 @@ class AuthCheckBoxState extends State<AuthCheckBox> {
                   color: context.themeConfig.orangeTextColor,
                 ),
               )
-            : Container(),
+            : const SizedBox.shrink(),
       ),
     );
   }
