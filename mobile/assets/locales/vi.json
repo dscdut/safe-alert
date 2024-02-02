@@ -3,8 +3,12 @@
     "notification": "Thông báo",
     "success": "Thành công",
     "error_occur": "Đã có lỗi xảy ra, vui lòng thử lại sau",
+    "full_name": "Họ và tên",
     "email_address": "Email",
-    "password": "Mật khẩu"
+    "phone_number": "Số điện thoại",
+    "password": "Mật khẩu",
+    "confirm_password": "Xác nhận mật khẩu",
+    "you_have_an_account": "Bạn đã có tài khoản?"
   },
   "button": {
     "cancel": "Hủy",
@@ -18,16 +22,20 @@
   },
   "auth": {
     "welcome_back": "Rất vui khi được gặp lại bạn!",
-    "sign_in": "Đăng nhập"
+    "thank_you_for_registering": "Cảm ơn bạn đã đăng ký!",
+    "sign_in": "Đăng nhập",
+    "sign_up": "Đăng ký"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
     "password_required": "Vui lòng nhập mật khẩu",
     "invalid_email": "Không đúng định dạng email",
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
-    "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
+    "invalid_phone_number": "Không đúng định dạng số điện thoại",
+    "invalid_password": "Mật khẩu phải có độ dài trong khoảng từ 6 tới 30 và không chưa kí tự đặc biệt",
     "field_required": "Không được để trống",
-    "not_match_password": "Mật khẩu xác nhận không trùng khớp"
+    "not_match_password": "Mật khẩu xác nhận không trùng khớp",
+    "email_or_phone_number_exists": "Email hoặc số điện thoại đã tồn tại"
   },
   "loading": {
     "ads": "Đang tải quảng cáo..."

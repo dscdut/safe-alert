@@ -36,8 +36,8 @@ class _AppState extends State<App> {
         AppLocales.vi,
       ],
       path: AppLocales.path,
-      fallbackLocale: AppLocales.vi,
-      startLocale: AppLocales.vi,
+      fallbackLocale: AppLocales.en,
+      startLocale: AppLocales.en,
       useOnlyLangCode: true,
       assetLoader: const CodegenLoader(),
       child: GestureDetector(
@@ -61,46 +61,43 @@ class _AppState extends State<App> {
                 lazy: false,
               ),
             ],
-            child: Builder(
-              builder: (context) {
-                return BlocBuilder<AppBloc, AppState>(
-                  buildWhen: (previous, current) => previous.themeMode != current.themeMode,
-                  builder: (context, state) {
-                    return MaterialApp(
-                      navigatorKey: _navigatorKey,
-                      title: AppFlavor.title,
-                      theme: themes[ThemeMode.light]!.themeData,
-                      darkTheme: themes[ThemeMode.dark]!.themeData,
-                      themeMode: context.read<AppBloc>().state.themeMode,
-                      onGenerateRoute: AppRouter.onGenerateRoute,
-                      initialRoute: AppRouter.splash,
-                      localizationsDelegates: context.localizationDelegates,
-                      supportedLocales: context.supportedLocales,
-                      locale: context.locale,
-                      debugShowCheckedModeBanner: false,
-                      builder: (_, child) {
-                        return BlocListener<AuthBloc, AuthState>(
-                          listener: (_, state) {
-                            switch (state.status) {
-                              case AuthenticationStatus.unknown:
-                                break;
-                              case AuthenticationStatus.authenticated:
-                                _navigator.pushNamedAndRemoveUntil(
-                                  AppRouter.root,
-                                  (route) => false,
-                                );
-                                break;
-                              case AuthenticationStatus.unauthenticated:
-                                _navigator.pushNamedAndRemoveUntil(
-                                  AppRouter.login,
-                                  (route) => false,
-                                );
-                                break;
-                            }
-                          },
-                          child: child,
-                        );
+            child: BlocBuilder<AppBloc, AppState>(
+              buildWhen: (previous, current) =>
+                  previous.themeMode != current.themeMode,
+              builder: (context, state) {
+                return MaterialApp(
+                  navigatorKey: _navigatorKey,
+                  title: AppFlavor.title,
+                  theme: themes[ThemeMode.light]!.themeData,
+                  darkTheme: themes[ThemeMode.dark]!.themeData,
+                  themeMode: context.read<AppBloc>().state.themeMode,
+                  onGenerateRoute: AppRouter.onGenerateRoute,
+                  initialRoute: AppRouter.splash,
+                  localizationsDelegates: context.localizationDelegates,
+                  supportedLocales: context.supportedLocales,
+                  locale: context.locale,
+                  debugShowCheckedModeBanner: false,
+                  builder: (_, child) {
+                    return BlocListener<AuthBloc, AuthState>(
+                      listener: (_, state) {
+                        switch (state.status) {
+                          case AuthenticationStatus.unknown:
+                            break;
+                          case AuthenticationStatus.authenticated:
+                            _navigator.pushNamedAndRemoveUntil(
+                              AppRouter.root,
+                              (route) => false,
+                            );
+                            break;
+                          case AuthenticationStatus.unauthenticated:
+                            _navigator.pushNamedAndRemoveUntil(
+                              AppRouter.login,
+                              (route) => false,
+                            );
+                            break;
+                        }
                       },
+                      child: child,
                     );
                   },
                 );
