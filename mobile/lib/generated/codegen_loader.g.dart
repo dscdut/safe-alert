@@ -26,7 +26,7 @@ class CodegenLoader extends AssetLoader{
     "confirm_password": "Confirm password",
     "remember_me": "Remember me",
     "forgot_password": "Forgot password?",
-    "dont_have_account": "Don't have an account?"
+    "dont_have_account": "Don't have an account?",
     "you_have_an_account": "You have an account?"
   },
   "button": {
@@ -41,7 +41,9 @@ class CodegenLoader extends AssetLoader{
   },
   "auth": {
     "welcome_back": "Nice to have you back!",
-    "sign_in": "Sign in"
+    "sign_in": "Sign in",
+    "sign_up": "Sign up",
+    "thank_you_for_registering": "Cảm ơn bạn đã đăng ký!"
   },
   "validator": {
     "email_required": "Please enter your email",
@@ -50,8 +52,7 @@ class CodegenLoader extends AssetLoader{
     "invalid_phone_number": "Invalid phone number",
     "incorrect_phone_number_password": "Incorrect phone number or password",
     "incorrect_email_password": "Incorrect email or password",
-    "invalid_phone_number": "Incorrect phone number",
-    "invalid_password": "Password must be at least 8 characters",
+    "invalid_password": "Password must be 6-30 characters and should not include any special characters",
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match",
     "email_or_phone_number_exists": "Email or phone number already exists"
@@ -67,7 +68,13 @@ static const Map<String,dynamic> vi = {
     "error_occur": "Đã có lỗi xảy ra, vui lòng thử lại sau",
     "full_name": "Họ và tên",
     "email_address": "Email",
-    "password": "Mật khẩu"
+    "phone_number": "Số điện thoại",
+    "password": "Mật khẩu",
+    "confirm_password": "Xác nhận mật khẩu",
+    "remember_me": "Nhớ mật khẩu",
+    "forgot_password": "Quên mật khẩu?",
+    "dont_have_account": "Chưa có tài khoản?",
+    "you_have_an_account": "Bạn đã có tài khoản?"
   },
   "button": {
     "cancel": "Hủy",
@@ -81,7 +88,9 @@ static const Map<String,dynamic> vi = {
   },
   "auth": {
     "welcome_back": "Rất vui khi được gặp lại bạn!",
-    "sign_in": "Đăng nhập"
+    "sign_in": "Đăng nhập",
+    "sign_up": "Đăng ký",
+    "thank_you_for_registering": "Thank you for registering!"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
@@ -90,8 +99,7 @@ static const Map<String,dynamic> vi = {
     "invalid_phone_number": "Không đúng định dạng số điện thoại",
     "incorrect_phone_number_password": "Số điện thoại hoặc mật khẩu không đúng",
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
-    "invalid_phone_number": "Không đúng định dạng số điện thoại",
-    "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
+    "invalid_password": "Mật khẩu phải có độ dài trong khoảng từ 6 tới 30 và không chưa kí tự đặc biệt",
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp",
     "email_or_phone_number_exists": "Email hoặc số điện thoại đã tồn tại"

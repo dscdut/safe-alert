@@ -23,9 +23,9 @@ abstract class  LocaleKeys {
   static const root_management = 'root.management';
   static const root = 'root';
   static const auth_welcome_back = 'auth.welcome_back';
-  static const auth_thank_you_for_registering = 'auth.thank_you_for_registering';
   static const auth_sign_in = 'auth.sign_in';
   static const auth_sign_up = 'auth.sign_up';
+  static const auth_thank_you_for_registering = 'auth.thank_you_for_registering';
   static const auth = 'auth';
   static const validator_email_required = 'validator.email_required';
   static const validator_password_required = 'validator.password_required';
@@ -33,7 +33,6 @@ abstract class  LocaleKeys {
   static const validator_invalid_phone_number = 'validator.invalid_phone_number';
   static const validator_incorrect_phone_number_password = 'validator.incorrect_phone_number_password';
   static const validator_incorrect_email_password = 'validator.incorrect_email_password';
-  static const validator_invalid_phone_number = 'validator.invalid_phone_number';
   static const validator_invalid_password = 'validator.invalid_password';
   static const validator_field_required = 'validator.field_required';
   static const validator_not_match_password = 'validator.not_match_password';

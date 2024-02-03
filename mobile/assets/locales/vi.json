@@ -25,7 +25,9 @@
   },
   "auth": {
     "welcome_back": "Rất vui khi được gặp lại bạn!",
-    "sign_in": "Đăng nhập"
+    "sign_in": "Đăng nhập",
+    "sign_up": "Đăng ký",
+    "thank_you_for_registering": "Thank you for registering!"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
@@ -34,7 +36,6 @@
     "invalid_phone_number": "Không đúng định dạng số điện thoại",
     "incorrect_phone_number_password": "Số điện thoại hoặc mật khẩu không đúng",
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
-    "invalid_phone_number": "Không đúng định dạng số điện thoại",
     "invalid_password": "Mật khẩu phải có độ dài trong khoảng từ 6 tới 30 và không chưa kí tự đặc biệt",
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp",

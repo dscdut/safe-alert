@@ -10,7 +10,7 @@
     "confirm_password": "Confirm password",
     "remember_me": "Remember me",
     "forgot_password": "Forgot password?",
-    "dont_have_account": "Don't have an account?"
+    "dont_have_account": "Don't have an account?",
     "you_have_an_account": "You have an account?"
   },
   "button": {
@@ -25,7 +25,9 @@
   },
   "auth": {
     "welcome_back": "Nice to have you back!",
-    "sign_in": "Sign in"
+    "sign_in": "Sign in",
+    "sign_up": "Sign up",
+    "thank_you_for_registering": "Cảm ơn bạn đã đăng ký!"
   },
   "validator": {
     "email_required": "Please enter your email",
@@ -34,7 +36,6 @@
     "invalid_phone_number": "Invalid phone number",
     "incorrect_phone_number_password": "Incorrect phone number or password",
     "incorrect_email_password": "Incorrect email or password",
-    "invalid_phone_number": "Incorrect phone number",
     "invalid_password": "Password must be 6-30 characters and should not include any special characters",
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match",

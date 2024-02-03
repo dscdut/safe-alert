@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_template/data/dtos/auth/login_by_email_request_dto.dart';
 import 'package:flutter_template/data/dtos/auth/login_by_phone_number_request_dto.dart';
 import 'package:flutter_template/data/models/user_model.dart';
 import 'package:flutter_template/data/repositories/user_repository.dart';
