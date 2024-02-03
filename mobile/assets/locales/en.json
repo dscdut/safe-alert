@@ -25,9 +25,9 @@
   },
   "auth": {
     "welcome_back": "Nice to have you back!",
+    "thank_you_for_registering": "Thank you for registering",
     "sign_in": "Sign in",
-    "sign_up": "Sign up",
-    "thank_you_for_registering": "Cảm ơn bạn đã đăng ký!"
+    "sign_up": "Sign up"
   },
   "validator": {
     "email_required": "Please enter your email",

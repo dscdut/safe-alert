@@ -6,18 +6,18 @@ exports.seed = knex => knex('users')
     .del()
     .then(() => knex('users').insert([
         {
-            full_name: 'Super Admin',
-            email: 'spadmin@gmail.com',
-            phone_number: '093873495',
+            full_name: 'User1',
+            email: 'user1@gmail.com',
+            phone_number: '0938734952',
         },
         {
-            full_name: 'Admin',
-            email: 'admin@gmail.com',
-            phone_number: '093873434',
+            full_name: 'User2',
+            email: 'user2@gmail.com',
+            phone_number: '0938734343',
         },
         {
-            full_name: 'User',
-            email: 'user@gmail.com',
-            phone_number: '078494443',
+            full_name: 'User3',
+            email: 'user3@gmail.com',
+            phone_number: '0784944433',
         },
     ]));

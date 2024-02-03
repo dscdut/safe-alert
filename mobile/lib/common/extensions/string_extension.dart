@@ -12,7 +12,7 @@ extension StringExtension on String? {
         .hasMatch(this!);
   }
 
-  bool get isValidPassword {
+  bool get isValidPassword{
     return RegExp(r'^[a-zA-Z0-9\\d@$!%*?&]{6,30}$').hasMatch(this!);
   }
 }

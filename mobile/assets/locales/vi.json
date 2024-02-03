@@ -25,9 +25,9 @@
   },
   "auth": {
     "welcome_back": "Rất vui khi được gặp lại bạn!",
+    "thank_you_for_registering": "Cảm ơn bạn đã đăng ký!",
     "sign_in": "Đăng nhập",
-    "sign_up": "Đăng ký",
-    "thank_you_for_registering": "Thank you for registering!"
+    "sign_up": "Đăng ký"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
