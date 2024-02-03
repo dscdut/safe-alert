@@ -15,7 +15,7 @@ abstract class ValidatorUtil {
 
   static String? validatePhoneNumber(String? value) {
     if (value != null) {
-      if (!value.isPhoneNumber) {
+      if (!value.isPhoneNumber || value.length < 10) {
         return LocaleKeys.validator_invalid_phone_number.tr();
       }
     }
@@ -25,7 +25,7 @@ abstract class ValidatorUtil {
 
   static String? validatePassword(String? value) {
     if (value != null) {
-      if (value.length < 6) {
+      if (!value.isValidPassword) {
         return LocaleKeys.validator_invalid_password.tr();
       }
     }

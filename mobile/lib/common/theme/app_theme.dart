@@ -34,36 +34,21 @@ class ThemeSheet {
             color: themeConfig.defaultTextColor,
           ),
           textTheme: TextTheme(
-            displayLarge:
-                TextStyle(fontSize: 57.sp, color: themeConfig.defaultTextColor),
-            displayMedium:
-                TextStyle(fontSize: 45.sp, color: themeConfig.defaultTextColor),
-            displaySmall:
-                TextStyle(fontSize: 36.sp, color: themeConfig.defaultTextColor),
-            headlineLarge:
-                TextStyle(fontSize: 32.sp, color: themeConfig.defaultTextColor),
-            headlineMedium:
-                TextStyle(fontSize: 28.sp, color: themeConfig.defaultTextColor),
-            headlineSmall:
-                TextStyle(fontSize: 24.sp, color: themeConfig.defaultTextColor),
-            titleLarge:
-                TextStyle(fontSize: 22.sp, color: themeConfig.defaultTextColor),
-            titleMedium:
-                TextStyle(fontSize: 16.sp, color: themeConfig.defaultTextColor),
-            titleSmall:
-                TextStyle(fontSize: 14.sp, color: themeConfig.defaultTextColor),
-            labelLarge:
-                TextStyle(fontSize: 14.sp, color: themeConfig.defaultTextColor),
-            labelMedium:
-                TextStyle(fontSize: 12.sp, color: themeConfig.defaultTextColor),
-            labelSmall:
-                TextStyle(fontSize: 11.sp, color: themeConfig.defaultTextColor),
-            bodyLarge:
-                TextStyle(fontSize: 16.sp, color: themeConfig.defaultTextColor),
-            bodyMedium:
-                TextStyle(fontSize: 14.sp, color: themeConfig.defaultTextColor),
-            bodySmall:
-                TextStyle(fontSize: 12.sp, color: themeConfig.defaultTextColor),
+            displayLarge: TextStyle(fontSize: 57.sp, color: themeConfig.textColor),
+            displayMedium: TextStyle(fontSize: 45.sp, color: themeConfig.textColor),
+            displaySmall: TextStyle(fontSize: 36.sp, color: themeConfig.textColor),
+            headlineLarge: TextStyle(fontSize: 32.sp, color: themeConfig.textColor, fontWeight: FontWeight.bold),
+            headlineMedium: TextStyle(fontSize: 28.sp, color: themeConfig.textColor, fontWeight: FontWeight.bold),
+            headlineSmall: TextStyle(fontSize: 24.sp, color: themeConfig.textColor, fontWeight: FontWeight.bold),
+            titleLarge: TextStyle(fontSize: 22.sp, color: themeConfig.textColor),
+            titleMedium: TextStyle(fontSize: 16.sp, color: themeConfig.textColor),
+            titleSmall: TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
+            labelLarge: TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
+            labelMedium: TextStyle(fontSize: 12.sp, color: themeConfig.textColor),
+            labelSmall: TextStyle(fontSize: 11.sp, color: themeConfig.textColor),
+            bodyLarge: TextStyle(fontSize: 16.sp, color: themeConfig.textColor),
+            bodyMedium: TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
+            bodySmall: TextStyle(fontSize: 12.sp, color: themeConfig.textColor),
           ),
           actionIconTheme: ActionIconThemeData(
             backButtonIconBuilder: (context) {
@@ -89,7 +74,9 @@ class DefaultThemeConfig {
 
   Color get dialogBackgroundColor => Colors.white;
 
-  Color get primaryColor => const Color(0xFF1F57E7);
+  Color get primaryColor => const Color(0xFFE30D16);
+
+  Color get backgroundColor => const Color(0xFFF9F9F9);
 
   Color get disabledColor => const Color(0xFFB5B3BC);
 
@@ -117,7 +104,11 @@ class DefaultThemeConfig {
 
   Color get subTextColor => const Color(0xFF9999A3);
 
-  Color get abcColor => Colors.blue;
+  Color get onPrimaryTextColor => Colors.white;
+
+  Color get textFieldBackgroundColor => const Color(0xFFD3D3D3);
+
+  Color get hightLightText => const Color(0xFFFF7F50);
 }
 
 class DarkThemeConfig extends DefaultThemeConfig {
@@ -180,7 +171,4 @@ class DarkThemeConfig extends DefaultThemeConfig {
 
   @override
   Color get unselectedWidgetColor => disabledColor;
-
-  @override
-  Color get abcColor => Colors.red;
 }

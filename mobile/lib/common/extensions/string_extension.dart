@@ -5,11 +5,14 @@ extension StringExtension on String? {
     ).hasMatch(this!);
   }
 
+  bool get isNullOrEmpty => this == null || this!.isEmpty;
+
   bool get isPhoneNumber {
-    return RegExp(
-      r'^\d{10}$',
-    ).hasMatch(this!);
+    return RegExp(r'^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$')
+        .hasMatch(this!);
   }
 
-  bool get isNullOrEmpty => this == null || this!.isEmpty;
+  bool get isValidPassword {
+    return RegExp(r'^[a-zA-Z0-9\\d@$!%*?&]{6,30}$').hasMatch(this!);
+  }
 }

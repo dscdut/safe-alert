@@ -9,9 +9,9 @@ class CommonRoundedButton extends StatelessWidget {
     required this.onPressed,
     this.width,
     this.height = 48,
-    this.borderRadius = 7,
+    this.borderRadius = 30.0,
     this.elevation = 0,
-    this.backgroundColor = ColorStyles.blue400,
+    this.backgroundColor = ColorStyles.primaryColor,
     this.disableBackgroundColor = ColorStyles.gray300,
     this.shadowColor,
     required this.content,
@@ -110,9 +110,7 @@ class CommonRoundedButton extends StatelessWidget {
                           ),
                         Text(
                           content,
-                          style: textStyle ??
-                              context.labelLarge
-                                  .copyWith(fontWeight: FontWeight.w700),
+                          style: textStyle ?? context.labelLarge.copyWith(fontSize: 18.0, color: context.themeConfig.onPrimaryTextColor),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),

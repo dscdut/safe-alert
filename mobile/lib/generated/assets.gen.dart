@@ -64,6 +64,7 @@ class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
+  $AssetsIconsRegisterGen get register => const $AssetsIconsRegisterGen();
 }
 
 class $AssetsImagesGen {
@@ -100,6 +101,25 @@ class $AssetsIconsLauncherGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [appIcon];
+}
+
+class $AssetsIconsRegisterGen {
+  const $AssetsIconsRegisterGen();
+
+  /// File path: assets/icons/register/app_icon.png
+  AssetGenImage get appIcon =>
+      const AssetGenImage('assets/icons/register/app_icon.png');
+
+  /// File path: assets/icons/register/eye_close.svg
+  SvgGenImage get eyeClose =>
+      const SvgGenImage('assets/icons/register/eye_close.svg');
+
+  /// File path: assets/icons/register/eye_open.svg
+  SvgGenImage get eyeOpen =>
+      const SvgGenImage('assets/icons/register/eye_open.svg');
+
+  /// List of all assets
+  List<dynamic> get values => [appIcon, eyeClose, eyeOpen];
 }
 
 class $AssetsImagesLottieGen {
