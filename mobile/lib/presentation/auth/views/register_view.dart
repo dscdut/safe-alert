@@ -113,8 +113,10 @@ class RegisterView extends StatelessWidget {
                                     );
                                   } else {
                                     if (state.errorMessage != null) {
-                                      ToastUtil.showError(context,
-                                          text: state.errorMessage);
+                                      ToastUtil.showError(
+                                        context,
+                                        text: state.errorMessage,
+                                      );
                                     }
                                   }
                                 },

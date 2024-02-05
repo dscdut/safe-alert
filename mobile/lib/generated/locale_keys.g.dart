@@ -33,7 +33,6 @@ abstract class  LocaleKeys {
   static const validator_invalid_phone_number = 'validator.invalid_phone_number';
   static const validator_incorrect_phone_number_password = 'validator.incorrect_phone_number_password';
   static const validator_incorrect_email_password = 'validator.incorrect_email_password';
-  static const validator_invalid_phone_number = 'validator.invalid_phone_number';
   static const validator_invalid_password = 'validator.invalid_password';
   static const validator_field_required = 'validator.field_required';
   static const validator_not_match_password = 'validator.not_match_password';

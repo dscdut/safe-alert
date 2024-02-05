@@ -6,9 +6,9 @@ class LoginByPhoneNumberRequestDTO {
   final String phoneNumber;
   final String password;
 
-  Map<String, dynamic> toJson() => _LoginByPhoneNumberRequestDTOToJson(this);
+  Map<String, dynamic> toJson() => _loginByPhoneNumberRequestDTOToJson(this);
 
-  Map<String, dynamic> _LoginByPhoneNumberRequestDTOToJson(
+  Map<String, dynamic> _loginByPhoneNumberRequestDTOToJson(
     LoginByPhoneNumberRequestDTO instance,
   ) =>
       <String, dynamic>{

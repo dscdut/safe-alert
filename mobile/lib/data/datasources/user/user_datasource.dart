@@ -28,7 +28,8 @@ class UserDataSource {
   }
 
   Future<UserModel> loginByPhoneNumber(
-      LoginByPhoneNumberRequestDTO params) async {
+    LoginByPhoneNumberRequestDTO params,
+  ) async {
     final LoginResponseDTO loginResponse =
         await _remoteDataSource.loginByPhoneNumber(params);
 

@@ -1,4 +1,3 @@
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/presentation/profile/bloc/profile_bloc.dart';
@@ -22,7 +21,6 @@ class _ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
-        // TODO: return correct widget based on the state.
         return const SizedBox();
       },
     );

@@ -52,8 +52,7 @@ class CodegenLoader extends AssetLoader{
     "invalid_phone_number": "Invalid phone number",
     "incorrect_phone_number_password": "Incorrect phone number or password",
     "incorrect_email_password": "Incorrect email or password",
-    "invalid_phone_number": "Incorrect phone number",
-    "invalid_password": "Password must be at least 8 characters",
+    "invalid_password": "Password must be 6-30 characters and should not include any special characters",
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match",
     "email_or_phone_number_exists": "Email or phone number already exists"
@@ -100,8 +99,7 @@ static const Map<String,dynamic> vi = {
     "invalid_phone_number": "Không đúng định dạng số điện thoại",
     "incorrect_phone_number_password": "Số điện thoại hoặc mật khẩu không đúng",
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
-    "invalid_phone_number": "Không đúng định dạng số điện thoại",
-    "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
+    "invalid_password": "Mật khẩu phải có độ dài trong khoảng từ 6 tới 30 và không chưa kí tự đặc biệt",
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp",
     "email_or_phone_number_exists": "Email hoặc số điện thoại đã tồn tại"

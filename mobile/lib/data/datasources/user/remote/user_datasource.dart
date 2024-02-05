@@ -17,7 +17,8 @@ class UserRemoteDataSource {
   final DioHelper _dioHelper;
 
   Future<LoginResponseDTO> loginByPhoneNumber(
-      LoginByPhoneNumberRequestDTO params) async {
+    LoginByPhoneNumberRequestDTO params,
+  ) async {
     final HttpRequestResponse response = await _dioHelper.post(
       Endpoints.login,
       data: params.toJson(),
@@ -50,11 +51,13 @@ class UserRemoteDataSource {
       } else {
         switch (exception.response!.statusCode) {
           case 409:
-            throw Exception(LocaleKeys.validator_email_or_phone_number_exists.tr());
+            throw Exception(
+              LocaleKeys.validator_email_or_phone_number_exists.tr(),
+            );
           default:
             throw Exception(LocaleKeys.texts_error_occur.tr());
         }
       }
-    } 
+    }
   }
 }
