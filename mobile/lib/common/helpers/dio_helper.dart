@@ -62,8 +62,6 @@ class DioHelper {
       options: options,
     );
 
-    log(response.toString());
-
     return HttpRequestResponse(
       data: response.data,
       headers: response.headers,

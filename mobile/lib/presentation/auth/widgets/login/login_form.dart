@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/common/utils/validator_util.dart';
-import 'package:flutter_template/presentation/auth/widgets/auth_check_box.dart';
+import 'package:flutter_template/presentation/auth/widgets/login/auth_check_box.dart';
 import 'package:flutter_template/presentation/widgets/common_text_form_field.dart';
 import 'package:flutter_template/generated/locale_keys.g.dart';
 import 'package:flutter_template/presentation/auth/bloc/login/login_bloc.dart';
