@@ -2,6 +2,7 @@ import { unlink } from 'fs';
 import { InternalServerException } from 'packages/httpException';
 import { logger } from 'packages/logger';
 import { cloudinaryUploader } from '../../../config/cloudinary.config';
+import { promisify } from 'util';
 
 class Service {
     constructor() {
@@ -9,22 +10,29 @@ class Service {
     }
 
     async uploadOne(file, folderName = '') {
+        let extensionsVideo = ['.mp4', 'mov', '.avi', '.mkv'];
         try {
-            const response = await cloudinaryUploader.upload(file.path, { folder: folderName });
+            const isVideo = extensionsVideo.some(ext => file.originalname.endsWith(ext));
+            const response = await cloudinaryUploader.upload(file.path, {
+                folder: folderName,
+                resource_type: isVideo ? 'video' : 'image',
+            });
+
             return {
                 originalName: response.original_filename,
                 url: response.secure_url,
                 publicId: response.public_id,
+                resource_type: response.resource_type,
             };
         } catch (error) {
             throw new InternalServerException(error.message);
         } finally {
-            unlink(file.path, err => {
-                if (err) {
-                    this.logger.error(err.message);
-                    throw new InternalServerException(err.message);
-                }
-            });
+            try {
+                await promisify(unlink)(file.path);
+            } catch (error) {
+                this.logger.error(error.message);
+                throw new InternalServerException(error.message);
+            }
         }
     }
 

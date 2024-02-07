@@ -44,7 +44,7 @@ export class JoiUtils {
     }
 
     static optionalStrings() {
-        return Joi.array().items(JoiUtils.optionalString()).min(1);
+        return Joi.array().items(JoiUtils.optionalString());
     }
 
     static ObjectIds() {
