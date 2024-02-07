@@ -9,10 +9,10 @@ const DEFAULT_PASSWORD =
 exports.up = async knex => {
     await knex.schema.createTable(tableName, table => {
         table.increments('id').unsigned().primary();
-        table.string('full_name');
         table.string('email').unique().notNullable();
         table.string('phone_number').unique().notNullable();
         table.string('password').defaultTo(DEFAULT_PASSWORD);
+        table.string('avatar').defaultTo(null);
         table.dateTime('birthday').defaultTo(null);
         table.string('address').defaultTo(null);
         table.dateTime('deleted_at').defaultTo(null);

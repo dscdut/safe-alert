@@ -2,7 +2,7 @@
 /**
  * @param {import("knex")} knex
  */
-const tableName = 'user_rescuer_help_signals';
+const tableName = 'rescuer_help_signals';
 exports.up = async knex => {
     await knex.schema.createTable(tableName, table => {
         table.integer('rescuer_id').unsigned().references('id').inTable('users').notNullable();

@@ -17,7 +17,7 @@ export const MediaResolver = Module.builder()
             consumes: ['multipart/form-data'],
             interceptors: [new MediaInterceptor(10)],
             controller: MediaController.uploadMany,
-            preAuthorization: true
+            preAuthorization: false
         },
         {
             route: '/images',
