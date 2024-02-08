@@ -32,6 +32,8 @@ class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
+  $AssetsIconsNavigationBarGen get navigationBar =>
+      const $AssetsIconsNavigationBarGen();
   $AssetsIconsRegisterGen get register => const $AssetsIconsRegisterGen();
 }
 
@@ -63,6 +65,38 @@ class $AssetsIconsLauncherGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [appIcon];
+}
+
+class $AssetsIconsNavigationBarGen {
+  const $AssetsIconsNavigationBarGen();
+
+  /// File path: assets/icons/navigation_bar/cancel_sos.svg
+  SvgGenImage get cancelSos =>
+      const SvgGenImage('assets/icons/navigation_bar/cancel_sos.svg');
+
+  /// File path: assets/icons/navigation_bar/map.svg
+  SvgGenImage get map =>
+      const SvgGenImage('assets/icons/navigation_bar/map.svg');
+
+  /// File path: assets/icons/navigation_bar/post.svg
+  SvgGenImage get post =>
+      const SvgGenImage('assets/icons/navigation_bar/post.svg');
+
+  /// File path: assets/icons/navigation_bar/selected_map.svg
+  SvgGenImage get selectedMap =>
+      const SvgGenImage('assets/icons/navigation_bar/selected_map.svg');
+
+  /// File path: assets/icons/navigation_bar/selected_post.svg
+  SvgGenImage get selectedPost =>
+      const SvgGenImage('assets/icons/navigation_bar/selected_post.svg');
+
+  /// File path: assets/icons/navigation_bar/sos.svg
+  SvgGenImage get sos =>
+      const SvgGenImage('assets/icons/navigation_bar/sos.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values =>
+      [cancelSos, map, post, selectedMap, selectedPost, sos];
 }
 
 class $AssetsIconsRegisterGen {

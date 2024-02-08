@@ -8,7 +8,9 @@
     "phone_number": "Phone number",
     "password": "Password",
     "confirm_password": "Confirm password",
-    "you_have_an_account": "You have an account?"
+    "you_have_an_account": "You have an account?",
+    "DOB": "DOB",
+    "Address": "Address"
   },
   "button": {
     "cancel": "Cancel",
@@ -36,6 +38,14 @@
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match",
     "email_or_phone_number_exists": "Email or phone number already exists"
+  },
+  "emergency_post": {
+    "information": "Information",
+    "whats_emergency": "what's your emergency situation?",
+    "upload_images_videos": "Upload images/videos",
+    "note": "Note",
+    "submit": "Submit",
+    "submit_success": "Your support request has been posted"
   },
   "loading": {
     "ads": "Loading ads..."

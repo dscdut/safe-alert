@@ -20,6 +20,7 @@ import flutter_local_notifications
     }
 
     GeneratedPluginRegistrant.register(with: self)
+    GMSServices.provideAPIKey("AIzaSyBsw78pDnCnbwpCcaPmAfMIDud7ny_ntSo")
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

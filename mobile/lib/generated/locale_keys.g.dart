@@ -10,6 +10,8 @@ abstract class  LocaleKeys {
   static const texts_password = 'texts.password';
   static const texts_confirm_password = 'texts.confirm_password';
   static const texts_you_have_an_account = 'texts.you_have_an_account';
+  static const texts_DOB = 'texts.DOB';
+  static const texts_Address = 'texts.Address';
   static const texts = 'texts';
   static const button_cancel = 'button.cancel';
   static const button_confirm = 'button.confirm';
@@ -34,6 +36,13 @@ abstract class  LocaleKeys {
   static const validator_not_match_password = 'validator.not_match_password';
   static const validator_email_or_phone_number_exists = 'validator.email_or_phone_number_exists';
   static const validator = 'validator';
+  static const emergency_post_information = 'emergency_post.information';
+  static const emergency_post_whats_emergency = 'emergency_post.whats_emergency';
+  static const emergency_post_upload_images_videos = 'emergency_post.upload_images_videos';
+  static const emergency_post_note = 'emergency_post.note';
+  static const emergency_post_submit = 'emergency_post.submit';
+  static const emergency_post_submit_success = 'emergency_post.submit_success';
+  static const emergency_post = 'emergency_post';
   static const loading_ads = 'loading.ads';
   static const loading = 'loading';
 

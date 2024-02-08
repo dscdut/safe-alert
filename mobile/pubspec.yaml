@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -20,7 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -54,6 +54,11 @@ dependencies:
   dropdown_button2: ^2.3.9
   google_mobile_ads: ^4.0.0
   flutter_svg: ^2.0.9
+  google_maps_flutter: ^2.5.3
+  animated_bottom_navigation_bar: ^1.3.3
+  image_picker: ^1.0.7
+  permission_handler: ^11.2.0
+  location: ^5.0.3
 
 dev_dependencies:
   flutter_test:
@@ -77,44 +82,44 @@ dev_dependencies:
 flavorizr:
   app:
     android:
-      flavorDimensions: 'flavor-type'
+      flavorDimensions: "flavor-type"
   flavors:
     dev:
       app:
-        name: 'Flutter Template DEV'
-        icon: 'assets/icons/launcher/app_icon.png'
+        name: "Flutter Template DEV"
+        icon: "assets/icons/launcher/app_icon.png"
       android:
-        applicationId: 'com.fluttertemplate.dev'
+        applicationId: "com.fluttertemplate.dev"
         firebase:
-          config: '.firebase/dev/google-services.json'
+          config: ".firebase/dev/google-services.json"
       ios:
-        bundleId: 'com.fluttertemplate.dev'
+        bundleId: "com.fluttertemplate.dev"
         firebase:
-          config: '.firebase/dev/GoogleService-Info.plist'
+          config: ".firebase/dev/GoogleService-Info.plist"
     staging:
       app:
-        name: 'Flutter Template Staging'
-        icon: 'assets/icons/launcher/app_icon.png'
+        name: "Flutter Template Staging"
+        icon: "assets/icons/launcher/app_icon.png"
       android:
-        applicationId: 'com.fluttertemplate.staging'
+        applicationId: "com.fluttertemplate.staging"
         firebase:
-          config: '.firebase/staging/google-services.json'
+          config: ".firebase/staging/google-services.json"
       ios:
-        bundleId: 'com.fluttertemplate.staging'
+        bundleId: "com.fluttertemplate.staging"
         firebase:
-          config: '.firebase/staging/GoogleService-Info.plist'
+          config: ".firebase/staging/GoogleService-Info.plist"
     prod:
       app:
-        name: 'Flutter Template'
-        icon: 'assets/icons/launcher/app_icon.png'
+        name: "Flutter Template"
+        icon: "assets/icons/launcher/app_icon.png"
       android:
-        applicationId: 'com.fluttertemplate.prod'
+        applicationId: "com.fluttertemplate.prod"
         firebase:
-          config: '.firebase/prod/google-services.json'
+          config: ".firebase/prod/google-services.json"
       ios:
-        bundleId: 'com.fluttertemplate.prod'
+        bundleId: "com.fluttertemplate.prod"
         firebase:
-          config: '.firebase/prod/GoogleService-Info.plist'
+          config: ".firebase/prod/GoogleService-Info.plist"
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -130,6 +135,7 @@ flutter:
     - assets/icons/
     - assets/icons/launcher/
     - assets/icons/register/
+    - assets/icons/navigation_bar/
     - assets/locales/
     - assets/images/
     - assets/images/lottie/
