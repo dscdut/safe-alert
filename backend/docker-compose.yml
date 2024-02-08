@@ -9,6 +9,8 @@ services:
         container_name: backend-api
         restart: on-failure
         image: base
+        # Uncomment the line below to run on mac os
+        # platform: linux/arm64/v8
         ports:
             - '3000:3000'
         env_file:
@@ -30,6 +32,8 @@ services:
     base:
         build: .
         image: base
+        # Uncomment the line below to run on mac os
+        # platform: linux/arm64/v8
         env_file:
             - .env
         environment:
@@ -54,6 +58,8 @@ services:
 
     init_db:
         image: base
+        # Uncomment the line below to run on mac os
+        # platform: linux/arm64/v8
         command: sh -c 'yarn db:reset'
         env_file:
             - .env

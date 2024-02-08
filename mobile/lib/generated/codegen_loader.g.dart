@@ -19,8 +19,12 @@ class CodegenLoader extends AssetLoader{
     "notification": "Notification",
     "success": "Success",
     "error_occur": "An error has occurred, please try again later",
+    "full_name": "Full name",
     "email_address": "Email Address",
-    "password": "Password"
+    "phone_number": "Phone number",
+    "password": "Password",
+    "confirm_password": "Confirm password",
+    "you_have_an_account": "You have an account?"
   },
   "button": {
     "cancel": "Cancel",
@@ -34,16 +38,20 @@ class CodegenLoader extends AssetLoader{
   },
   "auth": {
     "welcome_back": "Nice to have you back!",
-    "sign_in": "Sign in"
+    "thank_you_for_registering": "Thank you for registering",
+    "sign_in": "Sign in",
+    "sign_up": "Sign up"
   },
   "validator": {
     "email_required": "Please enter your email",
     "password_required": "Please enter your password",
     "invalid_email": "Invalid email address",
     "incorrect_email_password": "Incorrect email or password",
+    "invalid_phone_number": "Incorrect phone number",
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
-    "not_match_password": "Password and confirm password not match"
+    "not_match_password": "Password and confirm password not match",
+    "email_or_phone_number_exists": "Email or phone number already exists"
   },
   "loading": {
     "ads": "Loading ads..."
@@ -54,8 +62,12 @@ static const Map<String,dynamic> vi = {
     "notification": "Thông báo",
     "success": "Thành công",
     "error_occur": "Đã có lỗi xảy ra, vui lòng thử lại sau",
+    "full_name": "Họ và tên",
     "email_address": "Email",
-    "password": "Mật khẩu"
+    "phone_number": "Số điện thoại",
+    "password": "Mật khẩu",
+    "confirm_password": "Xác nhận mật khẩu",
+    "you_have_an_account": "Bạn đã có tài khoản?"
   },
   "button": {
     "cancel": "Hủy",
@@ -69,19 +81,23 @@ static const Map<String,dynamic> vi = {
   },
   "auth": {
     "welcome_back": "Rất vui khi được gặp lại bạn!",
-    "sign_in": "Đăng nhập"
+    "thank_you_for_registering": "Cảm ơn bạn đã đăng ký!",
+    "sign_in": "Đăng nhập",
+    "sign_up": "Đăng ký"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
     "password_required": "Vui lòng nhập mật khẩu",
     "invalid_email": "Không đúng định dạng email",
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
+    "invalid_phone_number": "Không đúng định dạng số điện thoại",
     "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
     "field_required": "Không được để trống",
-    "not_match_password": "Mật khẩu xác nhận không trùng khớp"
+    "not_match_password": "Mật khẩu xác nhận không trùng khớp",
+    "email_or_phone_number_exists": "Email hoặc số điện thoại đã tồn tại"
   },
   "loading": {
-    "ads": "Đang tải quảng cáo ..."
+    "ads": "Đang tải quảng cáo..."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

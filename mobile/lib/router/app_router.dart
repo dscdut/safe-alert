@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/presentation/auth/views/login_view.dart';
+import 'package:flutter_template/presentation/auth/views/register_view.dart';
 import 'package:flutter_template/presentation/core/views/root_view.dart';
 import 'package:flutter_template/presentation/splash/splash.dart';
 
@@ -55,6 +56,12 @@ abstract final class AppRouter {
         return MaterialPageRoute(
           builder: (_) {
             return const LoginPage();
+          },
+        );
+      case register:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const RegisterPage();
           },
         );
       case root:

@@ -53,5 +53,18 @@ extension ContextExtension on BuildContext {
 
   TextStyle get titleLarge => theme.textTheme.titleLarge!;
 
-  DefaultThemeConfig get themeConfig => read<AppBloc>().state.themeSheet.themeConfig;
+  TextStyle get headlineSmall => theme.textTheme.headlineSmall!;
+
+  TextStyle get displayLarge => theme.textTheme.displayLarge!;
+
+  TextStyle get displayMedium => theme.textTheme.displayMedium!;
+
+  TextStyle get displaySmall => theme.textTheme.displaySmall!;
+
+  TextStyle get headlineLarge => theme.textTheme.headlineLarge!;
+  
+  TextStyle get headlineMedium => theme.textTheme.headlineMedium!;
+
+  DefaultThemeConfig get themeConfig =>
+      read<AppBloc>().state.themeSheet.themeConfig;
 }
