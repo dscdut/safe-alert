@@ -17,7 +17,6 @@ export const createHelpSignalDto = body => ({
     description: body.description,
     quantity: body.quantity ? body.quantity : null,
     images: body.images ? body.images : null,
-    videos: body.videos ? body.videos : null,
     emergency_id: body.emergency_id,
     user_id: body.user_id,
     status_id: body.status_id,

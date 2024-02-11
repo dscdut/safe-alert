@@ -9,6 +9,8 @@ class Repository extends DataRepository {
                 'users.id',
                 'users.email',
                 'users.password',
+                'users.latitude',
+                'users.longitude',
                 { phoneNumber: 'users.phone_number' },
                 { fullName: 'users.full_name' },
                 { createdAt: 'users.created_at' },

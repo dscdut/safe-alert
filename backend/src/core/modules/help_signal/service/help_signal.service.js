@@ -12,27 +12,17 @@ class Service {
     }
 
 
-    SeparateImageVideo(medias) {
-        let images = '', videos = '';
-        medias.forEach(element => {
-            if (element.resource_type === 'image') {
-                images += element.url + ',';
-            } else {
-                videos += element.url + ',';
-            }
-        });
-        return {
-            images: images.slice(0, -1),
-            videos: videos.slice(0, -1),
-        }
+    getUrls(medias) {
+        let images = '';
+        medias.forEach(element => { images += element.url + ','; });
+        return images.slice(0, -1);
     }
     async createHelpSignal(createHelpSignalDto, files) {
         try {
             if (files) {
                 const medias = await this.MediaService.uploadMany(files);
-                const { images, videos } = this.SeparateImageVideo(medias);
+                const images = this.getUrls(medias);
                 createHelpSignalDto.images = images;
-                createHelpSignalDto.videos = videos;
             }
             const signal = await this.repository.insert(createHelpSignalDto);
             return {
@@ -72,7 +62,8 @@ class Service {
         }
     }
 
-    async updateHelpSignal(id, helpSignalDto, files) {
+    async updateHelpSignal(id, helpSignalDto, { file, files }) {
+        const images = file ? [file] : files ? files : null;
         const trx = await getTransaction();
 
         const helpSignal = await this.findHelpSignalById(id);
@@ -82,14 +73,13 @@ class Service {
 
         try {
 
-            if (files) {
+            if (images && images.length != 0) {
                 const medias = await this.MediaService.uploadMany(files);
-                const { images, videos } = this.SeparateImageVideo(medias);
-                helpSignalDto.images = images;
-                helpSignalDto.videos = videos;
+                const imagesURL = this.getUrls(medias);
+                helpSignalDto.images = imagesURL;
             } else {
-                delete helpSignalDto.images;
-                delete helpSignalDto.videos;
+                helpSignalDto.images = helpSignal[0].images;
+                console.log(helpSignalDto.images);
             }
 
             const updatedHelpSignal = await this.repository.updateOne(id, helpSignalDto, trx);

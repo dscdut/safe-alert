@@ -11,7 +11,6 @@ exports.up = async knex => {
         table.string('location').notNullable();
         table.string('description').nullable();
         table.string('images').nullable();
-        table.string('videos').nullable();
         table.integer('status_id').notNullable();
         table.integer('user_id').unsigned().references('id').inTable('users').notNullable();
         table.integer('emergency_id').unsigned().references('id').inTable('emergencies').notNullable();

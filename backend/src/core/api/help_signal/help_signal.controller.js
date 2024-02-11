@@ -11,13 +11,8 @@ class Controller {
     createHelpSignal = async req => {
         let signal = { ...req.body, status_id: 0, user_id: req.user.payload.id };
         const { files } = req;
-        try {
-            const data = await this.service.createHelpSignal(createHelpSignalDto(signal), files);
-            return ValidHttpResponse.toCreatedResponse(data);
-        } catch (error) {
-            logger.error(error.message);
-            throw error;
-        }
+        const data = await this.service.createHelpSignal(createHelpSignalDto(signal), files);
+        return ValidHttpResponse.toCreatedResponse(data);
     }
 
     findHelpSignalById = async req => {
@@ -36,14 +31,8 @@ class Controller {
     }
 
     updateHelpSignal = async req => {
-        const files = req.files ? req.files : null;
-        try {
-            const data = await this.service.updateHelpSignal(req.params.helpSignalId, createHelpSignalDto(req.body), files);
-            return ValidHttpResponse.toOkResponse(data);
-        } catch (error) {
-            logger.error(error.message);
-            throw error;
-        }
+        const data = await this.service.updateHelpSignal(req.params.helpSignalId, createHelpSignalDto(req.body), req);
+        return ValidHttpResponse.toOkResponse(data);
     }
 
     deleteHelpSignal = async req => {
