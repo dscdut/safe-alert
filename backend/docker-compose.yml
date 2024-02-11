@@ -45,7 +45,7 @@ services:
 
     db:
         container_name: postgres-db
-        image: postgres
+        image: postgis/postgis:16-3.4-alpine
         restart: always
         environment:
             - POSTGRES_USER=postgres
@@ -60,14 +60,28 @@ services:
         image: base
         # Uncomment the line below to run on mac os
         # platform: linux/arm64/v8
-        command: sh -c 'yarn db:reset'
         env_file:
             - .env
         environment:
             - DB_HOST=postgres-db
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=safe-alert
         depends_on:
             - db
             - base
+        volumes:
+            - .:/home/app
+            - ./scripts/wait-for-it.sh:/home/app/scripts/wait-for-it.sh
+        command:
+            [
+                './scripts/wait-for-it.sh',
+                'postgres-db:5432',
+                '--',
+                'sh',
+                '-c',
+                'yarn db:reset',
+            ]
         networks:
             - app-network
 
