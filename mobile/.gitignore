@@ -55,4 +55,4 @@ mason-lock.json
 .env.dev
 .env.qa
 .env.staging
-config.json
+**/config.json
