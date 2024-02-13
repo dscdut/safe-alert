@@ -37,13 +37,6 @@ class Service {
         return createdUser[0];
     }
 
-    async findById(id) {
-        const data = Optional.of(await this.repository.findById(id))
-            .throwIfNotPresent(new NotFoundException())
-            .get();
-
-        return joinUserRoles(data);
-    }
 }
 
 export const UserService = new Service();
