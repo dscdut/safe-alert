@@ -2,11 +2,11 @@
 /**
  * @param {import("knex")} knex
  */
-const tableName = 'user_rescuer_help_signals';
+const tableName = 'rescuer_help_signals';
 exports.up = async knex => {
     await knex.schema.createTable(tableName, table => {
-        table.integer('rescuer_id').unsigned().references('id').inTable('users').notNullable();
-        table.integer('help_signal_id').unsigned().references('id').inTable('help_signals').notNullable();
+        table.integer('rescuer_id').unsigned().references('id').inTable('users').notNullable().onDelete('CASCADE');
+        table.integer('help_signal_id').unsigned().references('id').inTable('help_signals').notNullable().onDelete('CASCADE');
         table.dateTime('deleted_at').defaultTo(null);
         table.timestamps(false, true);
 
