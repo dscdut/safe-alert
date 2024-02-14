@@ -1,8 +1,8 @@
 import { Module } from 'packages/handler/Module';
 import { createHelpSignalInterceptor } from 'core/modules/help_signal/interceptor';
-import { HelpSignalController } from './help_signal.controller';
 import { helpSignalId, userId, emergencyId, uploadMediaSwagger } from 'core/common/swagger';
 import { MediaInterceptor } from 'core/modules/document';
+import { HelpSignalController } from './help_signal.controller';
 
 export const HelpSignalResolver = Module.builder()
     .addPrefix({

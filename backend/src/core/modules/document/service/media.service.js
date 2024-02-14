@@ -1,8 +1,8 @@
 import { unlink } from 'fs';
 import { InternalServerException } from 'packages/httpException';
 import { logger } from 'packages/logger';
-import { cloudinaryUploader } from '../../../config/cloudinary.config';
 import { promisify } from 'util';
+import { cloudinaryUploader } from '../../../config/cloudinary.config';
 
 class Service {
     constructor() {
@@ -10,7 +10,7 @@ class Service {
     }
 
     async uploadOne(file, folderName = '') {
-        let extensionsVideo = ['.mp4', 'mov', '.avi', '.mkv'];
+        const extensionsVideo = ['.mp4', 'mov', '.avi', '.mkv'];
         try {
             const isVideo = extensionsVideo.some(ext => file.originalname.endsWith(ext));
             const response = await cloudinaryUploader.upload(file.path, {

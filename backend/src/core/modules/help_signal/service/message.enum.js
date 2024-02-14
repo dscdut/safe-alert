@@ -3,4 +3,4 @@ export const MESSAGE = {
     UPDATE_HELP_SIGNAL_SUCCESS: 'Updated help signal successfully',
     DELETE_HELP_SIGNAL_SUCCESS: 'Deleted help signal successfully',
     HELP_SIGNAL_NOT_FOUND: 'Not found help signal',
-}
+};

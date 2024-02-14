@@ -1,4 +1,4 @@
-import { DataRepository } from "packages/restBuilder/core/dataHandler";
+import { DataRepository } from 'packages/restBuilder/core/dataHandler';
 
 class Repository extends DataRepository {
     findBy(column, value) {
@@ -32,7 +32,6 @@ class Repository extends DataRepository {
             .innerJoin('user', 'user.id', 'help_signals.user_id')
             .innerJoin('emergencies', 'emergencies.id', 'help_signals.emergency_id')
             .whereNull('help_signals.deleted_at')
-            .where(`help_signals.${column}`, '=', value)
             .select(
                 'help_signals.latitude',
                 'help_signals.longitude',
@@ -82,4 +81,4 @@ class Repository extends DataRepository {
     }
 }
 
-export const HelpSignalRepository = new Repository('help_signals')
+export const HelpSignalRepository = new Repository('help_signals');

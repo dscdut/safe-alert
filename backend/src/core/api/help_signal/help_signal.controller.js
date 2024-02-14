@@ -1,7 +1,6 @@
 import { createHelpSignalDto } from 'core/modules/help_signal/dto';
-import { ValidHttpResponse } from '../../../packages/handler/response/validHttp.response';
 import { HelpSignalService } from 'core/modules/help_signal/service/help_signal.service';
-import { logger } from 'packages/logger';
+import { ValidHttpResponse } from '../../../packages/handler/response/validHttp.response';
 
 class Controller {
     constructor() {
@@ -9,7 +8,7 @@ class Controller {
     }
 
     createHelpSignal = async req => {
-        let signal = { ...req.body, status_id: 0, user_id: req.user.payload.id };
+        const signal = { ...req.body, status_id: 0, user_id: req.user.payload.id };
         const { files } = req;
         const data = await this.service.createHelpSignal(createHelpSignalDto(signal), files);
         return ValidHttpResponse.toCreatedResponse(data);

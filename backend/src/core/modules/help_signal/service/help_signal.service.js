@@ -1,9 +1,9 @@
-import { getTransaction } from "core/database";
-import { InternalServerException, NotFoundException } from "packages/httpException";
-import { HelpSignalRepository } from "../help_signal.repository";
-import { MESSAGE } from "./message.enum";
-import { MediaService } from "core/modules/document";
-import { logger } from "packages/logger";
+import { getTransaction } from 'core/database';
+import { InternalServerException, NotFoundException } from 'packages/httpException';
+import { MediaService } from 'core/modules/document';
+import { logger } from 'packages/logger';
+import { HelpSignalRepository } from '../help_signal.repository';
+import { MESSAGE } from './message.enum';
 
 class Service {
     constructor() {
@@ -14,9 +14,10 @@ class Service {
 
     getUrls(medias) {
         let images = '';
-        medias.forEach(element => { images += element.url + ','; });
+        medias.forEach(element => { images += `${element.url},`; });
         return images.slice(0, -1);
     }
+
     async createHelpSignal(createHelpSignalDto, files) {
         try {
             if (files) {
@@ -63,7 +64,7 @@ class Service {
     }
 
     async updateHelpSignal(id, helpSignalDto, { file, files }) {
-        const images = file ? [file] : files ? files : null;
+        const images = file ? [file] : files || null;
         const trx = await getTransaction();
 
         const helpSignal = await this.findHelpSignalById(id);
@@ -73,13 +74,12 @@ class Service {
 
         try {
 
-            if (images && images.length != 0) {
+            if (images && images.length !== 0) {
                 const medias = await this.MediaService.uploadMany(files);
                 const imagesURL = this.getUrls(medias);
                 helpSignalDto.images = imagesURL;
             } else {
                 helpSignalDto.images = helpSignal[0].images;
-                console.log(helpSignalDto.images);
             }
 
             const updatedHelpSignal = await this.repository.updateOne(id, helpSignalDto, trx);
@@ -88,7 +88,7 @@ class Service {
             return {
                 message: MESSAGE.UPDATE_HELP_SIGNAL_SUCCESS,
                 id: updatedHelpSignal[0],
-            }
+            };
 
         } catch (error) {
             await trx.rollback();
@@ -115,7 +115,7 @@ class Service {
         }
         trx.commit();
 
-        return { message: MESSAGE.DELETE_HELP_SIGNAL_SUCCESS }
+        return { message: MESSAGE.DELETE_HELP_SIGNAL_SUCCESS };
     }
 }
 
