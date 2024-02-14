@@ -13,6 +13,7 @@ exports.up = async knex => {
         table.string('email').unique().notNullable();
         table.string('phone_number').unique().notNullable();
         table.string('password').defaultTo(DEFAULT_PASSWORD);
+        table.string('avatar').defaultTo(null);
         table.dateTime('birthday').defaultTo(null);
         table.string('address').defaultTo(null);
         table.dateTime('deleted_at').defaultTo(null);

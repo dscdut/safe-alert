@@ -1,4 +1,6 @@
 FROM node:16-alpine AS base
+RUN apk add --no-cache bash
+
 WORKDIR /home/app
 COPY package*.json /home/app 
 COPY yarn.lock /home/app   
