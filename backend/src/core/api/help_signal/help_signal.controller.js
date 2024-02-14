@@ -8,7 +8,7 @@ class Controller {
     }
 
     createHelpSignal = async req => {
-        const signal = { ...req.body, status_id: 0, user_id: req.user.payload.id };
+        const signal = { ...req.body, statusId: 0, userId: req.user.payload.id };
         const { files } = req;
         const data = await this.service.createHelpSignal(createHelpSignalDto(signal), files);
         return ValidHttpResponse.toCreatedResponse(data);

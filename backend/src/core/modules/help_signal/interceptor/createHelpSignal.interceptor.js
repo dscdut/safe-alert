@@ -9,7 +9,7 @@ export const createHelpSignalInterceptor = new DefaultValidatorInterceptor(
         location: JoiUtils.requiredString(),
         description: JoiUtils.optionalString(),
         quantity: Joi.number(),
-        emergency_id: JoiUtils.positiveNumber().message(
+        emergencyId: JoiUtils.positiveNumber().message(
             'It should be a positive number and greater than 0',
         ),
     })
