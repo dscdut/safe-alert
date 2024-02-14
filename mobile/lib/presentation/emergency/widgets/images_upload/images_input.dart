@@ -3,20 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/common/extensions/context_extension.dart';
-import 'package:flutter_template/presentation/emergency/bloc/images_bloc.dart';
+import 'package:flutter_template/presentation/emergency/bloc/images/images_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-
-// class ImageInputArea extends StatelessWidget {
-//   const ImageInputArea({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocProvider(
-//       create: (context) => ImagesBloc(),
-//       child: ImageInput(),
-//     );
-//   }
-// }
 
 class ImageInput extends StatelessWidget {
   void _takePicture(BuildContext context) async {

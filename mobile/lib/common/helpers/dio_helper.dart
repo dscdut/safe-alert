@@ -1,3 +1,4 @@
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 
@@ -23,6 +24,20 @@ class DioHelper {
   DioHelper({required Dio dio}) : _dio = dio;
 
   final Dio _dio;
+
+  Future<FormData> _mapToFormData(Map<String, dynamic> map) async {
+    for (var item in map.entries) {
+      if (item.value is File) {
+        map[item.key] = await MultipartFile.fromFile(item.value);
+      }
+      if (item.value is List<File>) {
+        final List<MultipartFile> files =
+            item.value.map((file) => MultipartFile.fromFile(file)).toList();
+        map[item.key] = files;
+      }
+    }
+    return FormData.fromMap(map);
+  }
 
   Future<HttpRequestResponse> get(
     String url, {
@@ -53,6 +68,9 @@ class DioHelper {
     Map<String, dynamic>? formData,
     Function(int count, int total)? onSendProgress,
   }) async {
+    if (formData != null) {
+      data = _mapToFormData(formData);
+    }
     final Response response = await _dio.post(
       url,
       data: data,

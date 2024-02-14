@@ -59,6 +59,7 @@ dependencies:
   image_picker: ^1.0.7
   permission_handler: ^11.2.0
   location: ^5.0.3
+  flutter_typeahead: ^5.2.0
 
 dev_dependencies:
   flutter_test:
