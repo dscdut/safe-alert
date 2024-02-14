@@ -45,18 +45,18 @@ class Service {
         }
     }
 
-    async findHelpSignalsByUserId(user_id) {
+    async findHelpSignalsByUserId(userId) {
         try {
-            return this.repository.findBy('user_id', user_id);
+            return this.repository.findBy('user_id', userId);
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException();
         }
     }
 
-    async findHelpSignalsByEmergencyId(emergency_id) {
+    async findHelpSignalsByEmergencyId(emergencyId) {
         try {
-            return this.repository.findBy('emergency_id', emergency_id);
+            return this.repository.findBy('emergency_id', emergencyId);
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException();

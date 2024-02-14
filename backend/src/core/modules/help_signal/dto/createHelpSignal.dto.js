@@ -7,7 +7,7 @@ ApiDocument.addModel('createHelpSignalDto', {
     location: SwaggerDocument.ApiProperty({ type: 'string' }),
     description: SwaggerDocument.ApiProperty({ type: 'string' }),
     quantity: SwaggerDocument.ApiProperty({ type: 'int' }),
-    emergency_id: SwaggerDocument.ApiProperty({ type: 'int' }),
+    emergencyId: SwaggerDocument.ApiProperty({ type: 'int' }),
 });
 
 export const createHelpSignalDto = body => ({
@@ -17,7 +17,7 @@ export const createHelpSignalDto = body => ({
     description: body.description,
     quantity: body.quantity ? body.quantity : null,
     images: body.images ? body.images : null,
-    emergency_id: body.emergency_id,
-    user_id: body.user_id,
-    status_id: body.status_id,
+    emergency_id: body.emergencyId,
+    user_id: body.userId,
+    status_id: body.statusId,
 });
