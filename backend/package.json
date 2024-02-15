@@ -4,7 +4,7 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "prepare": "cd .. && test -d backend/node_modules/husky && husky install backend/.husky || echo \"husky is not installed\"",
+        "prepare": "cd .. && husky install backend/.husky",
         "lint": "eslint --fix --ext .js .",
         "lint:staged": "lint-staged",
         "dev": "nodemon --exec npx babel-node src/core/bin/www.js",
