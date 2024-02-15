@@ -31,8 +31,11 @@ jobs:
         runs-on: self-hosted
 
         steps:
-            - name: Deploy to server
-            - run: cd safe-alert/backend
-            - run: pm2 restart api
-            - name: Notify deployment
-              run: echo "Deployment complete!"
+            - name: Checkout code
+              run: cd safe-alert/backend
+
+            - name: Restart api server
+              run: pm2 restart api
+
+            - name: Notify success deployment
+              run: echo "Deployment complete"
