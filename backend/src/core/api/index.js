@@ -1,9 +1,9 @@
 import { MediaResolver } from 'core/api/media';
 import { UserResolver } from 'core/api/user/user.resolver';
 import { ApiDocument } from 'core/config/swagger.config';
+import { HelpSignalResolver } from 'core/api/help_signal';
 import { HandlerResolver } from '../../packages/handler/HandlerResolver';
 import { AuthResolver } from './auth/auth.resolver';
-import { HelpSignalsResolver } from './help_signals';
 
 export const ModuleResolver = HandlerResolver
     .builder()
@@ -12,5 +12,5 @@ export const ModuleResolver = HandlerResolver
         AuthResolver,
         UserResolver,
         MediaResolver,
-        HelpSignalsResolver
+        HelpSignalResolver
     ]);
