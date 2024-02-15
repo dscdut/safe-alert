@@ -5,10 +5,10 @@ on:
             - '**.js'
         branches:
             - develop
-    # pull_request:
-    #     types: [opened, synchronize]
-    #     branches:
-    #         - develop
+    pull_request:
+        types: [opened, synchronize]
+        branches:
+            - develop
 jobs:
     build:
         runs-on: self-hosted
