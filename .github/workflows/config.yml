@@ -22,19 +22,24 @@ jobs:
               with:
                   node-version: '16.x'
 
+            - name: Current directory
+              run: pwd
+
             - name: Install dependencies
-              run: cd backend && npm install
+              run: cd backend && npm ci
+        working-directory: /home/high10hunter/safe-alert
 
     deploy:
         needs: build
         runs-on: self-hosted
 
         steps:
-            - name: Checkout code
-              run: cd backend
+            - name: Current directory
+              run: pwd
 
             - name: Restart api server
               run: pm2 restart api
 
             - name: Notify success deployment
               run: echo "Deployment complete"
+        working-directory: /home/high10hunter/safe-alert
