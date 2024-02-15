@@ -1,7 +1,7 @@
 import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repository';
 
 class Repository extends DataRepository {
-    findBy(column, value) {
+    findOneBy(column, value) {
         return this.query()
             .whereNull('users.deleted_at')
             .where(`users.${column}`, '=', value)
@@ -16,7 +16,8 @@ class Repository extends DataRepository {
                 { createdAt: 'users.created_at' },
                 { updatedAt: 'users.updated_at' },
                 { deletedAt: 'users.deleted_at' },
-            );
+            )
+            .first();
     }
 }
 
