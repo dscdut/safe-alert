@@ -27,7 +27,6 @@ jobs:
 
             - name: Install dependencies
               run: cd backend && npm ci
-        working-directory: /home/high10hunter/safe-alert
 
     deploy:
         needs: build
@@ -42,4 +41,3 @@ jobs:
 
             - name: Notify success deployment
               run: echo "Deployment complete"
-        working-directory: /home/high10hunter/safe-alert
