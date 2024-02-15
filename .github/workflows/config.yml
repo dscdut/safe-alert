@@ -5,13 +5,13 @@ on:
             - '**.js'
         branches:
             - develop
-    pull_request:
-        types: [opened, synchronize]
-        branches:
-            - develop
+    # pull_request:
+    #     types: [opened, synchronize]
+    #     branches:
+    #         - develop
 jobs:
     build:
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
 
         steps:
             - name: Checkout code
@@ -24,26 +24,15 @@ jobs:
                   cache: 'npm'
 
             - name: Install dependencies
-              run: npm install
+              run: cd safe-alert/backend && npm ci
 
     deploy:
         needs: build
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
 
         steps:
             - name: Deploy to server
-              uses: appleboy/ssh-action@v1.0.0
-              with:
-                  host: ${{ secrets.HOST }}
-                  username: ${{ secrets.USERNAME }}
-                  key: ${{ secrets.EC2_KEY }}
-                  port: ${{ secrets.PORT }}
-                  script: |
-                      export NVM_DIR=~/.nvm
-                      source ~/.nvm/nvm.sh
-                      cd express-example
-                      git pull
-                      npm install
-                      pm2 restart api
+            - run: cd safe-alert/backend
+            - run: pm2 restart api
             - name: Notify deployment
               run: echo "Deployment complete!"
