@@ -22,9 +22,10 @@ jobs:
               with:
                   node-version: '16.x'
                   cache: 'npm'
+              run: cd safe-alert/backend
 
             - name: Install dependencies
-              run: cd safe-alert/backend && npm ci
+              run: npm ci
 
     deploy:
         needs: build
