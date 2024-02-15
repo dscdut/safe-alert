@@ -1,9 +1,8 @@
 import { Module } from 'packages/handler/Module';
 import { CreateUserInterceptor, UpdateUserInterceptor } from 'core/modules/user/interceptor';
-import { hasAdminOrSuperAdminRole, hasAdminRole } from 'core/modules/auth/guard';
 import { RecordIdInterceptor } from 'core/modules/interceptor/recordId/record-id.interceptor';
 import { UserController } from './user.controller';
-import { RecordId } from '../../common/swagger/record-id';
+import { RecordId } from '../../common/swagger/recordId';
 
 export const UserResolver = Module.builder()
     .addPrefix({
@@ -17,7 +16,7 @@ export const UserResolver = Module.builder()
             method: 'put',
             interceptors: [UpdateUserInterceptor],
             body: 'UpdateUserDto',
-            guards: [hasAdminRole],
+            consumes: ['multipart/form-data'],
             controller: UserController.updateOne,
             preAuthorization: true,
         },
@@ -34,7 +33,6 @@ export const UserResolver = Module.builder()
             method: 'get',
             params: [RecordId],
             interceptors: [RecordIdInterceptor],
-            guards: [hasAdminOrSuperAdminRole],
             controller: UserController.findById,
             preAuthorization: true,
         },
