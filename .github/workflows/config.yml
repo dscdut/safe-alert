@@ -22,9 +22,6 @@ jobs:
               with:
                   node-version: '16.x'
 
-            - name: Current directory
-              run: pwd
-
             - name: Install dependencies
               run: cd backend && npm ci
 
@@ -33,11 +30,8 @@ jobs:
         runs-on: self-hosted
 
         steps:
-            - name: Current directory
-              run: pwd
-
             - name: Restart api server
-              run: pm2 restart api
+              run: cd backend && pm2 restart api --update-env
 
             - name: Notify success deployment
               run: echo "Deployment complete"
