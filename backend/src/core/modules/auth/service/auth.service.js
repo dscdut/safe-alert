@@ -1,6 +1,5 @@
 import { pick } from 'lodash';
 import { JwtPayload } from 'core/modules/auth/dto/jwt-sign.dto';
-import { joinUserRoles } from 'core/utils/userFilter';
 import { BcryptService } from './bcrypt.service';
 import { JwtService } from './jwt.service';
 import { UserRepository } from '../../user/user.repository';
@@ -55,26 +54,27 @@ class Service {
     }
 
     async login(loginDto) {
-        const user = await this.userRepository.findBy(
+        const user = await this.userRepository.findOneBy(
             'phone_number',
             loginDto.phone_number,
         );
 
-        const foundUser = joinUserRoles(user);
         if (
             user &&
-            this.bcryptService.compare(loginDto.password, foundUser.password)
+            this.bcryptService.compare(loginDto.password, user.password)
         ) {
             return {
-                user: foundUser,
-                accessToken: this.jwtService.sign(JwtPayload(foundUser)),
+                user,
+                accessToken: this.jwtService.sign(
+                    JwtPayload(this.#getUserInfo(user)),
+                ),
             };
         }
 
         throw new UnAuthorizedException('phoneNumber or password is incorrect');
     }
 
-    #getUserInfo = user => pick(user, ['_id', 'email', 'roles']);
+    #getUserInfo = user => pick(user, ['id', 'email']);
 }
 
 export const AuthService = new Service();

@@ -1,0 +1,49 @@
+name: Build and Deploy
+on:
+    push:
+        paths:
+            - '**.js'
+        branches:
+            - develop
+    pull_request:
+        types: [opened, synchronize]
+        branches:
+            - develop
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '16.x'
+                  cache: 'npm'
+
+            - name: Install dependencies
+              run: npm install
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Deploy to server
+              uses: appleboy/ssh-action@v1.0.0
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.EC2_KEY }}
+                  port: ${{ secrets.PORT }}
+                  script: |
+                      export NVM_DIR=~/.nvm
+                      source ~/.nvm/nvm.sh
+                      cd express-example
+                      git pull
+                      npm install
+                      pm2 restart api
+            - name: Notify deployment
+              run: echo "Deployment complete!"
