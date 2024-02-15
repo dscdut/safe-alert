@@ -17,6 +17,8 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v4
 
+            - run: cd backend
+
             - name: Use Node.js
               uses: actions/setup-node@v3
               with:
