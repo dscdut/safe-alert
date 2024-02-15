@@ -17,15 +17,13 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v4
 
-            - name: Use Node.js
+            - name: Use Node.js in backend folder
               uses: actions/setup-node@v3
               with:
                   node-version: '16.x'
-                  cache: 'npm'
-                  path: backend
 
             - name: Install dependencies
-              run: npm ci
+              run: cd backend && npm install
 
     deploy:
         needs: build
@@ -33,7 +31,7 @@ jobs:
 
         steps:
             - name: Checkout code
-              run: cd safe-alert/backend
+              run: cd backend
 
             - name: Restart api server
               run: pm2 restart api
