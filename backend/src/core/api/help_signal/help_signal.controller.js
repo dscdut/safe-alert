@@ -19,6 +19,11 @@ class Controller {
         return ValidHttpResponse.toOkResponse(data);
     }
 
+    getAllHelpSignals = async () => {
+        const data = await this.service.getAllHelpSignals();
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
     findHelpSignalsByUserId = async req => {
         const data = await this.service.findHelpSignalsByUserId(req.params.userId);
         return ValidHttpResponse.toOkResponse(data);

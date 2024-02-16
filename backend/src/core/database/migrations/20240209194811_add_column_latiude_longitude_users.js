@@ -10,7 +10,7 @@ exports.up = async knex => {
     });
 };
 
-exports.down = knex => knex.schema.dropTable(tableName, table => {
+exports.down = knex => knex.schema.table(tableName, table => {
     table.dropColumn('latitude');
     table.dropColumn('longitude');
 });

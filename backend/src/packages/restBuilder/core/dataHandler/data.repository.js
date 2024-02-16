@@ -17,6 +17,10 @@ export class DataRepository {
         return this.#connection(this.#table).clone();
     }
 
+    getConnection() {
+        return this.#connection;
+    }
+
     /**
      * =======================================================================
      * ==============       Shortcut of model method           ===============

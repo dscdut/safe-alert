@@ -19,6 +19,30 @@ class Repository extends DataRepository {
             )
             .first();
     }
+
+    getUserToSendNoitfication(userId, coordinates) {
+        return this
+            .query()
+            .whereNull('users.deleted_at')
+            .where('users.id', '!=', userId)
+            .select(
+                'users.id',
+                'users.email',
+                'users.latitude',
+                'users.longitude',
+                { phoneNumber: 'users.phone_number' },
+                { fullName: 'users.full_name' },
+                { createdAt: 'users.created_at' },
+                { updatedAt: 'users.updated_at' },
+                { deletedAt: 'users.deleted_at' },
+                this.getConnection().raw(
+                    `ST_Distance(
+                      ST_SetSRID(ST_MakePoint(users.longitude, users.latitude), 4326),
+                      ST_SetSRID(ST_MakePoint(${coordinates.longitude}, ${coordinates.latitude}), 4326)
+                    ) AS distance`
+                ),
+            );
+    }
 }
 
 export const UserRepository = new Repository('users');

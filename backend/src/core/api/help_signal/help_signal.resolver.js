@@ -22,6 +22,12 @@ export const HelpSignalResolver = Module.builder()
             preAuthorization: true,
         },
         {
+            route: '/getAllHelpSignals',
+            method: 'get',
+            controller: HelpSignalController.getAllHelpSignals,
+            preAuthorization: true,
+        },
+        {
             route: '/:helpSignalId',
             method: 'get',
             params: [helpSignalId],
