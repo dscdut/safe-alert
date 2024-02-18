@@ -13,6 +13,7 @@ import 'package:flutter_template/presentation/emergency/widgets/emergency_post_f
 import 'package:flutter_template/presentation/emergency/widgets/images_upload/images_input.dart';
 import 'package:flutter_template/presentation/emergency/widgets/emergency_post_field/situation_dropdownbutton.dart';
 import 'package:flutter_template/presentation/emergency/widgets/location_search/location_search.dart';
+import 'package:flutter_template/presentation/notification/widgets/custom.dart';
 import 'package:flutter_template/presentation/widgets/common_alert_dialog.dart';
 import 'package:flutter_template/presentation/widgets/common_rounded_button.dart';
 import 'package:flutter_template/presentation/widgets/common_text_form_field.dart';
@@ -187,6 +188,11 @@ class _EmergencyPostFieldState extends State<EmergencyPostField> {
     );
     if (context.mounted) {
       Navigator.of(context).pop(_choosenPlace);
+      LocalNotifications.showSimpleNotification(
+          title: "Alert! New accident",
+          body:
+              "There is a natural disaster at 78 Pham Nhu Xuong, Lien Chieu, Da Nang",
+          payload: "This is simple data");
     }
     // } else {
     //   if (state.errorMessage.isNotEmpty) {

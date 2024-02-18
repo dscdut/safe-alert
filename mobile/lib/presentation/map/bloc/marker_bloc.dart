@@ -15,8 +15,8 @@ class MarkerBloc extends Bloc<MarkerEvent, MarkerState> {
 
   Future<BitmapDescriptor> getCustomIcon() async {
     return SizedBox(
-      height: 200,
-      width: 200,
+      height: 100,
+      width: 100,
       child: Image.asset(Assets.icons.emergency.alert.path),
     ).toBitmapDescriptor();
   }

@@ -50,7 +50,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   firebase_core: ^2.24.2
   firebase_messaging: ^14.7.9
-  flutter_local_notifications: ^16.3.0
+  flutter_local_notifications: ^16.3.2
   dropdown_button2: ^2.3.9
   google_mobile_ads: ^4.0.0
   flutter_svg: ^2.0.9
@@ -62,6 +62,8 @@ dependencies:
   flutter_typeahead: ^5.2.0
   path_provider: ^2.1.2
   font_awesome_flutter: ^10.7.0
+  rxdart: ^0.27.7
+  flutter_timezone: ^1.0.8
 
 dev_dependencies:
   flutter_test:
