@@ -60,6 +60,8 @@ dependencies:
   permission_handler: ^11.2.0
   location: ^5.0.3
   flutter_typeahead: ^5.2.0
+  path_provider: ^2.1.2
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:
@@ -137,9 +139,12 @@ flutter:
     - assets/icons/launcher/
     - assets/icons/register/
     - assets/icons/navigation_bar/
+    - assets/icons/emergency/
     - assets/locales/
     - assets/images/
     - assets/images/lottie/
+    - assets/images/demo/
+    - assets/images/demo/avatar/
 
   # An image asset can refer to one or more resolution-specific 'variants', see
   # https://flutter.dev/assets-and-images/#resolution-aware

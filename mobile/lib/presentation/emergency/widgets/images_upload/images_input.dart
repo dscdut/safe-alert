@@ -1,12 +1,31 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_key_in_widget_constructors
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/presentation/emergency/bloc/images/images_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 
-class ImageInput extends StatelessWidget {
+class ImageInputPage extends StatelessWidget {
+  final void Function(List<File>?) getImages;
+  const ImageInputPage({Key? key, required this.getImages}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => ImagesBloc(),
+      child: ImageInputView(
+        getImages: getImages,
+      ),
+    );
+  }
+}
+
+class ImageInputView extends StatelessWidget {
+  final void Function(List<File>?) getImages;
+  const ImageInputView({Key? key, required this.getImages}) : super(key: key);
+
   void _takePicture(BuildContext context) async {
     final imagePicker = ImagePicker();
     try {
@@ -26,7 +45,7 @@ class ImageInput extends StatelessWidget {
         }
       }
     } catch (e) {
-      throw Exception('Fail to access your photo library');
+      throw Exception(e.toString());
     }
   }
 
@@ -37,7 +56,7 @@ class ImageInput extends StatelessWidget {
         Row(
           children: [
             Text(
-              'Upload Images/Videos: ',
+              'Upload Images: ',
               style: context.headlineSmall.copyWith(fontSize: 14.0),
             ),
             TextButton.icon(
@@ -50,8 +69,11 @@ class ImageInput extends StatelessWidget {
           ],
         ),
         BlocBuilder<ImagesBloc, ImagesState>(
-          builder: (context, state) {
-            var imageFiles = context.watch<ImagesBloc>().state.images;
+          buildWhen: (previous, current) => previous.images != current.images,
+          builder: (_, state) {
+            var imageFiles = state.images;
+            getImages(imageFiles);
+
             if (imageFiles == null || imageFiles.isEmpty) {
               return const SizedBox.shrink();
             } else {
@@ -60,14 +82,15 @@ class ImageInput extends StatelessWidget {
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: imageFiles.length,
-                  itemBuilder: (BuildContext context, int index) {
+                  itemBuilder: (_, index) {
+                    log('imageFiles: $imageFiles');
+
                     return Image.file(
                       imageFiles[index],
                       fit: BoxFit.cover,
                     );
                   },
-                  separatorBuilder: (BuildContext context, int index) =>
-                      const SizedBox(width: 12.0),
+                  separatorBuilder: (_, index) => const SizedBox(width: 12.0),
                 ),
               );
             }

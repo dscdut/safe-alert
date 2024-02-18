@@ -40,10 +40,10 @@ class PlaceDataSource {
     final location = response.data['results'][0]['geometry']['location'];
     return {
       'lat': double.parse(
-        (location['lat'] as double).toStringAsFixed(4),
+        (location['lat'] as double).toStringAsFixed(10),
       ),
       'lng': double.parse(
-        (location['lng'] as double).toStringAsFixed(4),
+        (location['lng'] as double).toStringAsFixed(10),
       ),
     };
   }

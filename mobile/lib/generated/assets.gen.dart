@@ -31,6 +31,7 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  $AssetsIconsEmergencyGen get emergency => const $AssetsIconsEmergencyGen();
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
   $AssetsIconsNavigationBarGen get navigationBar =>
       const $AssetsIconsNavigationBarGen();
@@ -40,6 +41,7 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  $AssetsImagesDemoGen get demo => const $AssetsImagesDemoGen();
   $AssetsImagesLottieGen get lottie => const $AssetsImagesLottieGen();
 }
 
@@ -54,6 +56,21 @@ class $AssetsLocalesGen {
 
   /// List of all assets
   List<String> get values => [en, vi];
+}
+
+class $AssetsIconsEmergencyGen {
+  const $AssetsIconsEmergencyGen();
+
+  /// File path: assets/icons/emergency/Alert 2.svg
+  SvgGenImage get alert2 =>
+      const SvgGenImage('assets/icons/emergency/Alert 2.svg');
+
+  /// File path: assets/icons/emergency/Alert.png
+  AssetGenImage get alert =>
+      const AssetGenImage('assets/icons/emergency/Alert.png');
+
+  /// List of all assets
+  List<dynamic> get values => [alert2, alert];
 }
 
 class $AssetsIconsLauncherGen {
@@ -118,6 +135,27 @@ class $AssetsIconsRegisterGen {
   List<dynamic> get values => [appIcon, eyeClose, eyeOpen];
 }
 
+class $AssetsImagesDemoGen {
+  const $AssetsImagesDemoGen();
+
+  $AssetsImagesDemoAvatarGen get avatar => const $AssetsImagesDemoAvatarGen();
+
+  /// File path: assets/images/demo/post-2.jpg
+  AssetGenImage get post2 =>
+      const AssetGenImage('assets/images/demo/post-2.jpg');
+
+  /// File path: assets/images/demo/post-3.jpeg
+  AssetGenImage get post3 =>
+      const AssetGenImage('assets/images/demo/post-3.jpeg');
+
+  /// File path: assets/images/demo/post-4.jpeg
+  AssetGenImage get post4 =>
+      const AssetGenImage('assets/images/demo/post-4.jpeg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [post2, post3, post4];
+}
+
 class $AssetsImagesLottieGen {
   const $AssetsImagesLottieGen();
 
@@ -131,6 +169,29 @@ class $AssetsImagesLottieGen {
 
   /// List of all assets
   List<LottieGenImage> get values => [error, searchNotFound];
+}
+
+class $AssetsImagesDemoAvatarGen {
+  const $AssetsImagesDemoAvatarGen();
+
+  /// File path: assets/images/demo/avatar/images-1.jpeg
+  AssetGenImage get images1 =>
+      const AssetGenImage('assets/images/demo/avatar/images-1.jpeg');
+
+  /// File path: assets/images/demo/avatar/images-2.jpeg
+  AssetGenImage get images2 =>
+      const AssetGenImage('assets/images/demo/avatar/images-2.jpeg');
+
+  /// File path: assets/images/demo/avatar/images-3.jpeg
+  AssetGenImage get images3 =>
+      const AssetGenImage('assets/images/demo/avatar/images-3.jpeg');
+
+  /// File path: assets/images/demo/avatar/images-4.jpeg
+  AssetGenImage get images4 =>
+      const AssetGenImage('assets/images/demo/avatar/images-4.jpeg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [images1, images2, images3, images4];
 }
 
 class Assets {

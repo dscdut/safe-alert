@@ -19,7 +19,7 @@ class EmergencyCaseDTO {
   double longtitude;
   String location;
   int quantity;
-  Situation typeOfSituation;
+  int typeOfSituation;
   String caseDetail;
   dynamic images;
   EmergencyCaseDTO({

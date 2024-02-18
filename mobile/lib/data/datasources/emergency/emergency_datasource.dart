@@ -33,12 +33,14 @@ class EmergencyDataSource {
       if (exception.response == null) {
         throw Exception(LocaleKeys.texts_error_occur.tr());
       } else {
+        log(exception.response!.statusMessage!);
         switch (exception.response!.statusCode) {
           case 409:
             throw Exception(
-                LocaleKeys.validator_email_or_phone_number_exists.tr());
+              LocaleKeys.validator_email_or_phone_number_exists.tr(),
+            );
           default:
-            throw Exception(LocaleKeys.texts_error_occur.tr());
+            throw Exception(exception.error.toString());
         }
       }
     }

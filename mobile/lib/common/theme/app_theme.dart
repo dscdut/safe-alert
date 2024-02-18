@@ -122,6 +122,8 @@ class DefaultThemeConfig {
   Color get hightLightText => const Color(0xFFFF7F50);
 
   Color get frameAvatarColor => const Color.fromARGB(255, 156, 161, 252);
+
+  Color get buttonBackGroundColor => Colors.green[400]!;
 }
 
 class DarkThemeConfig extends DefaultThemeConfig {

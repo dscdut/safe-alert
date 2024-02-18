@@ -9,11 +9,11 @@ import 'package:flutter_template/data/dtos/emergency/emergency_case_dto.dart';
 import 'package:flutter_template/data/models/place_model.dart';
 import 'package:flutter_template/generated/locale_keys.g.dart';
 import 'package:flutter_template/presentation/emergency/bloc/emergency_case/emergency_case_bloc.dart';
-import 'package:flutter_template/presentation/emergency/bloc/images/images_bloc.dart';
 import 'package:flutter_template/presentation/emergency/widgets/emergency_post_field/counter.dart';
 import 'package:flutter_template/presentation/emergency/widgets/images_upload/images_input.dart';
 import 'package:flutter_template/presentation/emergency/widgets/emergency_post_field/situation_dropdownbutton.dart';
 import 'package:flutter_template/presentation/emergency/widgets/location_search/location_search.dart';
+import 'package:flutter_template/presentation/widgets/common_alert_dialog.dart';
 import 'package:flutter_template/presentation/widgets/common_rounded_button.dart';
 import 'package:flutter_template/presentation/widgets/common_text_form_field.dart';
 
@@ -47,7 +47,7 @@ class _EmergencyPostFieldState extends State<EmergencyPostField> {
         SizedBox(
           width: double.infinity,
           child: Text(
-            'Nguyen Van A',
+            'Le Minh Thu',
             style: context.headlineSmall,
             textAlign: TextAlign.center,
           ),
@@ -103,7 +103,11 @@ class _EmergencyPostFieldState extends State<EmergencyPostField> {
           maxLength: 500,
           keyboardType: TextInputType.multiline,
         ),
-        ImageInput(),
+        ImageInputPage(
+          getImages: (value) {
+            _images = value;
+          },
+        ),
         const SizedBox(height: 16.0),
         Row(
           children: [
@@ -123,19 +127,7 @@ class _EmergencyPostFieldState extends State<EmergencyPostField> {
         const SizedBox(height: 16.0),
         BlocListener<EmergencyCaseBloc, EmergencyCaseState>(
           listener: (context, state) {
-            if (state.isSuccess) {
-              ToastUtil.showSuccess(
-                context,
-                text: LocaleKeys.emergency_post_submit_success.tr(),
-              );
-            } else {
-              if (state.errorMessage.isNotEmpty) {
-                ToastUtil.showError(
-                  context,
-                  text: state.errorMessage,
-                );
-              }
-            }
+            _showMessage(state);
           },
           child: Center(
             child: CommonRoundedButton(
@@ -160,12 +152,11 @@ class _EmergencyPostFieldState extends State<EmergencyPostField> {
       );
       return;
     }
-    _images = BlocProvider.of<ImagesBloc>(context).state.images;
     final object = EmergencyCaseDTO(
       latitude: _choosenPlace!.location!['lat']!,
       longtitude: _choosenPlace!.location!['lng']!,
       location: _choosenPlace!.description!,
-      typeOfSituation: _typeOfSituation!,
+      typeOfSituation: Situation.values.indexOf(_typeOfSituation!) + 1,
       quantity: _quantity,
       caseDetail: _detailCaseController.text,
       images: _images,
@@ -182,5 +173,28 @@ class _EmergencyPostFieldState extends State<EmergencyPostField> {
       MaterialPageRoute(builder: (_) => const LocationSearchPage()),
     );
     _locationController.text = _choosenPlace!.description!;
+  }
+
+  void _showMessage(EmergencyCaseState state) async {
+    // if (state.isSuccess) {
+    await showDialog(
+      context: context,
+      builder: (context) => CommonAlertDialog(
+        title: 'Post uploaded',
+        content:
+            'Your support request at ${_choosenPlace!.description} has been posted successfully!',
+      ),
+    );
+    if (context.mounted) {
+      Navigator.of(context).pop(_choosenPlace);
+    }
+    // } else {
+    //   if (state.errorMessage.isNotEmpty) {
+    //     ToastUtil.showError(
+    //       context,
+    //       text: state.errorMessage,
+    //     );
+    //   }
+    // }
   }
 }

@@ -19,6 +19,7 @@ class PlaceSearchBloc extends Bloc<PlaceSearchEvent, PlaceSearchState> {
   Future<PlaceModel> _onMapPlaceIDToLocation(PlaceModel placeModel) async {
     final currentLocation =
         await _placeRepository.placeIDToLocation(placeModel.place_id!);
+    log(currentLocation.toString());
     return placeModel.copyWith(location: currentLocation);
   }
 

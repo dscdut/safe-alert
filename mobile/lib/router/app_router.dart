@@ -58,19 +58,13 @@ abstract final class AppRouter {
       case login:
         return MaterialPageRoute(
           builder: (_) {
-            return HomeView();
+            return HomePage();
           },
         );
       case register:
         return MaterialPageRoute(
           builder: (_) {
             return const RegisterPage();
-          },
-        );
-      case map:
-        return MaterialPageRoute(
-          builder: (_) {
-            return const MapView();
           },
         );
       case root:
