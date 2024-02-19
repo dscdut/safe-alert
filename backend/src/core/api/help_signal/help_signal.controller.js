@@ -9,8 +9,7 @@ class Controller {
 
     createHelpSignal = async req => {
         const signal = { ...req.body, statusId: 0, userId: req.user.payload.id };
-        const { files } = req;
-        const data = await this.service.createHelpSignal(createHelpSignalDto(signal), files);
+        const data = await this.service.createHelpSignal(createHelpSignalDto(signal), req);
         return ValidHttpResponse.toCreatedResponse(data);
     }
 
@@ -35,12 +34,12 @@ class Controller {
     }
 
     updateHelpSignal = async req => {
-        const data = await this.service.updateHelpSignal(req.params.helpSignalId, createHelpSignalDto(req.body), req);
+        const data = await this.service.updateHelpSignal(req.params.helpSignalId, createHelpSignalDto(req.body), req.user.payload.id, req);
         return ValidHttpResponse.toOkResponse(data);
     }
 
     deleteHelpSignal = async req => {
-        const message = await this.service.deleteHelpSignal(req.params.helpSignalId);
+        const message = await this.service.deleteHelpSignal(req.params.helpSignalId, req.user.payload.id);
         return ValidHttpResponse.toOkResponse(message);
     }
 
