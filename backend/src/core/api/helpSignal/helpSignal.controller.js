@@ -1,5 +1,5 @@
-import { createHelpSignalDto } from 'core/modules/help_signal/dto';
-import { HelpSignalService } from 'core/modules/help_signal/service/help_signal.service';
+import { createHelpSignalDto } from 'core/modules/helpSignal/dto';
+import { HelpSignalService } from 'core/modules/helpSignal/service/helpSignal.service';
 import { ValidHttpResponse } from '../../../packages/handler/response/validHttp.response';
 
 class Controller {
