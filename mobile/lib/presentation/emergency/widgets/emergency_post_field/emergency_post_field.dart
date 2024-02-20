@@ -154,13 +154,13 @@ class _EmergencyPostFieldState extends State<EmergencyPostField> {
       return;
     }
     final object = EmergencyCaseDTO(
-      latitude: _choosenPlace!.location!['lat']!,
-      longtitude: _choosenPlace!.location!['lng']!,
+      latitude: _choosenPlace!.coordinates!['lat']!,
+      longitude: _choosenPlace!.coordinates!['lng']!,
       location: _choosenPlace!.description!,
-      typeOfSituation: Situation.values.indexOf(_typeOfSituation!) + 1,
+      emergencyId: Situation.values.indexOf(_typeOfSituation!) + 1,
       quantity: _quantity,
-      caseDetail: _detailCaseController.text,
-      images: _images,
+      description: _detailCaseController.text,
+      image: _images,
     );
     log(object.toString());
 
@@ -177,30 +177,30 @@ class _EmergencyPostFieldState extends State<EmergencyPostField> {
   }
 
   void _showMessage(EmergencyCaseState state) async {
-    // if (state.isSuccess) {
-    await showDialog(
-      context: context,
-      builder: (context) => CommonAlertDialog(
-        title: 'Post uploaded',
-        content:
-            'Your support request at ${_choosenPlace!.description} has been posted successfully!',
-      ),
-    );
-    if (context.mounted) {
-      Navigator.of(context).pop(_choosenPlace);
-      LocalNotifications.showSimpleNotification(
-          title: "Alert! New accident",
-          body:
-              "There is a natural disaster at 78 Pham Nhu Xuong, Lien Chieu, Da Nang",
-          payload: "This is simple data");
+    if (state.isSuccess) {
+      await showDialog(
+        context: context,
+        builder: (context) => CommonAlertDialog(
+          title: 'Post uploaded',
+          content:
+              'Your support request at ${_choosenPlace!.description} has been posted successfully!',
+        ),
+      );
+      if (context.mounted) {
+        Navigator.of(context).pop(_choosenPlace);
+        LocalNotifications.showSimpleNotification(
+            title: "Alert! New accident",
+            body:
+                "There is a natural disaster at 78 Pham Nhu Xuong, Lien Chieu, Da Nang",
+            payload: "This is simple data");
+      }
+    } else {
+      if (state.errorMessage.isNotEmpty) {
+        ToastUtil.showError(
+          context,
+          text: state.errorMessage,
+        );
+      }
     }
-    // } else {
-    //   if (state.errorMessage.isNotEmpty) {
-    //     ToastUtil.showError(
-    //       context,
-    //       text: state.errorMessage,
-    //     );
-    //   }
-    // }
   }
 }

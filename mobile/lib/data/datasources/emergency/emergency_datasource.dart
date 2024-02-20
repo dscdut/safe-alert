@@ -31,13 +31,14 @@ class EmergencyDataSource {
       await _dioHelper.post(Endpoints.helpSignals, formData: params.toJson());
     } on DioException catch (exception) {
       if (exception.response == null) {
-        throw Exception(LocaleKeys.texts_error_occur.tr());
+        log(exception.error.toString());
+        throw Exception(exception.error.toString());
       } else {
         log(exception.response!.statusMessage!);
         switch (exception.response!.statusCode) {
-          case 409:
+          case 400:
             throw Exception(
-              LocaleKeys.validator_email_or_phone_number_exists.tr(),
+              LocaleKeys.validator_field_required.tr(),
             );
           default:
             throw Exception(exception.error.toString());

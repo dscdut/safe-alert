@@ -35,12 +35,12 @@ class _SituationDropdownButtonState extends State<SituationDropdownButton> {
               child: Text('Natural disaster'),
             ),
             DropdownMenuItem(
-              value: Situation.Fire_disaster,
-              child: Text('Fire disaster'),
+              value: Situation.Fire_accident,
+              child: Text('Fire accident'),
             ),
             DropdownMenuItem(
               value: Situation.Accident,
-              child: Text('Accident'),
+              child: Text('Other accident'),
             ),
             DropdownMenuItem(
               value: Situation.Essentials_shelter,

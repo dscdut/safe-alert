@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_template/data/models/place_model.dart';
 import 'package:flutter_template/generated/assets.gen.dart';
 import 'package:flutter_template/presentation/emergency/views/emergency_post_view.dart';
-import 'package:flutter_template/presentation/home/widgets/app_bar.dart';
 import 'package:flutter_template/presentation/home/widgets/navigation_bar.dart';
 import 'package:flutter_template/presentation/map/bloc/marker_bloc.dart';
 import 'package:flutter_template/presentation/map/views/map_view.dart';
@@ -103,8 +102,8 @@ class _HomeViewState extends State<HomeView> {
           Marker(
             markerId: MarkerId('${markers?.length}'),
             position: LatLng(
-              choosenPlace.location!['lat']!,
-              choosenPlace.location!['lng']!,
+              choosenPlace.coordinates!['lat']!,
+              choosenPlace.coordinates!['lng']!,
             ),
           ),
         ),

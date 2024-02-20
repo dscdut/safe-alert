@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_template/data/dtos/emergency/emergency_case_dto.dart';
@@ -36,7 +37,9 @@ class EmergencyCaseBloc extends Bloc<EmergencyCaseEvent, EmergencyCaseState> {
   }
 
   Future<void> _onGetEmergencyCases(
-      GetEmergencyCasesEvent event, Emitter<EmergencyCaseState> emit) async {
+    GetEmergencyCasesEvent event,
+    Emitter<EmergencyCaseState> emit,
+  ) async {
     try {
       emit(state.copyWith(isLoading: true));
       await _emergencyRepository.getEmergencyCases();

@@ -7,7 +7,7 @@ part 'emergency_case_dto.g.dart';
 
 enum Situation {
   Natural_disaster,
-  Fire_disaster,
+  Fire_accident,
   Accident,
   Essentials_shelter,
   Vehicle_breakdown
@@ -16,20 +16,20 @@ enum Situation {
 @JsonSerializable(createToJson: true)
 class EmergencyCaseDTO {
   double latitude;
-  double longtitude;
+  double longitude;
   String location;
+  String description;
   int quantity;
-  int typeOfSituation;
-  String caseDetail;
-  dynamic images;
+  int emergencyId;
+  List<dynamic>? image;
   EmergencyCaseDTO({
     required this.latitude,
-    required this.longtitude,
+    required this.longitude,
     required this.location,
+    required this.description,
     required this.quantity,
-    required this.typeOfSituation,
-    required this.caseDetail,
-    this.images,
+    required this.emergencyId,
+    this.image,
   });
 
   factory EmergencyCaseDTO.fromJson(Map<String, dynamic> json) =>
@@ -39,6 +39,6 @@ class EmergencyCaseDTO {
 
   @override
   String toString() {
-    return 'EmergencyCaseDTO(latitude: $latitude, longtitude: $longtitude, location: $location, quantity: $quantity, typeOfSituation: $typeOfSituation, caseDetail: $caseDetail, images: $images)';
+    return 'EmergencyCaseDTO(latitude: $latitude, longitude: $longitude, location: $location, description: $description, quantity: $quantity, emergencyId: $emergencyId, image: $image)';
   }
 }

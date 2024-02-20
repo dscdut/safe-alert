@@ -9,21 +9,21 @@ part of 'emergency_case_dto.dart';
 EmergencyCaseDTO _$EmergencyCaseDTOFromJson(Map<String, dynamic> json) =>
     EmergencyCaseDTO(
       latitude: (json['latitude'] as num).toDouble(),
-      longtitude: (json['longtitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num).toDouble(),
       location: json['location'] as String,
+      description: json['description'] as String,
       quantity: json['quantity'] as int,
-      typeOfSituation: json['typeOfSituation'] as int,
-      caseDetail: json['caseDetail'] as String,
-      images: json['images'],
+      emergencyId: json['emergencyId'] as int,
+      image: json['image'] as List<dynamic>?,
     );
 
 Map<String, dynamic> _$EmergencyCaseDTOToJson(EmergencyCaseDTO instance) =>
     <String, dynamic>{
       'latitude': instance.latitude,
-      'longtitude': instance.longtitude,
+      'longitude': instance.longitude,
       'location': instance.location,
+      'description': instance.description,
       'quantity': instance.quantity,
-      'typeOfSituation': instance.typeOfSituation,
-      'caseDetail': instance.caseDetail,
-      'images': instance.images,
+      'emergencyId': instance.emergencyId,
+      'image': instance.image,
     };

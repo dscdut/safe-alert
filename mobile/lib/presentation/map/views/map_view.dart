@@ -1,18 +1,11 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// import 'dart:async';
+
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template/generated/assets.gen.dart';
 import 'package:flutter_template/presentation/home/widgets/app_bar.dart';
-import 'package:flutter_template/presentation/map/bloc/marker_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/data/models/place_model.dart';
 import 'package:flutter_template/presentation/emergency/widgets/location_search/location_search.dart';
-import 'package:flutter_template/presentation/widgets/common_text_form_field.dart';
 
 class MapView extends StatefulWidget {
   final List<Marker>? markers;
@@ -39,8 +32,8 @@ class _MapViewState extends State<MapView> {
       _locationController.text = choosenPlace!.description!;
       moveCamera(
         LatLng(
-          choosenPlace!.location!['lat']!,
-          choosenPlace!.location!['lng']!,
+          choosenPlace!.coordinates!['lat']!,
+          choosenPlace!.coordinates!['lng']!,
         ),
       );
       FocusManager.instance.primaryFocus?.unfocus();

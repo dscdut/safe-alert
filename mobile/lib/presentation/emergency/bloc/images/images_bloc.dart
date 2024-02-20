@@ -16,9 +16,7 @@ class ImagesBloc extends Bloc<ImagesEvent, ImagesState> {
   void _getImages(GetImagesEvent event, Emitter<ImagesState> emit) {}
 
   void _uploadNewImage(UploadNewImageEvent event, Emitter<ImagesState> emit) {
-    if (state.images == null || state.images!.isEmpty) {
-      emit(state.copyWith(images: [event.newImage]));
-    } else {
+    if (state.images != null && state.images!.isEmpty) {
       emit(state.copyWith(images: [...state.images!, event.newImage]));
       log(state.images.toString());
     }
