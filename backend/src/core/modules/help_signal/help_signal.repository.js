@@ -27,12 +27,13 @@ class Repository extends DataRepository {
             );
     }
 
-    getAllHelpSignal() {
+    getAllHelpSignals() {
         return this.query()
-            .innerJoin('user', 'user.id', 'help_signals.user_id')
+            .innerJoin('users', 'users.id', 'help_signals.user_id')
             .innerJoin('emergencies', 'emergencies.id', 'help_signals.emergency_id')
             .whereNull('help_signals.deleted_at')
             .select(
+                'help_signals.id',
                 'help_signals.latitude',
                 'help_signals.longitude',
                 'help_signals.location',
@@ -48,7 +49,7 @@ class Repository extends DataRepository {
                 { createdAt: 'help_signals.created_at' },
                 { updatedAt: 'help_signals.updated_at' },
                 { deletedAt: 'help_signals.deleted_at' },
-            ).orderBy('help_signals.created_at', 'desc');;;
+            ).orderBy('help_signals.created_at', 'desc');
     };
 
     updateOne(id, data, trx = null) {
