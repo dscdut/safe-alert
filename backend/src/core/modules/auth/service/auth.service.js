@@ -17,7 +17,7 @@ class Service {
 
     async register(registerDto) {
         // check if email is already registered
-        const userExists = await this.userRepository.findBy(
+        const userExists = await this.userRepository.findOneBy(
             'email',
             registerDto.email,
         );
@@ -26,7 +26,7 @@ class Service {
         }
 
         // check if phone number is already registered
-        const phoneNumberExists = await this.userRepository.findBy(
+        const phoneNumberExists = await this.userRepository.findOneBy(
             'phone_number',
             registerDto.phone_number,
         );
