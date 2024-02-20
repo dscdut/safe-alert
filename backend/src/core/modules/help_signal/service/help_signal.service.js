@@ -28,7 +28,7 @@ class Service {
 
             const images = file ? [file] : files || [];
             if (images && images.length !== 0) {
-                const medias = await this.MediaService.uploadMany(files);
+                const medias = await this.MediaService.uploadMany(images);
                 const imagesURL = this.getUrls(medias);
                 createHelpSignalDto.images = imagesURL;
             }
@@ -104,7 +104,7 @@ class Service {
         try {
 
             if (images && images.length !== 0) {
-                const medias = await this.MediaService.uploadMany(files);
+                const medias = await this.MediaService.uploadMany(images);
                 const imagesURL = this.getUrls(medias);
                 helpSignalDto.images = imagesURL;
             } else {
