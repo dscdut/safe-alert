@@ -3,8 +3,8 @@ import { BadRequestException, InternalServerException, NotFoundException } from 
 import { MediaService } from 'core/modules/document';
 import { logger } from 'packages/logger';
 import { UserRepository } from 'core/modules/user/user.repository';
-import { HelpSignalRepository } from '../help_signal.repository';
-import { MESSAGE } from './message.enum';
+import { HelpSignalRepository } from '../repository/helpSignal.repository';
+import { MESSAGE } from '../enum/message.enum';
 
 class Service {
     constructor() {
