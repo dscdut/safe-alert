@@ -7,8 +7,28 @@ class Controller {
         this.service = HelpSignalService;
     }
 
+    acceptSupport = async req => {
+        const { helpSignalId } = req.params;
+        const userId = req.user.payload.id;
+        const data = await this.service.acceptSupport(helpSignalId, userId);
+        return ValidHttpResponse.toOkResponse(data);
+    };
+
+    getRescuerByHelpSignalId = async req => {
+        const { helpSignalId } = req.params;
+        const data = await this.service.getRescuersByHelpSignalId(helpSignalId);
+        return ValidHttpResponse.toOkResponse(data);
+    };
+
+    deleteRescuerByHelpSignalId = async req => {
+        const { id } = req.params;
+        const userid = req.user.payload.id;
+        const update = await this.service.deleteRescuerByHelpSignalId(id, userid);
+        return ValidHttpResponse.toOkResponse(update);
+    };
+
     createHelpSignal = async req => {
-        const signal = { ...req.body, statusId: 0, userId: req.user.payload.id };
+        const signal = { ...req.body, userId: req.user.payload.id };
         const data = await this.service.createHelpSignal(createHelpSignalDto(signal), req);
         return ValidHttpResponse.toCreatedResponse(data);
     }

@@ -80,6 +80,15 @@ class Repository extends DataRepository {
         if (trx) queryBuilder.transacting(trx);
         return queryBuilder;
     }
+
+    updateHelpSignalStatusById(helpSignalId, status, trx = null) {
+        const queryBuilder = this.query(trx)
+            .whereNull('help_signals.deleted_at')
+            .where('help_signals.id', '=', helpSignalId)
+            .update({ status_id: status });
+        if (trx) queryBuilder.transacting(trx);
+        return queryBuilder;
+    }
 }
 
 export const HelpSignalRepository = new Repository('help_signals');

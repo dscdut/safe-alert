@@ -64,5 +64,26 @@ export const HelpSignalResolver = Module.builder()
             params: [helpSignalId],
             controller: HelpSignalController.deleteHelpSignal,
             preAuthorization: true,
-        }
+        },
+        {
+            route: '/:helpSignalId/acceptSupport',
+            method: 'post',
+            params: [helpSignalId],
+            controller: HelpSignalController.acceptSupport,
+            preAuthorization: true,
+        },
+        {
+            route: '/:helpSignalId/rescuerInHelpSignal',
+            method: 'get',
+            params: [helpSignalId],
+            controller: HelpSignalController.getRescuerByHelpSignalId,
+            preAuthorization: true,
+        },
+        {
+            route: '/:helpSignalId/rescuerCancelHelp',
+            method: 'delete',
+            params: [helpSignalId],
+            controller: HelpSignalController.deleteRescuerByHelpSignalId,
+            preAuthorization: true,
+        },
     ]);

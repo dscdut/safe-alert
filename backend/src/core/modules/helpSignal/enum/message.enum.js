@@ -1,6 +1,9 @@
 export const MESSAGE = {
-    CREATE_HELP_SIGNAL_SUCCESS: 'Created help signal successfully',
-    UPDATE_HELP_SIGNAL_SUCCESS: 'Updated help signal successfully',
+    CREATE_HELP_SIGNAL_SUCCESS: 'Send help signal successfully',
+    UPDATE_HELP_SIGNAL_SUCCESS: 'Edited help signal successfully',
     DELETE_HELP_SIGNAL_SUCCESS: 'Deleted help signal successfully',
-    HELP_SIGNAL_NOT_FOUND: 'Not found help signal',
+    ACCEPT_SUPPORT: 'You have accepted this help signal',
+    DELETE_RESCUER_HELP_SIGNAL_SUCCESS: 'You have canceled support for this signal',
+    HELP_SIGNAL_CANCELLED: 'The help signal has been cancelled',
+    RESCUER_NOT_FOUND: 'Not found rescuer',
 };

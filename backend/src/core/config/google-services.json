@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "693066761317",
+    "project_id": "safealert-412116",
+    "storage_bucket": "safealert-412116.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693066761317:android:16d4bc2cfbc34eb1c0328c",
+        "android_client_info": {
+          "package_name": "com.fluttertemplate.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHs8D6JEJI0aaJEG5akRZfQ9m-ud4m3N0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

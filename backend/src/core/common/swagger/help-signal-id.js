@@ -5,4 +5,5 @@ export const helpSignalId = SwaggerDocument.ApiParams({
     paramsIn: 'path',
     type: 'integer',
     description: 'Help Signal Id',
+    required: true,
 });
