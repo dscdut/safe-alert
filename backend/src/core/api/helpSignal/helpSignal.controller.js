@@ -14,6 +14,13 @@ class Controller {
         return ValidHttpResponse.toOkResponse(data);
     };
 
+    cancelSupport = async req => {
+        const { helpSignalId } = req.params;
+        const userId = req.user.payload.id;
+        const data = await this.service.cancelSupport(helpSignalId, userId);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
     getRescuerByHelpSignalId = async req => {
         const { helpSignalId } = req.params;
         const data = await this.service.getRescuersByHelpSignalId(helpSignalId);

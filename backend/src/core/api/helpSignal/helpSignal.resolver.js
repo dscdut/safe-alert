@@ -73,6 +73,13 @@ export const HelpSignalResolver = Module.builder()
             preAuthorization: true,
         },
         {
+            route: '/:helpSignalId/cancelSupport',
+            method: 'post',
+            params: [helpSignalId],
+            controller: HelpSignalController.cancelSupport,
+            preAuthorization: true,
+        },
+        {
             route: '/:helpSignalId/rescuerInHelpSignal',
             method: 'get',
             params: [helpSignalId],

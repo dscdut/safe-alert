@@ -1,5 +1,5 @@
 import { getTransaction } from 'core/database';
-import { BadRequestException, DuplicateException, InternalServerException, NotFoundException } from 'packages/httpException';
+import { BadRequestException, DuplicateException, InternalServerException, NotFoundException, ForbiddenException } from 'packages/httpException';
 import { MediaService } from 'core/modules/document';
 import { logger } from 'packages/logger';
 import { UserRepository } from 'core/modules/user/user.repository';
@@ -94,7 +94,7 @@ class Service {
         }
 
         if (helpSignal[0].user_id !== userId) {
-            throw new BadRequestException();
+            throw new ForbiddenException('You do not have permission to update this signal');
         }
 
         if (!helpSignalDto.quantity || helpSignalDto.quantity === 0) {
@@ -138,7 +138,7 @@ class Service {
         }
 
         if (helpSignal[0].user_id !== userId) {
-            throw new BadRequestException();
+            throw new ForbiddenException('You do not have permission to update this signal');
         }
 
         try {
@@ -171,7 +171,7 @@ class Service {
             };
         }
 
-        const quantityRescuerHelp = +await this.countCurrentRescuer(helpSignalId);
+        let quantityRescuerHelp = +await this.countCurrentRescuer(helpSignalId);
         const helpSignalQuantity = helpSignal[0].quantity;
 
         if (quantityRescuerHelp === helpSignalQuantity) {
@@ -189,14 +189,14 @@ class Service {
         }
 
         try {
-            if (quantityRescuerHelp && quantityRescuerHelp < helpSignalQuantity) {
-                await this.addRescuerHelpSignal(helpSignalId, rescuerId, trx);
-                if (quantityRescuerHelp === 0) {
-                    await this.repository.updateHelpSignalStatusById(helpSignalId, Status.ACCEPTED.value, trx);
-                }
+            await this.addRescuerHelpSignal(helpSignalId, rescuerId, trx);
+            if (quantityRescuerHelp === 0) {
+                await this.repository.updateHelpSignalStatusById(helpSignalId, Status.ACCEPTED.value, trx);
             }
+            quantityRescuerHelp += 1;
 
-            await trx.commit();
+
+            trx.commit();
             const rescuers = await this.getRescuersByHelpSignalId(helpSignalId);
             return {
                 message: MESSAGE.ACCEPT_SUPPORT,
@@ -211,6 +211,45 @@ class Service {
             throw new InternalServerException();
         }
 
+
+    }
+
+    async cancelSupport(helpSignalId, rescuerId) {
+
+        const helpSignal = await this.findHelpSignalById(helpSignalId);
+
+        if (!helpSignal[0]) {
+            throw new NotFoundException(MESSAGE.HELP_SIGNAL_NOT_FOUND);
+        }
+
+        if (helpSignal[0].status_id === Status.CANCEL.value) {
+            return {
+                message: MESSAGE.HELP_SIGNAL_CANCELLED,
+            };
+        }
+
+        const rescuer = await this.findRescuerById(helpSignalId, rescuerId);
+        if (!rescuer[0]) {
+            throw new NotFoundException(MESSAGE.RESCUER_NOT_FOUND);
+        }
+
+        const trx = await getTransaction();
+        const quantityRescuerHelp = +await this.countCurrentRescuer(helpSignalId);
+        try {
+            await this.rescuerHelpSignalsRepository.deleteRescuerByHelpSignalId(helpSignalId, rescuerId, trx);
+            if (quantityRescuerHelp && quantityRescuerHelp === 1) {
+                await this.repository.updateHelpSignalStatusById(helpSignalId, Status.WAITING.value, trx);
+            }
+            trx.commit();
+            return {
+                message: MESSAGE.DELETE_RESCUER_HELP_SIGNAL_SUCCESS,
+                status: Status.WAITING.description,
+            };
+        } catch (error) {
+            await trx.rollback();
+            this.logger.error(error.message);
+            throw new InternalServerException();
+        }
 
     }
 
@@ -242,28 +281,6 @@ class Service {
     async countCurrentRescuer(helpSignalId) {
         try {
             return this.rescuerHelpSignalsRepository.countCurrentRescuer(helpSignalId);
-        } catch (error) {
-            this.logger.error(error.message);
-            throw new InternalServerException();
-        }
-    }
-
-    async deleteRescuerByHelpSignalId(helpSignalId, rescuerId) {
-        const trx = await getTransaction();
-        const rescuer = await this.findRescuerById(helpSignalId, rescuerId);
-
-        if (rescuer.length === 0 || rescuer[0].rescuerId !== rescuerId) {
-            throw new NotFoundException(MESSAGE.RESCUER_NOT_FOUND);
-        }
-
-        try {
-            await this.updateHelpSignalStatusById(helpSignalId, rescuerId, true);
-            await this.rescuerHelpSignalsRepository.deleteRescuerByHelpSignalId(helpSignalId, rescuerId);
-            await trx.commit();
-
-            return {
-                message: MESSAGE.DELETE_RESCUER_HELP_SIGNAL_SUCCESS
-            };
         } catch (error) {
             this.logger.error(error.message);
             throw new InternalServerException();
