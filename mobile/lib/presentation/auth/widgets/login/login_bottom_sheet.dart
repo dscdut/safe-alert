@@ -67,7 +67,7 @@ class LoginBottomSheet extends StatelessWidget {
                       borderRadius: 20,
                       backgroundColor:
                           context.themeConfig.splashBackgroundColor,
-                      onPressed: () => submitLogin,
+                      onPressed: () => submitLogin(context),
                       isLoading: state is LoginLoading,
                       content: LocaleKeys.auth_sign_in.tr(),
                       width: double.infinity,
