@@ -1,7 +1,6 @@
 import { BcryptService } from 'core/modules/auth';
 import { getTransaction } from 'core/database';
 import { UserRoleRepository } from 'core/modules/role/userRole.repository';
-import { joinUserRoles } from 'core/utils/userFilter';
 import { Optional } from '../../../utils';
 import { NotFoundException, DuplicateException, BadRequestException } from '../../../../packages/httpException';
 import { UserRepository } from '../user.repository';
@@ -38,11 +37,11 @@ class Service {
     }
 
     async findById(id) {
-        const data = Optional.of(await this.repository.findById(id))
+        const data = Optional.of(await this.repository.findOneBy('id',id))
             .throwIfNotPresent(new NotFoundException())
             .get();
 
-        return joinUserRoles(data);
+        return data;
     }
 }
 
