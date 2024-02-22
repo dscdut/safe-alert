@@ -1,7 +1,7 @@
 export const Status = {
     WAITING: {
         value: 1,
-        description: 'waiting for support'
+        description: 'Waiting for support'
     },
     ACCEPTED: {
         value: 2,
@@ -9,10 +9,10 @@ export const Status = {
     },
     DONE: {
         value: 3,
-        description: 'Enough people to support'
+        description: 'The help signal completed',
     },
     CANCEL: {
         value: 4,
-        description: 'Cancel signal'
+        description: 'The help signal cancelled',
     }
 };

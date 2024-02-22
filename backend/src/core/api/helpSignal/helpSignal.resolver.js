@@ -2,6 +2,7 @@ import { Module } from 'packages/handler/Module';
 import { createHelpSignalInterceptor } from 'core/modules/helpSignal/interceptor';
 import { helpSignalId, userId, emergencyId, uploadMediaSwagger } from 'core/common/swagger';
 import { MediaInterceptor } from 'core/modules/document';
+import { rescuerId } from 'core/common/swagger/rescuer-id';
 import { HelpSignalController } from './helpSignal.controller';
 
 export const HelpSignalResolver = Module.builder()
@@ -73,24 +74,38 @@ export const HelpSignalResolver = Module.builder()
             preAuthorization: true,
         },
         {
-            route: '/:helpSignalId/cancelSupport',
+            route: '/:helpSignalId/cancelSupportByRescuer',
             method: 'post',
             params: [helpSignalId],
-            controller: HelpSignalController.cancelSupport,
+            controller: HelpSignalController.cancelSupportByRescuer,
+            preAuthorization: true,
+        },
+        {
+            route: '/:helpSignalId/cancelSupportByUser/:rescuerId',
+            method: 'post',
+            params: [helpSignalId, rescuerId],
+            controller: HelpSignalController.cancelSupportByUser,
             preAuthorization: true,
         },
         {
             route: '/:helpSignalId/rescuerInHelpSignal',
             method: 'get',
             params: [helpSignalId],
-            controller: HelpSignalController.getRescuerByHelpSignalId,
+            controller: HelpSignalController.getRescuersByHelpSignalId,
             preAuthorization: true,
         },
         {
-            route: '/:helpSignalId/rescuerCancelHelp',
-            method: 'delete',
+            route: '/:helpSignalId/verifyDone',
+            method: 'patch',
             params: [helpSignalId],
-            controller: HelpSignalController.deleteRescuerByHelpSignalId,
+            controller: HelpSignalController.verifyDone,
+            preAuthorization: true,
+        },
+        {
+            route: '/:helpSignalId/verifyCancel',
+            method: 'patch',
+            params: [helpSignalId],
+            controller: HelpSignalController.verifyCancel,
             preAuthorization: true,
         },
     ]);

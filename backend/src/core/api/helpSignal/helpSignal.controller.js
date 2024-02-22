@@ -14,24 +14,24 @@ class Controller {
         return ValidHttpResponse.toOkResponse(data);
     };
 
-    cancelSupport = async req => {
+    cancelSupportByRescuer = async req => {
         const { helpSignalId } = req.params;
-        const userId = req.user.payload.id;
-        const data = await this.service.cancelSupport(helpSignalId, userId);
+        const rescuerId = req.user.payload.id;
+        const data = await this.service.cancelSupport(helpSignalId, rescuerId);
         return ValidHttpResponse.toOkResponse(data);
     }
 
-    getRescuerByHelpSignalId = async req => {
+    cancelSupportByUser = async req => {
+        const { helpSignalId, rescuerId } = req.params;
+        const userId = req.user.payload.id;
+        const data = await this.service.cancelSupport(helpSignalId, rescuerId, userId);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getRescuersByHelpSignalId = async req => {
         const { helpSignalId } = req.params;
         const data = await this.service.getRescuersByHelpSignalId(helpSignalId);
         return ValidHttpResponse.toOkResponse(data);
-    };
-
-    deleteRescuerByHelpSignalId = async req => {
-        const { id } = req.params;
-        const userid = req.user.payload.id;
-        const update = await this.service.deleteRescuerByHelpSignalId(id, userid);
-        return ValidHttpResponse.toOkResponse(update);
     };
 
     createHelpSignal = async req => {
@@ -68,6 +68,20 @@ class Controller {
     deleteHelpSignal = async req => {
         const message = await this.service.deleteHelpSignal(req.params.helpSignalId, req.user.payload.id);
         return ValidHttpResponse.toOkResponse(message);
+    }
+
+    verifyDone = async req => {
+        const { helpSignalId } = req.params;
+        const userId = req.user.payload.id;
+        const data = await this.service.verifyDoneOrCancel(userId, helpSignalId, true);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    verifyCancel = async req => {
+        const { helpSignalId } = req.params;
+        const userId = req.user.payload.id;
+        const data = await this.service.verifyDoneOrCancel(userId, helpSignalId, false);
+        return ValidHttpResponse.toOkResponse(data);
     }
 
 }

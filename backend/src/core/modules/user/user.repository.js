@@ -20,7 +20,7 @@ class Repository extends DataRepository {
             .first();
     }
 
-    getUserToSendNoitfication(userId, coordinates) {
+    getUserToSendNotification(userId, coordinates) {
         return this
             .query()
             .whereNull('users.deleted_at')

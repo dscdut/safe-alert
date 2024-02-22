@@ -1,4 +1,5 @@
 import { DataRepository } from 'packages/restBuilder/core/dataHandler';
+import { Status } from '../enum/status.enum';
 
 class Repository extends DataRepository {
     findBy(column, value) {
@@ -32,6 +33,8 @@ class Repository extends DataRepository {
             .innerJoin('users', 'users.id', 'help_signals.user_id')
             .innerJoin('emergencies', 'emergencies.id', 'help_signals.emergency_id')
             .whereNull('help_signals.deleted_at')
+            .andWhere('help_signals.status_id', '!=', Status.CANCEL.value)
+            .andWhere('help_signals.status_id', '!=', Status.DONE.value)
             .select(
                 'help_signals.id',
                 'help_signals.latitude',

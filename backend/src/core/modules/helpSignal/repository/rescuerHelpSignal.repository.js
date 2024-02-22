@@ -20,17 +20,17 @@ class Repository extends DataRepository {
         return queryBuilder;
     }
 
-    countCurrentRescuer(helpSignalId) {
-        const rescuerHelpCount = this.query()
+    async countCurrentRescuer(helpSignalId) {
+        const data = await this.query()
             .count('* as count')
             .where('help_signal_id', '=', helpSignalId)
             .first()
             .then(row => row.count);
-        return rescuerHelpCount;
+        return +data;
     }
 
     getRescuersByHelpSignalId(helpSignalId) {
-        const rescuerHelp = this.query()
+        return this.query()
             .join('users', 'rescuer_help_signals.rescuer_id', '=', 'users.id')
             .where('rescuer_help_signals.help_signal_id', '=', helpSignalId)
             .select(
@@ -41,17 +41,15 @@ class Repository extends DataRepository {
                 { phoneNumber: 'users.phone_number' },
                 { fullName: 'users.full_name' }
             );
-        return rescuerHelp;
     }
 
     findRescuerById(helpSignalId, rescuerId) {
-        const user = this.query()
+        return this.query()
             .where('rescuer_help_signals.help_signal_id', '=', helpSignalId)
             .andWhere('rescuer_help_signals.rescuer_id', '=', rescuerId)
             .select(
                 'rescuer_help_signals.rescuer_id',
             );
-        return user;
     }
 
 }

@@ -39,7 +39,7 @@ class Service {
             const userId = createHelpSignalDto.user_id;
             const coordinates = { latitude: +createHelpSignalDto.latitude, longitude: +createHelpSignalDto.longitude };
 
-            const ids = await this.userRepository.getUserToSendNoitfication(userId, coordinates);
+            const ids = await this.userRepository.getUserToSendNotification(userId, coordinates);
             return {
                 message: MESSAGE.CREATE_HELP_SIGNAL_SUCCESS,
                 helpSignalId: signal[0].id,
@@ -97,9 +97,19 @@ class Service {
             throw new ForbiddenException('You do not have permission to update this signal');
         }
 
+        if (helpSignal[0].status_id === Status.CANCEL.value) {
+            throw new BadRequestException(MESSAGE.HELP_SIGNAL_CANCELLED);
+        }
+
+        if (helpSignal[0].status_id === Status.DONE.value) {
+            throw new BadRequestException(MESSAGE.HELP_SIGNAL_DONE);
+        }
+
         if (!helpSignalDto.quantity || helpSignalDto.quantity === 0) {
             helpSignalDto.quantity = 1;
         }
+
+        helpSignalDto.status_id = helpSignal[0].status_id;
         const images = file ? [file] : files || [];
         const trx = await getTransaction();
 
@@ -138,7 +148,7 @@ class Service {
         }
 
         if (helpSignal[0].user_id !== userId) {
-            throw new ForbiddenException('You do not have permission to update this signal');
+            throw new ForbiddenException('You do not have permission to delete this signal');
         }
 
         try {
@@ -157,7 +167,6 @@ class Service {
         const trx = await getTransaction();
 
         const helpSignal = await this.findHelpSignalById(helpSignalId);
-
         if (!helpSignal[0]) {
             throw new NotFoundException(MESSAGE.HELP_SIGNAL_NOT_FOUND);
         }
@@ -166,24 +175,21 @@ class Service {
             throw new BadRequestException('You can\'t support yourself once you\'ve sent out the signal');
         }
         if (helpSignal[0].status_id === Status.CANCEL.value) {
-            return {
-                message: MESSAGE.HELP_SIGNAL_CANCELLED,
-            };
+            throw new BadRequestException(MESSAGE.HELP_SIGNAL_CANCELLED);
         }
 
-        let quantityRescuerHelp = +await this.countCurrentRescuer(helpSignalId);
+        if (helpSignal[0].status_id === Status.DONE.value) {
+            throw new BadRequestException(MESSAGE.HELP_SIGNAL_DONE);
+        }
+
+        let quantityRescuerHelp = await this.rescuerHelpSignalsRepository.countCurrentRescuer(helpSignalId);
         const helpSignalQuantity = helpSignal[0].quantity;
-
+        console.log(quantityRescuerHelp, helpSignalQuantity);
         if (quantityRescuerHelp === helpSignalQuantity) {
-            return {
-                message: Status.DONE.description,
-                quantityRescuerHelp
-            };
+            throw new BadRequestException(MESSAGE.ENOUGH_PEOPLE_TO_SUPPORT);
         }
 
-
-        const rescuer = await this.findRescuerById(helpSignalId, rescuerId);
-
+        const rescuer = await this.rescuerHelpSignalsRepository.findRescuerById(helpSignalId, rescuerId);
         if (rescuer[0] && rescuer[0].rescuer_id === rescuerId) {
             throw new DuplicateException('You have already accepted this signal');
         }
@@ -202,7 +208,6 @@ class Service {
                 message: MESSAGE.ACCEPT_SUPPORT,
                 rescuers,
                 quantityRescuerHelp,
-                status: Status.ACCEPTED.description
             };
 
         } catch (error) {
@@ -210,11 +215,9 @@ class Service {
             this.logger.error(error.message);
             throw new InternalServerException();
         }
-
-
     }
 
-    async cancelSupport(helpSignalId, rescuerId) {
+    async cancelSupport(helpSignalId, rescuerId, userId = null) {
 
         const helpSignal = await this.findHelpSignalById(helpSignalId);
 
@@ -222,28 +225,37 @@ class Service {
             throw new NotFoundException(MESSAGE.HELP_SIGNAL_NOT_FOUND);
         }
 
-        if (helpSignal[0].status_id === Status.CANCEL.value) {
-            return {
-                message: MESSAGE.HELP_SIGNAL_CANCELLED,
-            };
+        if (userId && helpSignal[0].user_id !== userId) {
+            throw new ForbiddenException('You do not have permission to refused this support');
         }
 
-        const rescuer = await this.findRescuerById(helpSignalId, rescuerId);
+        if (helpSignal[0].status_id === Status.CANCEL.value) {
+            throw new BadRequestException(MESSAGE.HELP_SIGNAL_CANCELLED);
+        }
+
+        if (helpSignal[0].status_id === Status.DONE.value) {
+            throw new BadRequestException(MESSAGE.HELP_SIGNAL_DONE);
+        }
+
+        const rescuer = await this.rescuerHelpSignalsRepository.findRescuerById(helpSignalId, rescuerId);
         if (!rescuer[0]) {
             throw new NotFoundException(MESSAGE.RESCUER_NOT_FOUND);
         }
 
         const trx = await getTransaction();
-        const quantityRescuerHelp = +await this.countCurrentRescuer(helpSignalId);
+        let quantityRescuerHelp = await this.rescuerHelpSignalsRepository.countCurrentRescuer(helpSignalId);
+
         try {
             await this.rescuerHelpSignalsRepository.deleteRescuerByHelpSignalId(helpSignalId, rescuerId, trx);
             if (quantityRescuerHelp && quantityRescuerHelp === 1) {
                 await this.repository.updateHelpSignalStatusById(helpSignalId, Status.WAITING.value, trx);
             }
+            quantityRescuerHelp -= 1;
+            const message = userId ? MESSAGE.USER_CANCELLED_SUPPORT : MESSAGE.RESCUER_CANCELLED_SUPPORT;
             trx.commit();
             return {
-                message: MESSAGE.DELETE_RESCUER_HELP_SIGNAL_SUCCESS,
-                status: Status.WAITING.description,
+                message,
+                quantityRescuerHelp,
             };
         } catch (error) {
             await trx.rollback();
@@ -278,18 +290,34 @@ class Service {
         }
     }
 
-    async countCurrentRescuer(helpSignalId) {
+    async verifyDoneOrCancel(userId, helpSignalId, isDone) {
+        const helpSignal = await this.findHelpSignalById(helpSignalId);
+
+        if (!helpSignal[0]) {
+            throw new NotFoundException(MESSAGE.HELP_SIGNAL_NOT_FOUND);
+        }
+
+        if (helpSignal[0].user_id !== userId) {
+            throw new ForbiddenException('You do not have permission to verify DONE/CANCEL this signal');
+        }
+
+        if (helpSignal[0].status_id === Status.CANCEL.value || helpSignal[0].status_id === Status.DONE.value) {
+            throw new BadRequestException(`${MESSAGE.HELP_SIGNAL_CANCELLED  } or ${  MESSAGE.HELP_SIGNAL_DONE}`);
+        }
+
+        const trx = await getTransaction();
+        const statusId = isDone ? Status.DONE.value : Status.CANCEL.value;
         try {
-            return this.rescuerHelpSignalsRepository.countCurrentRescuer(helpSignalId);
+            await this.repository.updateHelpSignalStatusById(helpSignalId, statusId, trx);
+            trx.commit();
+            return {
+                message: isDone ? MESSAGE.HELP_SIGNAL_DONE : MESSAGE.HELP_SIGNAL_CANCELLED,
+            };
         } catch (error) {
+            await trx.rollback();
             this.logger.error(error.message);
             throw new InternalServerException();
         }
-    }
-
-    async findRescuerById(helpSignalId, rescuerId) {
-        const rescuer = await this.rescuerHelpSignalsRepository.findRescuerById(helpSignalId, rescuerId);
-        return rescuer;
     }
 }
 
