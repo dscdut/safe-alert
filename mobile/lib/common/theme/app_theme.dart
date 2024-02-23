@@ -29,9 +29,9 @@ class ThemeSheet {
           splashColor: Colors.transparent,
           unselectedWidgetColor: themeConfig.unselectedWidgetColor,
           dividerColor: themeConfig.dividerColor,
-          fontFamily: 'Nunito',
+          fontFamily: 'SFDisplay',
           iconTheme: IconThemeData(
-            color: themeConfig.textColor,
+            color: themeConfig.defaultTextColor,
           ),
           textTheme: TextTheme(
             displayLarge: TextStyle(fontSize: 57.sp, color: themeConfig.textColor),
@@ -64,6 +64,12 @@ class ThemeSheet {
 class DefaultThemeConfig {
   Brightness get brightness => Brightness.light;
 
+  Color get splashBackgroundColor => const Color(0xFFE30D16);
+
+  Color get defaultTextColor => const Color(0xFF36454F);
+
+  Color get orangeTextColor => const Color(0xFFFF7F50);
+
   Color get cardColor => Colors.white;
 
   Color get dialogBackgroundColor => Colors.white;
@@ -74,7 +80,7 @@ class DefaultThemeConfig {
 
   Color get disabledColor => const Color(0xFFB5B3BC);
 
-  Color get dividerColor => const Color(0xFFE5EAF2);
+  Color get dividerColor => const Color(0xFFD9D9D9);
 
   Color get focusColor => primaryColor;
 
@@ -94,6 +100,8 @@ class DefaultThemeConfig {
 
   Color get textColor => const Color(0xFF000118);
 
+  Color get textFieldColor => const Color(0xFFD3D3D3);
+
   Color get subTextColor => const Color(0xFF9999A3);
 
   Color get onPrimaryTextColor => Colors.white;
@@ -108,6 +116,15 @@ class DarkThemeConfig extends DefaultThemeConfig {
   Brightness get brightness => Brightness.dark;
 
   @override
+  Color get defaultTextColor => const Color(0xFF36454F);
+
+  @override
+  Color get orangeTextColor => const Color(0xFFFF7F50);
+
+  @override
+  Color get splashBackgroundColor => const Color(0xFFE30D16);
+
+  @override
   Color get cardColor => const Color(0xFF656565);
 
   @override
@@ -120,7 +137,7 @@ class DarkThemeConfig extends DefaultThemeConfig {
   Color get disabledColor => const Color(0xFFC5C5C5);
 
   @override
-  Color get dividerColor => const Color(0xFF303239);
+  Color get dividerColor => const Color(0xFFD9D9D9);
 
   @override
   Color get focusColor => const Color(0xFF2D2D2D);
@@ -148,6 +165,9 @@ class DarkThemeConfig extends DefaultThemeConfig {
 
   @override
   Color get textColor => ColorStyles.darkTextColor;
+
+  @override
+  Color get textFieldColor => const Color(0xFFD3D3D3);
 
   @override
   Color get unselectedWidgetColor => disabledColor;

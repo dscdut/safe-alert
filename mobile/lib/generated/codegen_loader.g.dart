@@ -24,6 +24,9 @@ class CodegenLoader extends AssetLoader{
     "phone_number": "Phone number",
     "password": "Password",
     "confirm_password": "Confirm password",
+    "remember_me": "Remember me",
+    "forgot_password": "Forgot password?",
+    "dont_have_account": "Don't have an account?",
     "you_have_an_account": "You have an account?"
   },
   "button": {
@@ -46,9 +49,10 @@ class CodegenLoader extends AssetLoader{
     "email_required": "Please enter your email",
     "password_required": "Please enter your password",
     "invalid_email": "Invalid email address",
+    "invalid_phone_number": "Invalid phone number",
+    "incorrect_phone_number_password": "Incorrect phone number or password",
     "incorrect_email_password": "Incorrect email or password",
-    "invalid_phone_number": "Incorrect phone number",
-    "invalid_password": "Password must be at least 8 characters",
+    "invalid_password": "Password must be 6-30 characters and should not include any special characters",
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match",
     "email_or_phone_number_exists": "Email or phone number already exists"
@@ -67,6 +71,9 @@ static const Map<String,dynamic> vi = {
     "phone_number": "Số điện thoại",
     "password": "Mật khẩu",
     "confirm_password": "Xác nhận mật khẩu",
+    "remember_me": "Nhớ mật khẩu",
+    "forgot_password": "Quên mật khẩu?",
+    "dont_have_account": "Chưa có tài khoản?",
     "you_have_an_account": "Bạn đã có tài khoản?"
   },
   "button": {
@@ -89,9 +96,10 @@ static const Map<String,dynamic> vi = {
     "email_required": "Vui lòng nhập email",
     "password_required": "Vui lòng nhập mật khẩu",
     "invalid_email": "Không đúng định dạng email",
-    "incorrect_email_password": "Email hoặc mật khẩu không đúng",
     "invalid_phone_number": "Không đúng định dạng số điện thoại",
-    "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
+    "incorrect_phone_number_password": "Số điện thoại hoặc mật khẩu không đúng",
+    "incorrect_email_password": "Email hoặc mật khẩu không đúng",
+    "invalid_password": "Mật khẩu phải có độ dài trong khoảng từ 6 tới 30 và không chưa kí tự đặc biệt",
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp",
     "email_or_phone_number_exists": "Email hoặc số điện thoại đã tồn tại"

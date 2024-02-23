@@ -8,6 +8,9 @@
     "phone_number": "Số điện thoại",
     "password": "Mật khẩu",
     "confirm_password": "Xác nhận mật khẩu",
+    "remember_me": "Nhớ mật khẩu",
+    "forgot_password": "Quên mật khẩu?",
+    "dont_have_account": "Chưa có tài khoản?",
     "you_have_an_account": "Bạn đã có tài khoản?"
   },
   "button": {
@@ -30,8 +33,9 @@
     "email_required": "Vui lòng nhập email",
     "password_required": "Vui lòng nhập mật khẩu",
     "invalid_email": "Không đúng định dạng email",
-    "incorrect_email_password": "Email hoặc mật khẩu không đúng",
     "invalid_phone_number": "Không đúng định dạng số điện thoại",
+    "incorrect_phone_number_password": "Số điện thoại hoặc mật khẩu không đúng",
+    "incorrect_email_password": "Email hoặc mật khẩu không đúng",
     "invalid_password": "Mật khẩu phải có độ dài trong khoảng từ 6 tới 30 và không chưa kí tự đặc biệt",
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp",

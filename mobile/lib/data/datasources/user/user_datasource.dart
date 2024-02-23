@@ -1,6 +1,7 @@
 import 'package:flutter_template/data/datasources/user/local/user_datasource.dart';
 import 'package:flutter_template/data/datasources/user/remote/user_datasource.dart';
 import 'package:flutter_template/data/dtos/auth/login_by_email_request_dto.dart';
+import 'package:flutter_template/data/dtos/auth/login_by_phone_number_request_dto.dart';
 import 'package:flutter_template/data/dtos/auth/login_response_dto.dart';
 import 'package:flutter_template/data/dtos/auth/register_response_dto.dart';
 import 'package:flutter_template/data/models/user_model.dart';
@@ -20,6 +21,17 @@ class UserDataSource {
   Future<UserModel> loginByEmail(LoginByEmailRequestDTO params) async {
     final LoginResponseDTO loginResponse =
         await _remoteDataSource.loginByEmail(params);
+
+    await _localDataSource.setUserAuth(loginResponse);
+
+    return loginResponse.user;
+  }
+
+  Future<UserModel> loginByPhoneNumber(
+    LoginByPhoneNumberRequestDTO params,
+  ) async {
+    final LoginResponseDTO loginResponse =
+        await _remoteDataSource.loginByPhoneNumber(params);
 
     await _localDataSource.setUserAuth(loginResponse);
 

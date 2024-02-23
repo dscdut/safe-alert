@@ -50,8 +50,6 @@ class AppInterceptor extends QueuedInterceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     if (err.response?.statusCode == 401) {
-      // HACK: handle logout, maybe
-
       return;
     }
 
@@ -66,7 +64,9 @@ class AppInterceptor extends QueuedInterceptor {
   Future<void> _checkTokenExpired() async {
     final String? expiredTime = _authBox.get(HiveKeys.expiresIn);
 
-    if (expiredTime != null && DateTime.parse(expiredTime).isBefore(DateTime.now().add(const Duration(seconds: 3)))) {
+    if (expiredTime != null &&
+        DateTime.parse(expiredTime)
+            .isBefore(DateTime.now().add(const Duration(seconds: 3)))) {
       await _refreshToken();
     }
   }
@@ -75,8 +75,6 @@ class AppInterceptor extends QueuedInterceptor {
     final String? refreshToken = _authBox.get(HiveKeys.refreshToken);
 
     if (refreshToken == null || refreshToken.isEmpty) {
-      // TODO: navigate to login screen
-
       return;
     }
 
@@ -85,11 +83,11 @@ class AppInterceptor extends QueuedInterceptor {
     try {
       final Response response = await _dio.get('');
 
-      final RefreshTokenDTO refreshTokenDTO = RefreshTokenDTO.fromJson(response.data);
+      final RefreshTokenDTO refreshTokenDTO =
+          RefreshTokenDTO.fromJson(response.data);
 
       await _authBox.putAll(refreshTokenDTO.toLocalJson());
-    } catch (err) {
-      // TODO: logout
-    }
+      // ignore: empty_catches
+    } catch (err) {}
   }
 }

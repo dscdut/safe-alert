@@ -33,7 +33,6 @@ class UserLocalDataSource {
       await _authBox.clear();
     } else {
       await _authBox.putAll({
-        ...response.toRefreshTokenDTO().toLocalJson(),
         HiveKeys.user: jsonEncode(response.user),
       });
     }

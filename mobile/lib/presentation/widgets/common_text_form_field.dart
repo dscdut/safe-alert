@@ -82,7 +82,8 @@ class CommonTextFormField extends StatelessWidget {
         if (labelText != null)
           Text(
             labelText!,
-            style: labelStyle ?? context.labelLarge.copyWith(fontWeight: FontWeight.w500),
+            style: labelStyle ??
+                context.labelLarge.copyWith(fontWeight: FontWeight.w500),
           ),
         if (labelText != null)
           const SizedBox(
@@ -145,6 +146,7 @@ class CommonTextFormField extends StatelessWidget {
                     onTap: onTapPrefixIcon,
                     behavior: HitTestBehavior.opaque,
                     child: Icon(
+                      size: 20,
                       prefixIcon,
                       color: prefixIconColor,
                     ),
@@ -155,6 +157,7 @@ class CommonTextFormField extends StatelessWidget {
                     onTap: onTapSuffixIcon,
                     behavior: HitTestBehavior.opaque,
                     child: Icon(
+                      size: 20,
                       suffixIcon,
                       color: suffixIconColor,
                     ),
@@ -163,7 +166,8 @@ class CommonTextFormField extends StatelessWidget {
             helperText: extendField ? '' : null,
             helperStyle: extendField ? context.bodySmall : null,
             errorText: errorText == '' || errorText == null ? null : errorText,
-            errorStyle: context.bodySmall.copyWith(color: Colors.red, height: 0),
+            errorStyle:
+                context.bodySmall.copyWith(color: Colors.red, height: 0),
           ),
         ),
       ],
