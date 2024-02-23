@@ -31,17 +31,13 @@ class _SplashView extends StatelessWidget {
           children: [
             const Spacer(),
             Center(
-              child: Assets.icons.launcher.appIcon.image(),
+              child: Assets.images.logo.svg(),
             ),
             const Spacer(),
-            Text(
-              'Powered by GDSC-DUT',
-              style: context.labelLarge,
-            ),
           ],
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: context.themeConfig.splashBackgroundColor,
     );
   }
 }

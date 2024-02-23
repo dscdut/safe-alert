@@ -66,6 +66,7 @@ dependencies:
   flutter_timezone: ^1.0.8
   flutter_polyline_points: ^2.0.0
   google_maps_cluster_manager: ^3.1.0
+  font_awesome_flutter: ^10.6.0
 
 dev_dependencies:
   flutter_test:
@@ -170,7 +171,24 @@ flutter:
           weight: 500
         - asset: assets/fonts/Mulish-Bold.ttf
           weight: 700
-
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Montserrat-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
+    - family: SFDisplay
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Regular.otf
+          weight: 400
+        - asset: assets/fonts/SF-Pro-Display-Medium.otf
+          weight: 500
+        - asset: assets/fonts/SF-Pro-Display-Semibold.otf
+          weight: 600
+        - asset: assets/fonts/SF-Pro-Display-Bold.otf
+          weight: 700
 flutter_gen:
   output: lib/generated/
   integrations:

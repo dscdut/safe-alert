@@ -7,10 +7,13 @@
     "email_address": "Email Address",
     "phone_number": "Phone number",
     "password": "Password",
-    "confirm_password": "Confirm password",
-    "you_have_an_account": "You have an account?",
     "DOB": "DOB",
-    "Address": "Address"
+    "Address": "Address",
+    "confirm_password": "Confirm password",
+    "remember_me": "Remember me",
+    "forgot_password": "Forgot password?",
+    "dont_have_account": "Don't have an account?",
+    "you_have_an_account": "You have an account?"
   },
   "button": {
     "cancel": "Cancel",
@@ -32,8 +35,9 @@
     "email_required": "Please enter your email",
     "password_required": "Please enter your password",
     "invalid_email": "Invalid email address",
+    "invalid_phone_number": "Invalid phone number",
+    "incorrect_phone_number_password": "Incorrect phone number or password",
     "incorrect_email_password": "Incorrect email or password",
-    "invalid_phone_number": "Incorrect phone number",
     "invalid_password": "Password must be 6-30 characters and should not include any special characters",
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match",

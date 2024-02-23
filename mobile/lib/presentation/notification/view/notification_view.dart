@@ -21,7 +21,6 @@ class _NotificationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NotificationBloc, NotificationState>(
       builder: (context, state) {
-        // TODO: return correct widget based on the state.
         return const SizedBox();
       },
     );

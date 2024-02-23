@@ -10,6 +10,12 @@
 class FontFamily {
   FontFamily._();
 
+  /// Font family: Montserrat
+  static const String montserrat = 'Montserrat';
+
   /// Font family: Mulish
   static const String mulish = 'Mulish';
+
+  /// Font family: SFDisplay
+  static const String sFDisplay = 'SFDisplay';
 }

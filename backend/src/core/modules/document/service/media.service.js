@@ -12,7 +12,9 @@ class Service {
     async uploadOne(file, folderName = '') {
         const extensionsVideo = ['.mp4', 'mov', '.avi', '.mkv'];
         try {
-            const isVideo = extensionsVideo.some(ext => file.originalname.endsWith(ext));
+            const isVideo = extensionsVideo.some(ext =>
+                file.originalname.endsWith(ext),
+            );
             const response = await cloudinaryUploader.upload(file.path, {
                 folder: folderName,
                 resource_type: isVideo ? 'video' : 'image',
@@ -31,6 +33,7 @@ class Service {
                 await promisify(unlink)(file.path);
             } catch (error) {
                 this.logger.error(error.message);
+                // eslint-disable-next-line no-unsafe-finally
                 throw new InternalServerException(error.message);
             }
         }

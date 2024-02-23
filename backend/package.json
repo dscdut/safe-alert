@@ -4,7 +4,7 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "prepare": "cd .. && test -d backend/node_modules/husky && husky install backend/.husky || echo \"husky is not installed\"",
+        "prepare": "cd .. && husky install backend/.husky",
         "lint": "eslint --fix --ext .js .",
         "lint:staged": "lint-staged",
         "dev": "nodemon --exec npx babel-node src/core/bin/www.js",
@@ -26,6 +26,7 @@
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-prettier": "^4.0.0",
         "express": "^4.17.2",
+        "firebase-admin": "^12.0.0",
         "glob": "^7.2.0",
         "http-status": "^1.5.0",
         "joi": "^17.4.2",

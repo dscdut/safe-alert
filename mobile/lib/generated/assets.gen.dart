@@ -15,6 +15,15 @@ import 'package:lottie/lottie.dart';
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
+  /// File path: assets/fonts/Montserrat-Bold.ttf
+  String get montserratBold => 'assets/fonts/Montserrat-Bold.ttf';
+
+  /// File path: assets/fonts/Montserrat-Medium.ttf
+  String get montserratMedium => 'assets/fonts/Montserrat-Medium.ttf';
+
+  /// File path: assets/fonts/Montserrat-Regular.ttf
+  String get montserratRegular => 'assets/fonts/Montserrat-Regular.ttf';
+
   /// File path: assets/fonts/Mulish-Bold.ttf
   String get mulishBold => 'assets/fonts/Mulish-Bold.ttf';
 
@@ -24,8 +33,31 @@ class $AssetsFontsGen {
   /// File path: assets/fonts/Mulish-Regular.ttf
   String get mulishRegular => 'assets/fonts/Mulish-Regular.ttf';
 
+  /// File path: assets/fonts/SF-Pro-Display-Bold.otf
+  String get sFProDisplayBold => 'assets/fonts/SF-Pro-Display-Bold.otf';
+
+  /// File path: assets/fonts/SF-Pro-Display-Medium.otf
+  String get sFProDisplayMedium => 'assets/fonts/SF-Pro-Display-Medium.otf';
+
+  /// File path: assets/fonts/SF-Pro-Display-Regular.otf
+  String get sFProDisplayRegular => 'assets/fonts/SF-Pro-Display-Regular.otf';
+
+  /// File path: assets/fonts/SF-Pro-Display-Semibold.otf
+  String get sFProDisplaySemibold => 'assets/fonts/SF-Pro-Display-Semibold.otf';
+
   /// List of all assets
-  List<String> get values => [mulishBold, mulishMedium, mulishRegular];
+  List<String> get values => [
+        montserratBold,
+        montserratMedium,
+        montserratRegular,
+        mulishBold,
+        mulishMedium,
+        mulishRegular,
+        sFProDisplayBold,
+        sFProDisplayMedium,
+        sFProDisplayRegular,
+        sFProDisplaySemibold
+      ];
 }
 
 class $AssetsIconsGen {
@@ -41,8 +73,13 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  $AssetsImagesDemoGen get demo => const $AssetsImagesDemoGen();
+  /// File path: assets/images/logo.svg
+  SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
+
   $AssetsImagesLottieGen get lottie => const $AssetsImagesLottieGen();
+
+  /// List of all assets
+  List<SvgGenImage> get values => [logo];
 }
 
 class $AssetsLocalesGen {

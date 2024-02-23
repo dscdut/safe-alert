@@ -1,5 +1,5 @@
-import { createHelpSignalDto } from 'core/modules/help_signal/dto';
-import { HelpSignalService } from 'core/modules/help_signal/service/help_signal.service';
+import { createHelpSignalDto } from 'core/modules/helpSignal/dto';
+import { HelpSignalService } from 'core/modules/helpSignal/service/helpSignal.service';
 import { ValidHttpResponse } from '../../../packages/handler/response/validHttp.response';
 
 class Controller {
@@ -9,13 +9,17 @@ class Controller {
 
     createHelpSignal = async req => {
         const signal = { ...req.body, statusId: 0, userId: req.user.payload.id };
-        const { files } = req;
-        const data = await this.service.createHelpSignal(createHelpSignalDto(signal), files);
+        const data = await this.service.createHelpSignal(createHelpSignalDto(signal), req);
         return ValidHttpResponse.toCreatedResponse(data);
     }
 
     findHelpSignalById = async req => {
         const data = await this.service.findHelpSignalById(req.params.helpSignalId);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getAllHelpSignals = async () => {
+        const data = await this.service.getAllHelpSignals();
         return ValidHttpResponse.toOkResponse(data);
     }
 
@@ -30,12 +34,12 @@ class Controller {
     }
 
     updateHelpSignal = async req => {
-        const data = await this.service.updateHelpSignal(req.params.helpSignalId, createHelpSignalDto(req.body), req);
+        const data = await this.service.updateHelpSignal(req.params.helpSignalId, createHelpSignalDto(req.body), req.user.payload.id, req);
         return ValidHttpResponse.toOkResponse(data);
     }
 
     deleteHelpSignal = async req => {
-        const message = await this.service.deleteHelpSignal(req.params.helpSignalId);
+        const message = await this.service.deleteHelpSignal(req.params.helpSignalId, req.user.payload.id);
         return ValidHttpResponse.toOkResponse(message);
     }
 
