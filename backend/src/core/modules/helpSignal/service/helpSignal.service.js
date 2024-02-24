@@ -3,6 +3,7 @@ import { BadRequestException, DuplicateException, InternalServerException, NotFo
 import { MediaService } from 'core/modules/document';
 import { logger } from 'packages/logger';
 import { UserRepository } from 'core/modules/user/user.repository';
+import { fcmService } from 'core/modules/fcm/service/fcm.service';
 import { HelpSignalRepository } from '../repository/helpSignal.repository';
 import { MESSAGE } from '../enum/message.enum';
 import { RescuerHelpSignalRepository } from '../repository/rescuerHelpSignal.repository';
@@ -14,6 +15,7 @@ class Service {
         this.userRepository = UserRepository;
         this.MediaService = MediaService;
         this.rescuerHelpSignalsRepository = RescuerHelpSignalRepository;
+        this.fcmService = fcmService;
     }
 
     getUrls(medias) {
@@ -39,11 +41,18 @@ class Service {
             const userId = createHelpSignalDto.user_id;
             const coordinates = { latitude: +createHelpSignalDto.latitude, longitude: +createHelpSignalDto.longitude };
 
-            const ids = await this.userRepository.getUserToSendNotification(userId, coordinates);
+            const users = await this.userRepository.getUserToSendNotification(userId, coordinates);
+
+            const notificationData = {
+                title: 'Safe-Alert SOS',
+                body: MESSAGE.NOTIF_BODY,
+            };
+
+            await this.fcmService.sendNotificationToUsers(users, notificationData);
+
             return {
                 message: MESSAGE.CREATE_HELP_SIGNAL_SUCCESS,
                 helpSignalId: signal[0].id,
-                ids
             };
         } catch (error) {
             logger.error(error.message);
@@ -302,7 +311,7 @@ class Service {
         }
 
         if (helpSignal[0].status_id === Status.CANCEL.value || helpSignal[0].status_id === Status.DONE.value) {
-            throw new BadRequestException(`${MESSAGE.HELP_SIGNAL_CANCELLED  } or ${  MESSAGE.HELP_SIGNAL_DONE}`);
+            throw new BadRequestException(`${MESSAGE.HELP_SIGNAL_CANCELLED} or ${MESSAGE.HELP_SIGNAL_DONE}`);
         }
 
         const trx = await getTransaction();

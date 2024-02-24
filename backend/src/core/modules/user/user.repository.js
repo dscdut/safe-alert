@@ -35,12 +35,12 @@ class Repository extends DataRepository {
                 { createdAt: 'users.created_at' },
                 { updatedAt: 'users.updated_at' },
                 { deletedAt: 'users.deleted_at' },
-                this.getConnection().raw(
-                    `ST_Distance(
-                    ST_SetSRID(ST_MakePoint(users.longitude, users.latitude), 4326),
-                    ST_SetSRID(ST_MakePoint(${coordinates.longitude}, ${coordinates.latitude}), 4326)
-                    ) AS distance`
-                ),
+            )
+            .whereRaw(
+                `ST_Distance(
+                  ST_SetSRID(ST_MakePoint(users.longitude, users.latitude), 4326),
+                  ST_SetSRID(ST_MakePoint(${coordinates.longitude}, ${coordinates.latitude}), 4326)
+                ) <= 3000`
             );
     }
 
