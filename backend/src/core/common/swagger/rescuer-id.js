@@ -1,9 +1,9 @@
 import { SwaggerDocument } from '../../../packages/swagger';
 
-export const helpSignalId = SwaggerDocument.ApiParams({
-    name: 'helpSignalId',
+export const rescuerId = SwaggerDocument.ApiParams({
+    name: 'rescuerId',
     paramsIn: 'path',
     type: 'integer',
-    description: 'Help Signal Id',
     required: true,
+    description: 'Rescuer Id to cancel support',
 });
