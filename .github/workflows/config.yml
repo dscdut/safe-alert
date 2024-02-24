@@ -3,12 +3,16 @@ on:
     push:
         paths:
             - '**.js'
+        # branches:
+        #     - develop
         branches:
-            - develop
+            - contest/gdsc-hackathon-2024
     pull_request:
         types: [opened, synchronize]
+        # branches:
+        #     - develop
         branches:
-            - develop
+            - contest/gdsc-hackathon-2024
 jobs:
     build:
         runs-on: self-hosted
