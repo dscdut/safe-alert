@@ -1,29 +1,13 @@
 {
-  "project_info": {
-    "project_number": "693066761317",
-    "project_id": "safealert-412116",
-    "storage_bucket": "safealert-412116.appspot.com"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:693066761317:android:16d4bc2cfbc34eb1c0328c",
-        "android_client_info": {
-          "package_name": "com.fluttertemplate.dev"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBHs8D6JEJI0aaJEG5akRZfQ9m-ud4m3N0"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    }
-  ],
-  "configuration_version": "1"
+  "type": "service_account",
+  "project_id": "safealert-412116",
+  "private_key_id": "132be5b52a13a8403cf86b1e6180b248f770493d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDGnRoYq2U022UV\nfVBiL0CabIVV70cfP3p8VbutwHWZ2zB/Pn0bJvsJpnKQFDz6J7d1umZ1THxuHLRT\nbxgsAJUQvZwUFnFYqq8Is9u75cvqsIEk+CMYGyNmUeLJJ9VB55egS7vgk+hGqpTY\nyakvIq5jhCExykE8ylYufIx6LFWOdI+DzTSUlQ+Af7YkT6zJbWuUt/jhgbGnDlc0\nIcTKYOebPso0Ygbi5FJKfF4KkCvRkj0GP6DnIN/ezsxKiw0jEbIyxxfoHCIoSCIJ\n3t0Z/UQ6jWDra8rrLUX69kRoG9tOAOdkQxMuw6w7qP92eAQ7V1dE3BFRkx+rJIjp\nbiWYUix/AgMBAAECggEALFWDLsCLjdnvXXWkjNYpYI8a0EziHlqIF9r3UtikJ5zi\n3XRwbrAr10KdTgYGenyFGjVqi4JwQBAOPJWO2ruiiqMYhO9hi75F5fZn9TBdbVzK\n5xqwkr/0DfH3YpmOo/BzSye8n2vErImFQkL5jfj63mHvGvMfztcHl8bbgKYGzw5W\n9gzHUeHs8uxTNJuKYaq9+2dkWLeEw1sdxu8ceGovyB2k8MIc6bCF/ql+UG+SaiUn\npvAnN9sn1XRSIAJPFjB6D2J4VdaLDJgIdNq3R7pz3fWxScxttTeRm4UgC5eQREiP\nxppIIecvmm6tElAQG9WSwgwA5NSRJ5Rcq9o7H7T7KQKBgQDsmaRP8dDGjoJ3/1GU\nteqOl1XqjZ8DQIaafiY2IWIYawX+7b2NenXNCIyZl7pXVOFpuMrBp7EVPRp4j9l9\nUeOQVBMrlXkSPDYQZiYSF8dgzKZPAsE7oEqyp1QZ39yoougtEh3flzXfqjmWd/5/\nkqpz0STPWUPijF1Og0xprITe5QKBgQDW5hq6w/V/F2F+vH10nCClDxGHFvjcuU4O\nd7Q0bG+FJIrQKzPNAaZMA3Ry63GYeAImKTfvpQg8KFw5eWm1DBvOVG4a5qrRAlQX\n9XV81KWB2E6lJBT7leaIkB3KRcFy9tHji/ro75sShS5AL3iMYMINcJ9jscLSuIUK\naV7ym6uDkwKBgQC5XVIHNCveM+5xtv2iZbfjiRtNzTCkapxKU8T6KcNh4A9tf7M/\nMY8zWJxXBTF/lEeZ/aYUfJ3XRu0DQagib9K607PFNLELIVM2G+F90VVqOEufoUfk\nwBtlxoS0VNfa4u7FyOjQsPYLSqEdits/9ZdHb7bIIGZ4CoJbrbBjJj9fJQKBgCHY\nqAkWaAoWUqK1aUT+eh3FG8udEKEjBmo87EL9eSsNMFfNFiGJyvlZ6fNXpdKPxDbi\ncw7pfTyMVsoulzmOqKp8ncLa5bh5l2kWneSFUXP775cO8ccWOvLzT93V0rwap8Ah\nAenCIzhthXVShLgHXUjknhYDn1209i9HnU60ufTFAoGABuHTRHfK6qPsWiiaq+Zx\nO04fY0FuAWq0MTvJbXk174MM0r9J6nZuOZv/PBogiyrLloboIpDH4qKcHelp7rLx\n/yqnKowaycIJhSSdGwDRT+urzPhzh+NRu6z7bRZxJd7CIU9kSRWa7E7htKRN3cYF\nIXzxlO0TCVxDC86sxWQ5mBI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-o1aw0@safealert-412116.iam.gserviceaccount.com",
+  "client_id": "106039469675325216000",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-o1aw0%40safealert-412116.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
 }

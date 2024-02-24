@@ -7,7 +7,7 @@ exports.up = async knex => {
     await knex.schema.createTable(tableName, table => {
         table.increments('id').unsigned().primary();
         table.integer('user_id').unsigned().references('id').inTable('users').notNullable().onDelete('CASCADE');
-        table.text('devicetoken').notNullable();
+        table.text('device_token').notNullable();
         table.dateTime('deleted_at').defaultTo(null);
         table.timestamps(false, true);
     });

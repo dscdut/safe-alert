@@ -2,8 +2,8 @@ import { Module } from 'packages/handler/Module';
 import { CreateUserInterceptor, UpdateUserInterceptor } from 'core/modules/user/interceptor';
 import { RecordIdInterceptor } from 'core/modules/interceptor/recordId/record-id.interceptor';
 import { uploadMediaSwagger, RecordId } from 'core/common/swagger';
+import { deviceToken } from 'core/common/swagger/device-token';
 import { UserController } from './user.controller';
-
 
 export const UserResolver = Module.builder()
     .addPrefix({
@@ -38,4 +38,11 @@ export const UserResolver = Module.builder()
             controller: UserController.findById,
             preAuthorization: true,
         },
+        {
+            route: '/saveToken/:deviceToken',
+            method: 'post',
+            params: [deviceToken],
+            controller: UserController.saveToken,
+            preAuthorization: true,
+        }
     ]);
