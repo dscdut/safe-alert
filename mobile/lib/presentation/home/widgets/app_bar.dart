@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template/presentation/core/bloc/root_bloc.dart';
+import 'package:flutter_template/presentation/auth/bloc/auth/auth_bloc.dart';
 import 'package:flutter_template/presentation/widgets/common_text_form_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -72,6 +72,17 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               child: const Icon(FontAwesomeIcons.solidCircleUser, size: 32),
             ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: IconButton(
+            onPressed: () {
+              context
+                  .read<AuthBloc>()
+                  .add(const AuthUserInfoSet(currentUser: null));
+            },
+            icon: const Icon(Icons.settings),
           ),
         ),
       ],

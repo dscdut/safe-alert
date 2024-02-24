@@ -4,8 +4,8 @@ import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/data/repositories/emergency_repository.dart';
 import 'package:flutter_template/di/di.dart';
 import 'package:flutter_template/generated/assets.gen.dart';
-import 'package:flutter_template/presentation/emergency/bloc/emergency_case/emergency_case_bloc.dart';
-import 'package:flutter_template/presentation/emergency/widgets/emergency_post_field/emergency_post_field.dart';
+import 'package:flutter_template/presentation/emergency/bloc/set/set_emergency_case_bloc.dart';
+import 'package:flutter_template/presentation/emergency/widgets/emergency_post_field.dart';
 
 class EmergencyPostView extends StatefulWidget {
   const EmergencyPostView({super.key});
@@ -34,12 +34,10 @@ class _EmergencyPostViewState extends State<EmergencyPostView> {
             ),
             const SizedBox(height: 8.0),
             Flexible(
-              child: SingleChildScrollView(
-                child: BlocProvider(
-                  create: (context) =>
-                      EmergencyCaseBloc(getIt.get<EmergencyRepository>()),
-                  child: const EmergencyPostField(),
-                ),
+              child: BlocProvider(
+                create: (context) =>
+                    SetEmergencyCaseBloc(getIt.get<EmergencyRepository>()),
+                child: const SingleChildScrollView(child: EmergencyPostField()),
               ),
             ),
           ],

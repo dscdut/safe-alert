@@ -99,11 +99,7 @@ class _PostViewState extends State<PostView> {
                           },
                           child: PostItem(
                             postModel: _postList[index],
-                            image: (_postList.length > 4 && index == 0)
-                                ? demoAvater
-                                : (_postList.length <= 4)
-                                    ? avatar[index]
-                                    : avatar[index - 1],
+                            image: _postList[index].authorAvatar,
                           ),
                         );
                       },

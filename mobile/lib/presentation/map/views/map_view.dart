@@ -1,17 +1,17 @@
-// import 'dart:async';
-
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_template/data/models/emergency_case_model.dart';
 import 'package:flutter_template/presentation/home/widgets/app_bar.dart';
+import 'package:flutter_template/presentation/map/get_markers.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_template/data/models/place_model.dart';
 import 'package:flutter_template/presentation/emergency/widgets/location_search/location_search.dart';
 
 class MapView extends StatefulWidget {
-  final List<Marker>? markers;
+  final List<EmergencyCaseModel>? emergencyCases;
   const MapView({
     Key? key,
-    required this.markers,
+    this.emergencyCases,
   }) : super(key: key);
 
   @override
@@ -21,22 +21,31 @@ class MapView extends StatefulWidget {
 class _MapViewState extends State<MapView> {
   final LatLng _currentView = const LatLng(16.0722987197085, 108.1484826197085);
   final Completer<GoogleMapController> _controller = Completer();
-  PlaceModel? choosenPlace;
-  final _locationController = TextEditingController();
+  final TextEditingController _locationController = TextEditingController();
+  List<Marker> _markers = [];
+
+  Future<void> _loadMarkers() async {
+    _markers = await GetMarkers(widget.emergencyCases).getMarkers();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMarkers();
+  }
 
   void _showSearchScreen() async {
-    choosenPlace = await Navigator.of(context).push(
+    PlaceModel? choosenPlace = await Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => const LocationSearchPage()),
     );
     if (choosenPlace != null) {
-      _locationController.text = choosenPlace!.description!;
+      _locationController.text = choosenPlace.description;
       moveCamera(
         LatLng(
-          choosenPlace!.coordinates!['lat']!,
-          choosenPlace!.coordinates!['lng']!,
+          choosenPlace.coordinates!['lat']!,
+          choosenPlace.coordinates!['lng']!,
         ),
       );
-      FocusManager.instance.primaryFocus?.unfocus();
     }
   }
 
@@ -72,7 +81,7 @@ class _MapViewState extends State<MapView> {
               BitmapDescriptor.hueBlue,
             ),
           ),
-          ...?widget.markers,
+          ..._markers,
         },
       ),
     );

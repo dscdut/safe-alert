@@ -1,12 +1,12 @@
-part of 'emergency_case_bloc.dart';
+part of 'set_emergency_case_bloc.dart';
 
-class EmergencyCaseState extends Equatable {
+class SetEmergencyCaseState extends Equatable {
   final List<EmergencyCaseDTO> emergencyCases;
   final bool isLoading;
   final bool isSuccess;
   final String errorMessage;
 
-  const EmergencyCaseState({
+  const SetEmergencyCaseState({
     this.emergencyCases = const [],
     this.isLoading = false,
     this.isSuccess = false,
@@ -17,13 +17,13 @@ class EmergencyCaseState extends Equatable {
   List<Object> get props =>
       [emergencyCases, isLoading, isSuccess, errorMessage];
 
-  EmergencyCaseState copyWith({
+  SetEmergencyCaseState copyWith({
     List<EmergencyCaseDTO>? emergencyCases,
     bool? isLoading,
     bool? isSuccess,
     String? errorMessage,
   }) {
-    return EmergencyCaseState(
+    return SetEmergencyCaseState(
       emergencyCases: emergencyCases ?? this.emergencyCases,
       isLoading: isLoading ?? this.isLoading,
       isSuccess: isSuccess ?? this.isSuccess,

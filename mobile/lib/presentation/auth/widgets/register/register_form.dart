@@ -5,7 +5,7 @@ import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/common/utils/validator_util.dart';
 import 'package:flutter_template/generated/locale_keys.g.dart';
 import 'package:flutter_template/presentation/auth/bloc/register/register_bloc.dart';
-import 'package:flutter_template/presentation/auth/widgets/custom_text_form_fiefd.dart';
+import 'package:flutter_template/presentation/auth/widgets/register/custom_text_form_fiefd.dart';
 
 class RegisterForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
@@ -125,7 +125,8 @@ class _RegisterFormState extends State<RegisterForm> {
                 onChanged: (value) {
                   setState(() {
                     confirmPasswordErrorText =
-                      ValidatorUtil.validateConfirmPassword(value,widget.passwordController.text);
+                        ValidatorUtil.validateConfirmPassword(
+                            value, widget.passwordController.text);
                   });
                   return;
                 },

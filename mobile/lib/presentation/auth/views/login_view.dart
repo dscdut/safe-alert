@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
       );
     }
     if (state is LoginSuccess) {
-      Navigator.of(context).pushNamed(AppRouter.root);
+      Navigator.of(context).pushNamed(AppRouter.home);
     }
   }
 }

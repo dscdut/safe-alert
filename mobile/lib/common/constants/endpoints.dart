@@ -10,6 +10,7 @@ abstract class Endpoints {
   static String userInfo = '$apiUrl/auth/me';
   static String register = '$apiUrl/auth/register';
   static String helpSignals = '$apiUrl/helpSignal';
+  static String getAllHelpSignals = '$apiUrl/helpSignal/getAllHelpSignals';
 
   static String placeAutocompleteURL =
       '${AppFlavor.placeAutocompleteURL}/json?key=$mapsApiKey';

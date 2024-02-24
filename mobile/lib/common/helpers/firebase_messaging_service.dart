@@ -11,6 +11,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
   // await Firebase.initializeApp();
+  log('onBackgroundMessage: ${message.notification?.title}');
+  log('onBackgroundMessage: ${message.notification?.body}');
 }
 
 abstract final class FirebaseMessagingService {
@@ -47,7 +49,8 @@ abstract final class FirebaseMessagingService {
         carPlay: true,
       );
 
-      await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+      await FirebaseMessaging.instance
+          .setForegroundNotificationPresentationOptions(
         alert: true, // Required to display a heads up notification
         badge: true,
         sound: true,
@@ -68,5 +71,10 @@ abstract final class FirebaseMessagingService {
         );
       }
     });
+  }
+
+  Future<void> initNotifications() async {
+    // Send the token to your server
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   }
 }

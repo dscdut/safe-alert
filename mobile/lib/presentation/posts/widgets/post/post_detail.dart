@@ -33,8 +33,8 @@ class PostDetail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                        '${post.date.day}/${post.date.month}/${post.date.year}'),
-                    Text(post.author, style: context.titleSmall),
+                        '${post.createdAt.day}/${post.createdAt.month}/${post.createdAt.year}'),
+                    Text(post.author.fullName, style: context.titleSmall),
                   ],
                 ),
               ],
@@ -50,20 +50,22 @@ class PostDetail extends StatelessWidget {
                         child: Text(post.description),
                       ),
                       const SizedBox(height: 12.0),
-                      Center(
-                        child: SizedBox(
-                          height: 400.0,
-                          child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (_, index) =>
-                                Image.file(post.images[index]),
-                            separatorBuilder: (_, indedx) =>
-                                const SizedBox.expand(),
-                            itemCount: (post.images as List<File>).length,
-                            shrinkWrap: true,
-                          ),
-                        ),
-                      ),
+                      (post.images != null)
+                          ? Center(
+                              child: SizedBox(
+                                height: 400.0,
+                                child: ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (_, index) =>
+                                      Image.file(post.images![index]),
+                                  separatorBuilder: (_, indedx) =>
+                                      const SizedBox.expand(),
+                                  itemCount: (post.images as List<File>).length,
+                                  shrinkWrap: true,
+                                ),
+                              ),
+                            )
+                          : const SizedBox.shrink(),
                     ],
                   ),
                 ),

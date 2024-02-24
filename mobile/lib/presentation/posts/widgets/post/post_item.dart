@@ -38,8 +38,8 @@ class PostItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                      '${postModel.date.day}/${postModel.date.month}/${postModel.date.year} ${postModel.date.hour}:${postModel.date.minute}'),
-                  Text(postModel.author, style: context.titleSmall),
+                      '${postModel.createdAt.day}/${postModel.createdAt.month}/${postModel.createdAt.year} ${postModel.createdAt.hour}:${postModel.createdAt.minute}'),
+                  Text(postModel.author.fullName, style: context.titleSmall),
                   const SizedBox(width: 12.0),
                   Text(
                     postModel.description,

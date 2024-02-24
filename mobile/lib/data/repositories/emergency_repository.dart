@@ -1,4 +1,5 @@
 import 'package:flutter_template/data/dtos/emergency/emergency_case_dto.dart';
+import 'package:flutter_template/data/models/emergency_case_model.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:flutter_template/data/datasources/emergency/emergency_datasource.dart';
@@ -13,7 +14,7 @@ class EmergencyRepository {
     return dataSource.postEmergencyCase(params);
   }
 
-  Future<List<EmergencyCaseDTO>> getEmergencyCases() {
+  Future<List<EmergencyCaseModel>> getEmergencyCases() {
     return dataSource.getEmergencyCases();
   }
 }

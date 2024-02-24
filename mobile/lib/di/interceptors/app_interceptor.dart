@@ -27,6 +27,8 @@ class AppInterceptor extends QueuedInterceptor {
     _checkTokenExpired();
 
     final String? accessToken = _authBox.get(HiveKeys.accessToken);
+    // const String? accessToken =
+    // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJjaGF1dGhpQGdtYWlsLmNvbSIsImlhdCI6MTcwODc0MzU1OSwiZXhwIjoxNzA4ODI5OTU5fQ.dscZKZoF_W0nQPnz42JSqDBlkME7qwGD6mDS4eYmvpA';
 
     if (accessToken != null) {
       options.headers.addAll({

@@ -73,6 +73,8 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  $AssetsImagesDemoGen get demo => const $AssetsImagesDemoGen();
+
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
@@ -223,12 +225,8 @@ class $AssetsImagesDemoAvatarGen {
   AssetGenImage get images3 =>
       const AssetGenImage('assets/images/demo/avatar/images-3.jpeg');
 
-  /// File path: assets/images/demo/avatar/images-4.jpeg
-  AssetGenImage get images4 =>
-      const AssetGenImage('assets/images/demo/avatar/images-4.jpeg');
-
   /// List of all assets
-  List<AssetGenImage> get values => [images1, images2, images3, images4];
+  List<AssetGenImage> get values => [images1, images2, images3];
 }
 
 class Assets {
