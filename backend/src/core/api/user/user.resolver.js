@@ -1,8 +1,9 @@
 import { Module } from 'packages/handler/Module';
 import { CreateUserInterceptor, UpdateUserInterceptor } from 'core/modules/user/interceptor';
 import { RecordIdInterceptor } from 'core/modules/interceptor/recordId/record-id.interceptor';
+import { uploadMediaSwagger, RecordId } from 'core/common/swagger';
 import { UserController } from './user.controller';
-import { RecordId } from '../../common/swagger/record-id';
+
 
 export const UserResolver = Module.builder()
     .addPrefix({
@@ -17,6 +18,7 @@ export const UserResolver = Module.builder()
             interceptors: [UpdateUserInterceptor],
             body: 'UpdateUserDto',
             consumes: ['multipart/form-data'],
+            params: [uploadMediaSwagger],
             controller: UserController.updateOne,
             preAuthorization: true,
         },

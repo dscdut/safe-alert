@@ -184,7 +184,7 @@ class Service {
 
         let quantityRescuerHelp = await this.rescuerHelpSignalsRepository.countCurrentRescuer(helpSignalId);
         const helpSignalQuantity = helpSignal[0].quantity;
-        console.log(quantityRescuerHelp, helpSignalQuantity);
+
         if (quantityRescuerHelp === helpSignalQuantity) {
             throw new BadRequestException(MESSAGE.ENOUGH_PEOPLE_TO_SUPPORT);
         }

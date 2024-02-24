@@ -37,12 +37,13 @@ class Repository extends DataRepository {
                 { deletedAt: 'users.deleted_at' },
                 this.getConnection().raw(
                     `ST_Distance(
-                      ST_SetSRID(ST_MakePoint(users.longitude, users.latitude), 4326),
-                      ST_SetSRID(ST_MakePoint(${coordinates.longitude}, ${coordinates.latitude}), 4326)
+                    ST_SetSRID(ST_MakePoint(users.longitude, users.latitude), 4326),
+                    ST_SetSRID(ST_MakePoint(${coordinates.longitude}, ${coordinates.latitude}), 4326)
                     ) AS distance`
                 ),
             );
     }
+
 }
 
 export const UserRepository = new Repository('users');

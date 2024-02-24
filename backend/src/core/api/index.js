@@ -4,6 +4,7 @@ import { ApiDocument } from 'core/config/swagger.config';
 import { HelpSignalResolver } from 'core/api/helpSignal';
 import { HandlerResolver } from '../../packages/handler/HandlerResolver';
 import { AuthResolver } from './auth/auth.resolver';
+import { EmergencyResolver } from './emergency';
 
 export const ModuleResolver = HandlerResolver
     .builder()
@@ -12,5 +13,6 @@ export const ModuleResolver = HandlerResolver
         AuthResolver,
         UserResolver,
         MediaResolver,
-        HelpSignalResolver
+        HelpSignalResolver,
+        EmergencyResolver
     ]);
