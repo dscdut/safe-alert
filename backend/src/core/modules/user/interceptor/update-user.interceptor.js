@@ -6,5 +6,8 @@ export const UpdateUserInterceptor = new DefaultValidatorInterceptor(
     Joi.object({
         email: JoiUtils.email().required(),
         fullName: JoiUtils.requiredString().min(1),
+        phone: JoiUtils.requiredString(),
+        address: JoiUtils.optionalString(),
+        birthday: JoiUtils.date(),
     })
 );

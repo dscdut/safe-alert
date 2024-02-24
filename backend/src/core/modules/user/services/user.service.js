@@ -43,6 +43,17 @@ class Service {
 
         return data;
     }
+
+    async updateOne(updateUserDto, id) {
+        let updateUser;
+        try {
+            updateUser = await this.repository.update(id, updateUserDto);
+        } catch (error) {
+            this.logger.error(error.message);
+            return null;
+        }
+        return updateUser;
+    }
 }
 
 export const UserService = new Service();
