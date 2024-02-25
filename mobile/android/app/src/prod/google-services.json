@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "234053689053",
-    "project_id": "flutter-bloc-template-prod",
-    "storage_bucket": "flutter-bloc-template-prod.appspot.com"
+    "project_number": "693066761317",
+    "project_id": "safealert-412116",
+    "storage_bucket": "safealert-412116.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:234053689053:android:5f59ec09ec6e939c7e0534",
+        "mobilesdk_app_id": "1:693066761317:android:16d4bc2cfbc34eb1c0328c",
         "android_client_info": {
-          "package_name": "com.fluttertemplate.prod"
+          "package_name": "com.fluttertemplate.dev"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDrOLxxAOYv0VOJHDD-zN1Btmbz6MKwgHw"
+          "current_key": "AIzaSyBHs8D6JEJI0aaJEG5akRZfQ9m-ud4m3N0"
         }
       ],
       "services": {

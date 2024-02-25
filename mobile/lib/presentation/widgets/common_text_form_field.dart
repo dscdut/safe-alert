@@ -90,6 +90,7 @@ class CommonTextFormField extends StatelessWidget {
             height: 5,
           ),
         TextFormField(
+          autocorrect: false,
           controller: textController,
           focusNode: focusNode,
           textInputAction: TextInputAction.done,

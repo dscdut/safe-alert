@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need access your location</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Pick image from your device</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Pick image from your device</string>
+    <key>NSCameraUsaNSMicrophoneUsageDescriptiongeDescription</key>
+    <string>Pick image from your device</string>
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>

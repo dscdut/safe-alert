@@ -63,12 +63,17 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  $AssetsIconsEmergencyGen get emergency => const $AssetsIconsEmergencyGen();
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
+  $AssetsIconsNavigationBarGen get navigationBar =>
+      const $AssetsIconsNavigationBarGen();
   $AssetsIconsRegisterGen get register => const $AssetsIconsRegisterGen();
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  $AssetsImagesDemoGen get demo => const $AssetsImagesDemoGen();
 
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
@@ -92,6 +97,21 @@ class $AssetsLocalesGen {
   List<String> get values => [en, vi];
 }
 
+class $AssetsIconsEmergencyGen {
+  const $AssetsIconsEmergencyGen();
+
+  /// File path: assets/icons/emergency/Alert 2.svg
+  SvgGenImage get alert2 =>
+      const SvgGenImage('assets/icons/emergency/Alert 2.svg');
+
+  /// File path: assets/icons/emergency/Alert.png
+  AssetGenImage get alert =>
+      const AssetGenImage('assets/icons/emergency/Alert.png');
+
+  /// List of all assets
+  List<dynamic> get values => [alert2, alert];
+}
+
 class $AssetsIconsLauncherGen {
   const $AssetsIconsLauncherGen();
 
@@ -101,6 +121,38 @@ class $AssetsIconsLauncherGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [appIcon];
+}
+
+class $AssetsIconsNavigationBarGen {
+  const $AssetsIconsNavigationBarGen();
+
+  /// File path: assets/icons/navigation_bar/cancel_sos.svg
+  SvgGenImage get cancelSos =>
+      const SvgGenImage('assets/icons/navigation_bar/cancel_sos.svg');
+
+  /// File path: assets/icons/navigation_bar/map.svg
+  SvgGenImage get map =>
+      const SvgGenImage('assets/icons/navigation_bar/map.svg');
+
+  /// File path: assets/icons/navigation_bar/post.svg
+  SvgGenImage get post =>
+      const SvgGenImage('assets/icons/navigation_bar/post.svg');
+
+  /// File path: assets/icons/navigation_bar/selected_map.svg
+  SvgGenImage get selectedMap =>
+      const SvgGenImage('assets/icons/navigation_bar/selected_map.svg');
+
+  /// File path: assets/icons/navigation_bar/selected_post.svg
+  SvgGenImage get selectedPost =>
+      const SvgGenImage('assets/icons/navigation_bar/selected_post.svg');
+
+  /// File path: assets/icons/navigation_bar/sos.svg
+  SvgGenImage get sos =>
+      const SvgGenImage('assets/icons/navigation_bar/sos.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values =>
+      [cancelSos, map, post, selectedMap, selectedPost, sos];
 }
 
 class $AssetsIconsRegisterGen {
@@ -122,6 +174,27 @@ class $AssetsIconsRegisterGen {
   List<dynamic> get values => [appIcon, eyeClose, eyeOpen];
 }
 
+class $AssetsImagesDemoGen {
+  const $AssetsImagesDemoGen();
+
+  $AssetsImagesDemoAvatarGen get avatar => const $AssetsImagesDemoAvatarGen();
+
+  /// File path: assets/images/demo/post-2.jpg
+  AssetGenImage get post2 =>
+      const AssetGenImage('assets/images/demo/post-2.jpg');
+
+  /// File path: assets/images/demo/post-3.jpeg
+  AssetGenImage get post3 =>
+      const AssetGenImage('assets/images/demo/post-3.jpeg');
+
+  /// File path: assets/images/demo/post-4.jpeg
+  AssetGenImage get post4 =>
+      const AssetGenImage('assets/images/demo/post-4.jpeg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [post2, post3, post4];
+}
+
 class $AssetsImagesLottieGen {
   const $AssetsImagesLottieGen();
 
@@ -135,6 +208,25 @@ class $AssetsImagesLottieGen {
 
   /// List of all assets
   List<LottieGenImage> get values => [error, searchNotFound];
+}
+
+class $AssetsImagesDemoAvatarGen {
+  const $AssetsImagesDemoAvatarGen();
+
+  /// File path: assets/images/demo/avatar/images-1.jpeg
+  AssetGenImage get images1 =>
+      const AssetGenImage('assets/images/demo/avatar/images-1.jpeg');
+
+  /// File path: assets/images/demo/avatar/images-2.jpeg
+  AssetGenImage get images2 =>
+      const AssetGenImage('assets/images/demo/avatar/images-2.jpeg');
+
+  /// File path: assets/images/demo/avatar/images-3.jpeg
+  AssetGenImage get images3 =>
+      const AssetGenImage('assets/images/demo/avatar/images-3.jpeg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [images1, images2, images3];
 }
 
 class Assets {

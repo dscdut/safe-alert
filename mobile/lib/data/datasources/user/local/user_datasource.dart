@@ -34,6 +34,7 @@ class UserLocalDataSource {
     } else {
       await _authBox.putAll({
         HiveKeys.user: jsonEncode(response.user),
+        HiveKeys.accessToken: response.accessToken,
       });
     }
   }

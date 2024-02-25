@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/presentation/auth/views/login_view.dart';
+import 'package:flutter_template/presentation/auth/auth.dart';
+// import 'package:flutter_template/presentation/auth/views/login_view.dart';
 import 'package:flutter_template/presentation/auth/views/register_view.dart';
+import 'package:flutter_template/presentation/home/home.dart';
+import 'package:flutter_template/presentation/map/views/map_view.dart';
 import 'package:flutter_template/presentation/core/views/root_view.dart';
 import 'package:flutter_template/presentation/splash/splash.dart';
 
@@ -10,9 +13,11 @@ abstract final class AppRouter {
   // Auth
   static const String login = '/login';
   static const String register = '/register';
+  static const String map = '/map';
 
   // Root
   static const String root = '/root';
+  static const String home = '/home';
 
   // static final router = GoRouter(
   //   routes: [
@@ -62,6 +67,12 @@ abstract final class AppRouter {
         return MaterialPageRoute(
           builder: (_) {
             return const RegisterPage();
+          },
+        );
+      case home:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const HomePage();
           },
         );
       case root:

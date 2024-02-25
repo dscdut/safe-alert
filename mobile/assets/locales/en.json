@@ -6,6 +6,8 @@
     "full_name": "Full name",
     "email_address": "Email Address",
     "phone_number": "Phone number",
+    "DOB": "DOB",
+    "Address": "Address",
     "password": "Password",
     "confirm_password": "Confirm password",
     "remember_me": "Remember me",
@@ -40,6 +42,14 @@
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match",
     "email_or_phone_number_exists": "Email or phone number already exists"
+  },
+  "emergency_post": {
+    "information": "Information",
+    "whats_emergency": "what's your emergency situation?",
+    "upload_images_videos": "Upload images/videos",
+    "note": "Note",
+    "submit": "Submit",
+    "submit_success": "Your support request has been posted"
   },
   "loading": {
     "ads": "Loading ads..."

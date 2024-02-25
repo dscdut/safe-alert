@@ -34,20 +34,39 @@ class ThemeSheet {
             color: themeConfig.defaultTextColor,
           ),
           textTheme: TextTheme(
-            displayLarge: TextStyle(fontSize: 57.sp, color: themeConfig.textColor),
-            displayMedium: TextStyle(fontSize: 45.sp, color: themeConfig.textColor),
-            displaySmall: TextStyle(fontSize: 36.sp, color: themeConfig.textColor),
-            headlineLarge: TextStyle(fontSize: 32.sp, color: themeConfig.textColor, fontWeight: FontWeight.bold),
-            headlineMedium: TextStyle(fontSize: 28.sp, color: themeConfig.textColor, fontWeight: FontWeight.bold),
-            headlineSmall: TextStyle(fontSize: 24.sp, color: themeConfig.textColor, fontWeight: FontWeight.bold),
-            titleLarge: TextStyle(fontSize: 22.sp, color: themeConfig.textColor),
-            titleMedium: TextStyle(fontSize: 16.sp, color: themeConfig.textColor),
-            titleSmall: TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
-            labelLarge: TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
-            labelMedium: TextStyle(fontSize: 12.sp, color: themeConfig.textColor),
-            labelSmall: TextStyle(fontSize: 11.sp, color: themeConfig.textColor),
+            displayLarge:
+                TextStyle(fontSize: 57.sp, color: themeConfig.textColor),
+            displayMedium:
+                TextStyle(fontSize: 45.sp, color: themeConfig.textColor),
+            displaySmall:
+                TextStyle(fontSize: 36.sp, color: themeConfig.textColor),
+            headlineLarge: TextStyle(
+                fontSize: 32.sp,
+                color: themeConfig.textColor,
+                fontWeight: FontWeight.bold),
+            headlineMedium: TextStyle(
+                fontSize: 28.sp,
+                color: themeConfig.textColor,
+                fontWeight: FontWeight.bold),
+            headlineSmall: TextStyle(
+                fontSize: 24.sp,
+                color: themeConfig.textColor,
+                fontWeight: FontWeight.bold),
+            titleLarge:
+                TextStyle(fontSize: 22.sp, color: themeConfig.textColor),
+            titleMedium:
+                TextStyle(fontSize: 16.sp, color: themeConfig.textColor),
+            titleSmall:
+                TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
+            labelLarge:
+                TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
+            labelMedium:
+                TextStyle(fontSize: 12.sp, color: themeConfig.textColor),
+            labelSmall:
+                TextStyle(fontSize: 11.sp, color: themeConfig.textColor),
             bodyLarge: TextStyle(fontSize: 16.sp, color: themeConfig.textColor),
-            bodyMedium: TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
+            bodyMedium:
+                TextStyle(fontSize: 14.sp, color: themeConfig.textColor),
             bodySmall: TextStyle(fontSize: 12.sp, color: themeConfig.textColor),
           ),
           actionIconTheme: ActionIconThemeData(
@@ -109,6 +128,10 @@ class DefaultThemeConfig {
   Color get textFieldBackgroundColor => const Color(0xFFD3D3D3);
 
   Color get hightLightText => const Color(0xFFFF7F50);
+
+  Color get frameAvatarColor => const Color.fromARGB(255, 156, 161, 252);
+
+  Color get buttonBackGroundColor => Colors.green[400]!;
 }
 
 class DarkThemeConfig extends DefaultThemeConfig {
