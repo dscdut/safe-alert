@@ -55,7 +55,7 @@ class Service {
             const response = await this.messaging.sendEachForMulticast(message);
 
             return {
-                message: `${response.successCount  } messages were sent successfully`,
+                message: `${response.successCount} messages were sent successfully`,
             };
         } catch (error) {
             this.logger.error(error.message);

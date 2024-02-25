@@ -8,6 +8,7 @@ export const MESSAGE = {
     USER_CANCELLED_SUPPORT: 'You refused help from this person',
     HELP_SIGNAL_CANCELLED: 'The help signal has been cancelled',
     HELP_SIGNAL_DONE: 'The help signal has been completed',
+    HELP_SIGNAL_NOT_FOUND: 'Not found help signal',
     ENOUGH_PEOPLE_TO_SUPPORT: 'Temporarily enough people to support, thank you for your help!',
     NOTIF_BODY: 'There is someone in need of support near you',
 };

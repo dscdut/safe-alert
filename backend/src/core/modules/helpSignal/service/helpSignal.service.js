@@ -38,8 +38,28 @@ class Service {
             }
             const signal = await this.repository.insert(createHelpSignalDto);
 
-            const userId = createHelpSignalDto.user_id;
-            const coordinates = { latitude: +createHelpSignalDto.latitude, longitude: +createHelpSignalDto.longitude };
+            return {
+                message: MESSAGE.CREATE_HELP_SIGNAL_SUCCESS,
+                helpSignalId: signal[0].id,
+            };
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException(error.message);
+        }
+    }
+
+    async sendNotificationToUsers(helpSignalId, userId) {
+        try {
+            const helpSignal = await this.findHelpSignalById(helpSignalId);
+            if (!helpSignal[0]) {
+                throw new NotFoundException(MESSAGE.HELP_SIGNAL_NOT_FOUND);
+            }
+
+            if (helpSignal[0].user_id !== userId) {
+                throw new ForbiddenException('You do not have permission to update this signal');
+            }
+
+            const coordinates = { latitude: helpSignal[0].latitude, longitude: helpSignal[0].longitude };
 
             const users = await this.userRepository.getUserToSendNotification(userId, coordinates);
 
@@ -48,12 +68,8 @@ class Service {
                 body: MESSAGE.NOTIF_BODY,
             };
 
-            await this.fcmService.sendNotificationToUsers(users, notificationData);
-
-            return {
-                message: MESSAGE.CREATE_HELP_SIGNAL_SUCCESS,
-                helpSignalId: signal[0].id,
-            };
+            const sendNotif = await this.fcmService.sendNotificationToUsers(users, notificationData);
+            return sendNotif;
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException(error.message);

@@ -40,6 +40,13 @@ class Controller {
         return ValidHttpResponse.toCreatedResponse(data);
     }
 
+    sendNotificationToUsers = async req => {
+        const {helpSignalId} = req.params;
+        const userId = req.user.payload.id;
+        const data = await this.service.sendNotificationToUsers(helpSignalId, userId);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
     findHelpSignalById = async req => {
         const data = await this.service.findHelpSignalById(req.params.helpSignalId);
         return ValidHttpResponse.toOkResponse(data);
