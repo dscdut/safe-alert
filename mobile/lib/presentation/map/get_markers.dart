@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_template/common/extensions/widget_to_map_icon.dart';
 import 'package:flutter_template/data/models/emergency_case_model.dart';
@@ -19,8 +21,8 @@ class GetMarkers {
   }
 
   Future<List<Marker>> getMarkers() async {
+    log('get markers');
     BitmapDescriptor icon = await getCustomIcon();
-
     return emergencyCases?.map((emergencyCase) {
           return Marker(
             markerId: MarkerId(emergencyCase.id.toString()),

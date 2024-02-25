@@ -1,12 +1,9 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_template/common/constants/endpoints.dart';
 import 'package:flutter_template/common/helpers/dio_helper.dart';
 import 'package:flutter_template/data/dtos/emergency/emergency_case_dto.dart';
 import 'package:flutter_template/data/models/emergency_case_model.dart';
-import 'package:flutter_template/generated/locale_keys.g.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton

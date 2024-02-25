@@ -23,9 +23,9 @@ class ManageEmergencyCaseBloc
     Emitter<ManageEmergencyCaseState> emit,
   ) async {
     try {
+      log('hello');
       emit(state.copyWith(status: Status.isLoading));
       final response = await _emergencyRepository.getEmergencyCases();
-      log(response.toString());
       emit(
         state.copyWith(
           status: Status.isSuccess,

@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options_dev.dart';
+/// import 'firebase_options.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBTrm1Mn4DckGHQNBX6rkxxMsf2Fw9dfaU',
-    appId: '1:1027163234870:android:f18c4f44e2d16a8ec12e97',
-    messagingSenderId: '1027163234870',
-    projectId: 'flutter-bloc-template-dev',
-    storageBucket: 'flutter-bloc-template-dev.appspot.com',
+    apiKey: 'AIzaSyBHs8D6JEJI0aaJEG5akRZfQ9m-ud4m3N0',
+    appId: '1:693066761317:android:16d4bc2cfbc34eb1c0328c',
+    messagingSenderId: '693066761317',
+    projectId: 'safealert-412116',
+    storageBucket: 'safealert-412116.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBkdN6rYlK6GKPBSQz1DcvOyrUREbUH0AE',
-    appId: '1:1027163234870:ios:510c0d9a062bd2e6c12e97',
-    messagingSenderId: '1027163234870',
-    projectId: 'flutter-bloc-template-dev',
-    storageBucket: 'flutter-bloc-template-dev.appspot.com',
-    iosBundleId: 'com.fluttertemplate.dev',
+    apiKey: 'AIzaSyBE1FGb7T15VzVvO1Qx0-3Y1yjXb5b5y2g',
+    appId: '1:693066761317:ios:f54ba6b1590a28aac0328c',
+    messagingSenderId: '693066761317',
+    projectId: 'safealert-412116',
+    storageBucket: 'safealert-412116.appspot.com',
+    iosBundleId: 'com.fluttertemplate.staging',
   );
 }

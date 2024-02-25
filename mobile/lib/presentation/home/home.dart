@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,7 +12,6 @@ import 'package:flutter_template/presentation/emergency/views/emergency_post_vie
 import 'package:flutter_template/presentation/home/widgets/navigation_bar.dart';
 import 'package:flutter_template/presentation/map/views/map_view.dart';
 import 'package:flutter_template/presentation/posts/view/posts/post_view.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 export 'bloc/home_bloc.dart';
 export 'view/home_view.dart';
@@ -36,8 +37,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  List<Marker> markers = [];
-  List<EmergencyCaseModel> emergencyCases = [];
+  late List<EmergencyCaseModel> emergencyCases;
 
   final iconList = [
     Assets.icons.navigationBar.map,
@@ -63,7 +63,10 @@ class _HomeViewState extends State<HomeView> {
               buildWhen: (previous, current) =>
                   previous.emergencyCases != current.emergencyCases,
               builder: (context, state) {
-                emergencyCases = state.emergencyCases;
+                emergencyCases =
+                    BlocProvider.of<ManageEmergencyCaseBloc>(context)
+                        .state
+                        .emergencyCases;
                 return MapView(
                   emergencyCases: emergencyCases,
                 );
