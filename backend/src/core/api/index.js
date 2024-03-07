@@ -5,14 +5,17 @@ import { HelpSignalResolver } from 'core/api/helpSignal';
 import { HandlerResolver } from '../../packages/handler/HandlerResolver';
 import { AuthResolver } from './auth/auth.resolver';
 import { EmergencyResolver } from './emergency';
+import { CommentResolver } from './comment/comment.resolver';
+import { UserReactResolver } from './user-react/user-react.resolver';
 
-export const ModuleResolver = HandlerResolver
-    .builder()
+export const ModuleResolver = HandlerResolver.builder()
     .addSwaggerBuilder(ApiDocument)
     .addModule([
         AuthResolver,
         UserResolver,
         MediaResolver,
         HelpSignalResolver,
-        EmergencyResolver
+        EmergencyResolver,
+        CommentResolver,
+        UserReactResolver,
     ]);

@@ -17,6 +17,8 @@ exports.up = async knex => {
         table.dateTime('birthday').defaultTo(null);
         table.string('address').defaultTo(null);
         table.dateTime('deleted_at').defaultTo(null);
+        table.decimal('latitude');
+        table.decimal('longitude');
         table.timestamps(false, true);
     });
 
@@ -29,4 +31,7 @@ exports.up = async knex => {
  `);
 };
 
-exports.down = knex => knex.schema.dropTable(tableName);
+exports.down = async knex => {
+    await knex.schema.dropTable(tableName);
+    await knex.raw(`DROP TRIGGER IF EXISTS update_timestamp ON ${tableName};`);
+};

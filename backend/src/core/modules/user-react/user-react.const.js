@@ -1,0 +1,7 @@
+export const REACTION_TYPE = { LIKE: 0, DISLIKE: 1 };
+export const REACTION_TYPE_IN_REQUEST = {
+    LIKE: 'LIKE',
+    DISLIKE: 'DISLIKE',
+};
+export const REACTION_OF_TYPE = { POST: 0, COMMENT: 1 };
+export const REACTION_IN_REQUEST_OF_TYPE = { POST: 'POST', COMMENT: 'COMMENT' };
