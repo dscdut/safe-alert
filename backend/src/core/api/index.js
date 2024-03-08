@@ -7,6 +7,8 @@ import { AuthResolver } from './auth/auth.resolver';
 import { EmergencyResolver } from './emergency';
 import { CommentResolver } from './comment/comment.resolver';
 import { UserReactResolver } from './user-react/user-react.resolver';
+import { ContactResolver } from './contact/contact.resolver';
+import { PostResolver } from './post/post.resolver';
 
 export const ModuleResolver = HandlerResolver.builder()
     .addSwaggerBuilder(ApiDocument)
@@ -18,4 +20,6 @@ export const ModuleResolver = HandlerResolver.builder()
         EmergencyResolver,
         CommentResolver,
         UserReactResolver,
+        ContactResolver,
+        PostResolver
     ]);

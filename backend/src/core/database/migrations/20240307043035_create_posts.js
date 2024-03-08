@@ -5,7 +5,10 @@ const tableName = 'posts';
 exports.up = async knex => {
     await knex.schema.createTable(tableName, table => {
         table.increments('id').unsigned().primary();
+        table.string('topic').nullable();
+        table.string('location', 512).nullable();
         table.text('content');
+        table.text('medias').nullable();
         table
             .integer('owner_id')
             .unsigned()
@@ -13,7 +16,8 @@ exports.up = async knex => {
             .references('id')
             .inTable('users')
             .onDelete('CASCADE');
-        table.timestamp('updated_at').defaultTo(knex.fn.now());
+        table.dateTime('deleted_at').defaultTo(null);
+        table.timestamps(false, true);
     });
 
     await knex.raw(`

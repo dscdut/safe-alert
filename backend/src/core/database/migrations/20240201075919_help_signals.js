@@ -6,8 +6,8 @@ const tableName = 'help_signals';
 exports.up = async knex => {
     await knex.schema.createTable(tableName, table => {
         table.increments('id').unsigned().primary();
-        table.double('latitude').notNullable();
-        table.double('longitude').notNullable();
+        table.decimal('latitude').notNullable();
+        table.decimal('longitude').notNullable();
         table.string('location').notNullable();
         table.string('description').nullable();
         table.integer('quantity').nullable().defaultTo(null);
