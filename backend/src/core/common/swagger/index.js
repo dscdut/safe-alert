@@ -7,3 +7,6 @@ export * from './emergency-id';
 export * from './keyword';
 export * from './page';
 export * from './page-size';
+export * from './distance';
+export * from './coordinates';
+export * from './post-id';
