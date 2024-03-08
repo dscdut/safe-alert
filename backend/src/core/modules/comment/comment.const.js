@@ -1,0 +1,5 @@
+export const COMMENT_PARENT_TYPE = { POST: 0, COMMENT: 1 };
+export const COMMENT_PARENT_TYPE_IN_REQUEST = {
+    POST: 'POST',
+    COMMENT: 'COMMENT',
+};

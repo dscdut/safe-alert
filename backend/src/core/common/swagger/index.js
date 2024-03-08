@@ -4,3 +4,6 @@ export * from './upload-file';
 export * from './help-signal-id';
 export * from './user-id';
 export * from './emergency-id';
+export * from './keyword';
+export * from './page';
+export * from './page-size';

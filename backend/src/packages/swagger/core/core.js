@@ -7,43 +7,59 @@ export class SwaggerBuilder {
         return new SwaggerBuilder();
     }
 
+    #deepIterate = obj => {
+        Object.keys(obj).forEach(key => {
+            const value = obj[key];
+
+            // If the key is '$ref', update the value
+            if (key === '$ref') {
+                obj[key] = `#/components/schemas/${value}`;
+            }
+
+            // Recursively iterate if the value is an object or an array
+            if (typeof value === 'object' && value !== null) {
+                this.#deepIterate(value);
+            }
+        });
+    };
+
+    #configureResponseSchema = model => {
+        this.#deepIterate(model);
+        return model;
+    };
+
     #toResponseSuccess = model => ({
         200: {
             description: 'successful operation',
-            content: model ? {
-                'application/json': {
-                    schema: {
-                        type: 'array',
-                        items: {
-                            $ref: `#/components/schemas/${model}`,
-                        },
+            content: model
+                ? {
+                    'application/json': {
+                        schema: this.#configureResponseSchema(model),
                     },
-                },
-            } : '',
+                }
+                : '',
         },
-    })
+    });
 
     #toErrors = errors => {
         const responses = {};
 
         errors.forEach(error => {
             if (!error.status || !error.description) {
-                throw new Error('Error in swagger must contain status and description');
+                throw new Error(
+                    'Error in swagger must contain status and description',
+                );
             }
             responses[error.status] = {
-                description: error.description
+                description: error.description,
             };
         });
         return responses;
-    }
+    };
 
     addConfig(options) {
         const {
-            openapi,
-            info,
-            servers,
-            auth,
-            basePath,
+            openapi, info, servers, auth, basePath
         } = options;
 
         this.instance.openapi = openapi;
@@ -92,7 +108,7 @@ export class SwaggerBuilder {
             body,
             params = [],
             consumes = [],
-            errors = []
+            errors = [],
         } = options;
         const responses = {};
 
@@ -103,30 +119,32 @@ export class SwaggerBuilder {
         this.instance.paths[route][method] = {
             tags: tags.length ? tags : [tags],
             description,
-            security: security ? [
-                {
-                    bearerAuth: [],
-                },
-            ] : [],
-            produces: [
-                'application/json',
-            ],
+            security: security
+                ? [
+                    {
+                        bearerAuth: [],
+                    },
+                ]
+                : [],
+            produces: ['application/json'],
             consumes,
             parameters: params,
-            requestBody: body ? {
-                content: {
-                    'application/json': {
-                        schema: {
-                            $ref: `#/components/schemas/${body}`,
+            requestBody: body
+                ? {
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: `#/components/schemas/${body}`,
+                            },
                         },
                     },
-                },
-                required: true,
-            } : {},
+                    required: true,
+                }
+                : {},
             responses: {
                 ...responses,
                 ...this.#toResponseSuccess(model),
-                ...this.#toErrors(errors)
+                ...this.#toErrors(errors),
             },
         };
     }
@@ -138,7 +156,7 @@ export class SwaggerBuilder {
                 items: {
                     type: 'object',
                     properties,
-                }
+                },
             };
         } else {
             this.instance.components.schemas[name] = {
