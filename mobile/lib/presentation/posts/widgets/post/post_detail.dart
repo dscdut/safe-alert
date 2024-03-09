@@ -33,7 +33,8 @@ class PostDetail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                        '${post.createdAt.day}/${post.createdAt.month}/${post.createdAt.year}'),
+                      '${post.createdAt.day}/${post.createdAt.month}/${post.createdAt.year}',
+                    ),
                     Text(post.author.fullName, style: context.titleSmall),
                   ],
                 ),

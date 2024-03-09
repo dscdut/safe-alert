@@ -33,7 +33,10 @@ class SetEmergencyCaseBloc
     } on Exception catch (e) {
       emit(
         state.copyWith(
-            isLoading: false, isSuccess: false, errorMessage: e.toString()),
+          isLoading: false,
+          isSuccess: false,
+          errorMessage: e.toString(),
+        ),
       );
     }
   }

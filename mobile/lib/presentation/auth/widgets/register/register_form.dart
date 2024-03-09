@@ -126,7 +126,9 @@ class _RegisterFormState extends State<RegisterForm> {
                   setState(() {
                     confirmPasswordErrorText =
                         ValidatorUtil.validateConfirmPassword(
-                            value, widget.passwordController.text);
+                      value,
+                      widget.passwordController.text,
+                    );
                   });
                   return;
                 },

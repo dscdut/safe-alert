@@ -41,17 +41,20 @@ class ThemeSheet {
             displaySmall:
                 TextStyle(fontSize: 36.sp, color: themeConfig.textColor),
             headlineLarge: TextStyle(
-                fontSize: 32.sp,
-                color: themeConfig.textColor,
-                fontWeight: FontWeight.bold),
+              fontSize: 32.sp,
+              color: themeConfig.textColor,
+              fontWeight: FontWeight.bold,
+            ),
             headlineMedium: TextStyle(
-                fontSize: 28.sp,
-                color: themeConfig.textColor,
-                fontWeight: FontWeight.bold),
+              fontSize: 28.sp,
+              color: themeConfig.textColor,
+              fontWeight: FontWeight.bold,
+            ),
             headlineSmall: TextStyle(
-                fontSize: 24.sp,
-                color: themeConfig.textColor,
-                fontWeight: FontWeight.bold),
+              fontSize: 24.sp,
+              color: themeConfig.textColor,
+              fontWeight: FontWeight.bold,
+            ),
             titleLarge:
                 TextStyle(fontSize: 22.sp, color: themeConfig.textColor),
             titleMedium:

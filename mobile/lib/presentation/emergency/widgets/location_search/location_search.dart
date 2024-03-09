@@ -61,7 +61,7 @@ class LocationSearchView extends StatelessWidget {
                               color: context.themeConfig.primaryColor,
                             ),
                             title: Text(
-                              suggestions[index].description!,
+                              suggestions[index].description,
                               style: context.titleSmall,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,

@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_template/common/constants/status.dart';
 import 'package:flutter_template/data/models/emergency_case_model.dart';
 import 'package:flutter_template/data/repositories/emergency_repository.dart';
 import 'package:flutter_template/di/di.dart';
@@ -13,8 +12,7 @@ import 'package:flutter_template/presentation/home/widgets/navigation_bar.dart';
 import 'package:flutter_template/presentation/map/views/map_view.dart';
 import 'package:flutter_template/presentation/posts/view/posts/post_view.dart';
 
-export 'bloc/home_bloc.dart';
-export 'view/home_view.dart';
+export '../bloc/home_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -50,35 +48,33 @@ class _HomeViewState extends State<HomeView> {
   int activeTab = 0;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: (activeTab == 0)
-          ? BlocBuilder<ManageEmergencyCaseBloc, ManageEmergencyCaseState>(
+      body: (activeTab == 1)
+          ? const PostPage()
+          : BlocBuilder<ManageEmergencyCaseBloc, ManageEmergencyCaseState>(
               buildWhen: (previous, current) =>
                   previous.emergencyCases != current.emergencyCases,
               builder: (context, state) {
-                emergencyCases =
-                    BlocProvider.of<ManageEmergencyCaseBloc>(context)
-                        .state
-                        .emergencyCases;
-                return MapView(
-                  emergencyCases: emergencyCases,
-                );
+                if (state.status == Status.isLoading ||
+                    state.status == Status.initial) {
+                  return const Center(child: CircularProgressIndicator());
+                } else {
+                  if (state.status == Status.error) {
+                    return Center(
+                      child: Text(state.errorMessage),
+                    );
+                  } else {
+                    return const MapPage();
+                  }
+                }
               },
-            )
-          : const PostPage(),
+            ),
       extendBody: true,
       bottomNavigationBar: AnimatedNavigationBar(
         onTapBottomBarItem: (int index) {
           setState(() {
-            BlocProvider.of<ManageEmergencyCaseBloc>(context)
-                .add(GetEmergencyCasesEvent());
             activeTab = index;
           });
         },
@@ -104,10 +100,9 @@ class _HomeViewState extends State<HomeView> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
+    ).then(
+      (value) => BlocProvider.of<ManageEmergencyCaseBloc>(context)
+          .add(GetEmergencyCasesEvent()),
     );
-    if (context.mounted) {
-      BlocProvider.of<ManageEmergencyCaseBloc>(context)
-          .add(GetEmergencyCasesEvent());
-    }
   }
 }

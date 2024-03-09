@@ -49,8 +49,9 @@ Future<File> getImageFileFromAssets(String path) async {
 
   final file = File('${(await getTemporaryDirectory()).path}/$path');
   await file.create(recursive: true);
-  await file.writeAsBytes(byteData.buffer
-      .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+  await file.writeAsBytes(
+    byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes),
+  );
 
   return file;
 }

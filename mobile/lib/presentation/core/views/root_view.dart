@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/presentation/core/bloc/root_bloc.dart';
-import 'package:flutter_template/presentation/core/widgets/app_bottom_navigation_bar.dart';
 import 'package:flutter_template/presentation/core/widgets/slide_lazy_indexed_stack.dart';
-import 'package:flutter_template/presentation/home/home.dart';
+import 'package:flutter_template/presentation/home/view/home.dart';
 import 'package:flutter_template/presentation/notification/notification.dart';
 import 'package:flutter_template/presentation/profile/profile.dart';
 
