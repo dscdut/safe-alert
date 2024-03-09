@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_template/data/models/place_model.dart';
@@ -18,8 +16,7 @@ class PlaceSearchBloc extends Bloc<PlaceSearchEvent, PlaceSearchState> {
 
   Future<PlaceModel> _onMapPlaceIDToLocation(PlaceModel placeModel) async {
     final currentLocation =
-        await _placeRepository.placeIDToLocation(placeModel.place_id!);
-    log(currentLocation.toString());
+        await _placeRepository.placeIDToLocation(placeModel.place_id);
     return placeModel.copyWith(coordinates: currentLocation);
   }
 
@@ -37,7 +34,6 @@ class PlaceSearchBloc extends Bloc<PlaceSearchEvent, PlaceSearchState> {
       final suggestionsWithLocation = await Future.wait(
         suggestions.map((e) => _onMapPlaceIDToLocation(e)),
       );
-      log(suggestionsWithLocation.toString());
       emit(
         state.copyWith(isLoading: false, suggestions: suggestionsWithLocation),
       );

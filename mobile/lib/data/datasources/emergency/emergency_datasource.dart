@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter_template/common/constants/endpoints.dart';
 import 'package:flutter_template/common/helpers/dio_helper.dart';
@@ -20,7 +19,6 @@ class EmergencyDataSource {
       final List<EmergencyCaseModel> emergencyCases = (response.data as List)
           .map((e) => EmergencyCaseModel.fromJson(e))
           .toList();
-      log(emergencyCases.toString());
       return emergencyCases;
     } catch (exception) {
       throw Exception(exception.toString());
@@ -32,7 +30,6 @@ class EmergencyDataSource {
       await _dioHelper.post(Endpoints.helpSignals, formData: params.toJson());
     } on DioException catch (exception) {
       if (exception.response == null) {
-        log(exception.error.toString());
         throw Exception(exception.error.toString());
       } else {
         throw Exception(exception.response!.statusMessage);

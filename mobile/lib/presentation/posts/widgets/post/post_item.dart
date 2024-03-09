@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/data/models/post_model.dart';
-import 'package:flutter_template/generated/assets.gen.dart';
-import 'package:flutter_template/presentation/posts/widgets/new_post/tags_selection.dart';
 
 class PostItem extends StatelessWidget {
   final PostModel postModel;
@@ -38,7 +36,8 @@ class PostItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                      '${postModel.createdAt.day}/${postModel.createdAt.month}/${postModel.createdAt.year} ${postModel.createdAt.hour}:${postModel.createdAt.minute}'),
+                    '${postModel.createdAt.day}/${postModel.createdAt.month}/${postModel.createdAt.year} ${postModel.createdAt.hour}:${postModel.createdAt.minute}',
+                  ),
                   Text(postModel.author.fullName, style: context.titleSmall),
                   const SizedBox(width: 12.0),
                   Text(

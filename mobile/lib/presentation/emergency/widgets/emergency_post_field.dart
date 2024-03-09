@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +54,7 @@ class _EmergencyPostFieldState extends State<EmergencyPostField> {
         EmergencyCaseDTO(
           latitude: _choosenPlace!.coordinates!['lat']!,
           longitude: _choosenPlace!.coordinates!['lng']!,
-          location: _choosenPlace!.description!,
+          location: _choosenPlace!.description,
           emergencyId: Situation.values.indexOf(_typeOfSituation!) + 1,
           quantity: _quantity,
           description: _detailCaseController.text,
