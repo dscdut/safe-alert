@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/common/constants/status.dart';
+import 'package:flutter_template/presentation/auth/auth.dart';
 import 'package:flutter_template/presentation/emergency/bloc/manage/manage_emergency_case_bloc.dart';
 import 'package:flutter_template/presentation/home/widgets/app_bar.dart';
 import 'package:flutter_template/presentation/map/bloc/position_bloc.dart';
@@ -18,8 +19,10 @@ class MapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          PositionBloc(context.read<ManageEmergencyCaseBloc>()),
+      create: (context) => PositionBloc(
+        context.read<ManageEmergencyCaseBloc>(),
+        context.read<AuthBloc>(),
+      ),
       child: const MapView(),
     );
   }

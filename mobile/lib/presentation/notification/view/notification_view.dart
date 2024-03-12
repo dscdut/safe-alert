@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template/presentation/notification/bloc/notification_bloc.dart';
+import 'package:flutter_template/presentation/notification/bloc/notification/notification_bloc.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({super.key});

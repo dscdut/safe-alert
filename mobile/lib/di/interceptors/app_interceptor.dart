@@ -28,7 +28,7 @@ class AppInterceptor extends QueuedInterceptor {
 
     // final String? accessToken = _authBox.get(HiveKeys.accessToken);
     const String? accessToken =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJjaGF1dGhpQGdtYWlsLmNvbSIsImlhdCI6MTcwOTk3ODMxNywiZXhwIjoxNzEwMDY0NzE3fQ.KAj7hPo_oZwHfFVvhYsqRlX6WbHSLztAnY4mxFF-V-k';
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJjaGF1dGhpQGdtYWlsLmNvbSIsImlhdCI6MTcxMDIxNjcwOSwiZXhwIjoxNzEwMzAzMTA5fQ.NHr0KKT84YCCQ-xY3OBLhP5ry_73Fx0zg4-aibbEzqc';
 
     if (accessToken != null) {
       options.headers.addAll({

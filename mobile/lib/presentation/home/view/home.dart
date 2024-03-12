@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,6 +38,8 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   late List<EmergencyCaseModel> emergencyCases;
+  final FirebaseMessaging messaging = FirebaseMessaging.instance;
+  final FirebaseFirestore db = FirebaseFirestore.instance;
 
   final iconList = [
     Assets.icons.navigationBar.map,
@@ -46,6 +50,31 @@ class _HomeViewState extends State<HomeView> {
     Assets.icons.navigationBar.selectedPost,
   ];
   int activeTab = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  // void listenToNewDeviceToken() async {
+  //   final firstToken = await messaging.getToken();
+  //   if (firstToken != null) {
+  //     onPostNewDeviceToken(firstToken);
+  //   }
+  //   messaging.onTokenRefresh
+  //       .listen((newToken) => onPostNewDeviceToken(newToken));
+  // }
+
+  // void onPostNewDeviceToken(String token) {
+  //   final userID = context.read<AuthBloc>().state.user!.id;
+  //   final data = {
+  //     'deviceToken': token,
+  //   };
+  //   db
+  //       .collection('deviceToken')
+  //       .doc('$userID')
+  //       .set(data, SetOptions(merge: true));
+  // }
 
   @override
   Widget build(BuildContext context) {
