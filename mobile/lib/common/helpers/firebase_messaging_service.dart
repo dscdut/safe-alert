@@ -72,9 +72,4 @@ abstract final class FirebaseMessagingService {
       }
     });
   }
-
-  Future<void> initNotifications() async {
-    // Send the token to your server
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  }
 }

@@ -25,10 +25,7 @@ class _RootView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<RootBloc, RootState>(
-        builder: (
-          context,
-          state,
-        ) {
+        builder: (context, state) {
           return SlideIndexedStack(
             index: state.currentIndex,
             children: const [HomePage(), NotificationPage(), ProfilePage()],
