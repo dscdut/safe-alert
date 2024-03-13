@@ -4,3 +4,4 @@ export * from './upload-file';
 export * from './help-signal-id';
 export * from './user-id';
 export * from './emergency-id';
+export * from './relative-id';

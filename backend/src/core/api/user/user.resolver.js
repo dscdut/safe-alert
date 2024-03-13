@@ -1,5 +1,5 @@
 import { Module } from 'packages/handler/Module';
-import { CreateUserInterceptor, UpdateUserInterceptor } from 'core/modules/user/interceptor';
+import { CreateUserInterceptor, UpdateUserInterceptor, FindUserInterceptor } from 'core/modules/user/interceptor';
 import { RecordIdInterceptor } from 'core/modules/interceptor/recordId/record-id.interceptor';
 import { uploadMediaSwagger, RecordId } from 'core/common/swagger';
 import { deviceToken } from 'core/common/swagger/device-token';
@@ -36,6 +36,15 @@ export const UserResolver = Module.builder()
             params: [RecordId],
             interceptors: [RecordIdInterceptor],
             controller: UserController.findById,
+            preAuthorization: true,
+        },
+        {
+            route: '/findByPhoneNumber',
+            method: 'post',
+            interceptors: [FindUserInterceptor],
+            body: 'FindUserDto',
+            consumes: ['multipart/form-data'],
+            controller: UserController.findByPhoneNumber,
             preAuthorization: true,
         },
         {

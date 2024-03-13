@@ -5,6 +5,7 @@ import { HelpSignalResolver } from 'core/api/helpSignal';
 import { HandlerResolver } from '../../packages/handler/HandlerResolver';
 import { AuthResolver } from './auth/auth.resolver';
 import { EmergencyResolver } from './emergency';
+import { RelativeResolver } from './relative';
 
 export const ModuleResolver = HandlerResolver
     .builder()
@@ -14,5 +15,6 @@ export const ModuleResolver = HandlerResolver
         UserResolver,
         MediaResolver,
         HelpSignalResolver,
-        EmergencyResolver
+        EmergencyResolver,
+        RelativeResolver
     ]);

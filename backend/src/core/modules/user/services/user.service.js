@@ -1,5 +1,6 @@
 import { BcryptService } from 'core/modules/auth';
 import { getTransaction } from 'core/database';
+import { getFirestore } from 'firebase-admin/firestore';
 import { UserRoleRepository } from 'core/modules/role/userRole.repository';
 import { Optional } from '../../../utils';
 import { NotFoundException, DuplicateException, BadRequestException } from '../../../../packages/httpException';
@@ -10,6 +11,7 @@ class Service {
         this.repository = UserRepository;
         this.userRoleRepository = UserRoleRepository;
         this.bcryptService = BcryptService;
+        this.firestore = getFirestore();
     }
 
     async createOne(createUserDto) {
@@ -40,6 +42,18 @@ class Service {
         const data = Optional.of(await this.repository.findOneBy('id',id))
             .throwIfNotPresent(new NotFoundException())
             .get();
+
+        return data;
+    }
+
+    async findByPhoneNumber(userDTO) {
+        let data;
+        try {
+            data = Optional.of(await this.repository.findOneBy('phone_number',userDTO.phone_number)).throwIfNotPresent(new NotFoundException()).get();
+        } catch (error) {
+            this.logger.error(error.message);
+            return null;
+        }
 
         return data;
     }

@@ -1,9 +1,11 @@
 import { getTransaction } from 'core/database';
-import { BadRequestException, DuplicateException, InternalServerException, NotFoundException, ForbiddenException } from 'packages/httpException';
-import { MediaService } from 'core/modules/document';
+import { getFirestore } from 'firebase-admin/firestore';
 import { logger } from 'packages/logger';
 import { UserRepository } from 'core/modules/user/user.repository';
 import { fcmService } from 'core/modules/fcm/service/fcm.service';
+import { RelativeService } from 'core/modules/relative/services/relative.service';
+import { BadRequestException, DuplicateException, InternalServerException, NotFoundException, ForbiddenException } from 'packages/httpException';
+import { MediaService } from 'core/modules/document';
 import { HelpSignalRepository } from '../repository/helpSignal.repository';
 import { MESSAGE } from '../enum/message.enum';
 import { RescuerHelpSignalRepository } from '../repository/rescuerHelpSignal.repository';
@@ -16,6 +18,8 @@ class Service {
         this.MediaService = MediaService;
         this.rescuerHelpSignalsRepository = RescuerHelpSignalRepository;
         this.fcmService = fcmService;
+        this.relativeService = RelativeService;
+        this.firestore = getFirestore();
     }
 
     getUrls(medias) {
@@ -24,7 +28,7 @@ class Service {
         return images.slice(0, -1);
     }
 
-    async createHelpSignal(createHelpSignalDto, { file, files }) {
+    async createHelpSignal(createHelpSignalDto, userId, { file, files }) {
         try {
             if (!createHelpSignalDto.quantity || createHelpSignalDto.quantity === 0) {
                 createHelpSignalDto.quantity = 1;
@@ -36,7 +40,15 @@ class Service {
                 const imagesURL = this.getUrls(medias);
                 createHelpSignalDto.images = imagesURL;
             }
+
+            const coordinate = await this.getCoordinatebyUserId(userId);
+
+            createHelpSignalDto.latitude = coordinate.latitudeUser;
+            createHelpSignalDto.longitude = coordinate.longitudeUser;
+
             const signal = await this.repository.insert(createHelpSignalDto);
+
+            await this.sendNotificationToUsers(signal[0].id, userId);
 
             return {
                 message: MESSAGE.CREATE_HELP_SIGNAL_SUCCESS,
@@ -59,22 +71,82 @@ class Service {
                 throw new ForbiddenException('You do not have permission to update this signal');
             }
 
-            const coordinates = { latitude: helpSignal[0].latitude, longitude: helpSignal[0].longitude };
+            const users = await this.getCoordinatesByRadiusFromFirestore(userId);
+            const relative = await this.relativeService.getAllRelative(userId);
 
-            const users = await this.userRepository.getUserToSendNotification(userId, coordinates);
+            const relativeIds = relative.map(item => item.relative_id);
+            const ids = users.coordinatesWithinRadius.map(user => parseInt(user.userId, 10));
+            const checkRelativeIds = relativeIds.filter(id => !ids.includes(id));
+            ids.push(...checkRelativeIds);
 
             const notificationData = {
-                title: 'Safe-Alert SOS',
+                title: 'Safe-Alert SOS - Someone nearby is in trouble and needs your help.',
                 body: MESSAGE.NOTIF_BODY,
             };
 
-            const sendNotif = await this.fcmService.sendNotificationToUsers(users, notificationData);
+            const sendNotif = await this.fcmService.sendNotificationToUsers(ids, notificationData);
             return sendNotif;
         } catch (error) {
-            logger.error(error.message);
-            throw new InternalServerException(error.message);
+            this.logger.error(error.message);
+            return null;
         }
     }
+
+    async getCoordinatebyUserId(userId) {
+        const db = await this.firestore.collection('coordinate').get();
+        let latitudeUser;
+        let longitudeUser;
+
+        db.forEach(doc => {
+            if(doc.id === userId.toString()){
+                latitudeUser = doc.data().latitude;
+                longitudeUser = doc.data().longitude;
+            }
+        });
+
+        return {
+            latitudeUser,
+            longitudeUser
+        };
+    }
+
+
+    async getCoordinatesByRadiusFromFirestore(userId) {
+        const db = await this.firestore.collection('coordinate').get();
+
+        const coordinatebyUserId = await this.getCoordinatebyUserId(userId);
+        const latitude = coordinatebyUserId.latitudeUser;
+        const longitude = coordinatebyUserId.longitudeUser;
+        const coordinatesWithinRadius = [];
+        const coordinatesOutsideRadius = [];
+
+        db.forEach(doc => {
+            if(doc.id !== userId.toString()){
+                const distance = this.calculateDistance(doc.data().latitude, doc.data().longitude, latitude, longitude);
+                if (distance <= 0.3) {
+                    coordinatesWithinRadius.push({ userId: doc.id, latitude: doc.data().latitude, longitude: doc.data().longitude });
+                } else {
+                    coordinatesOutsideRadius.push({ userId: doc.id, latitude: doc.data().latitude, longitude: doc.data().longitude });
+                }
+            }
+        });
+        return {
+            coordinatesWithinRadius,
+            coordinatesOutsideRadius
+        };
+    }
+
+    calculateDistance(lat1, lon1, lat2, lon2) {
+        const R = 3958.8;
+        const rlat1 = lat1 * (Math.PI/180);
+        const rlat2 = lat2 * (Math.PI/180);
+        const difflat = rlat2 - rlat1;
+        const difflon = (lon2 - lon1) * (Math.PI/180);
+        const distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) +
+                Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
+        return distance;
+    }
+
 
     async findHelpSignalById(id) {
         try {

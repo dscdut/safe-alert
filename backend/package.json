@@ -16,6 +16,7 @@
         "db:reset": "yarn knex migrate:rollback && yarn knex migrate:latest && yarn knex seed:run"
     },
     "dependencies": {
+        "@faker-js/faker": "^8.4.1",
         "@sentry/node": "^7.64.0",
         "axios": "^1.4.0",
         "bcrypt": "^5.1.1",
