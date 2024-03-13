@@ -29,4 +29,7 @@ exports.up = async knex => {
  `);
 };
 
-exports.down = knex => knex.schema.dropTable(tableName);
+exports.down = async knex => {
+    await knex.schema.dropTable(tableName);
+    await knex.raw(`DROP TRIGGER IF EXISTS update_timestamp ON ${tableName};`);
+};

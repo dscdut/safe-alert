@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-export 'bloc/notification_bloc.dart';
+export 'bloc/notification/notification_bloc.dart';
 export 'view/notification_view.dart';
 
 class NotificationView extends StatelessWidget {

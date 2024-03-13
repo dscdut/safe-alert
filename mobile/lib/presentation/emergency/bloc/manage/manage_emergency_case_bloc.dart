@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_template/common/constants/status.dart';
@@ -22,9 +21,8 @@ class ManageEmergencyCaseBloc
     GetEmergencyCasesEvent event,
     Emitter<ManageEmergencyCaseState> emit,
   ) async {
+    emit(state.copyWith(status: Status.isLoading));
     try {
-      log('hello');
-      emit(state.copyWith(status: Status.isLoading));
       final response = await _emergencyRepository.getEmergencyCases();
       emit(
         state.copyWith(
