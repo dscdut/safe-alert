@@ -17,8 +17,6 @@ exports.up = async knex => {
         table.dateTime('birthday').defaultTo(null);
         table.string('address').defaultTo(null);
         table.dateTime('deleted_at').defaultTo(null);
-        table.decimal('latitude');
-        table.decimal('longitude');
         table.timestamps(false, true);
     });
 

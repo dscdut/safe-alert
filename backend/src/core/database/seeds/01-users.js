@@ -16,8 +16,6 @@ exports.seed = async knex => {
         avatar: fakerVI.image.avatar(),
         birthday: fakerVI.date.birthdate(),
         address: fakerVI.location.streetAddress(),
-        latitude: fakerVI.location.latitude(),
-        longitude: fakerVI.location.longitude(),
     }));
 
     await knex(tableName).insert(users);
