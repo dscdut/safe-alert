@@ -1,6 +1,6 @@
 import { fcmService } from 'core/modules/fcm/service/fcm.service';
 import { UserService } from '../../modules/user/services/user.service';
-import { CreateUserDto, UpdateUserDto } from '../../modules/user/dto';
+import { CreateUserDto, UpdateUserDto, FindUserDto } from '../../modules/user/dto';
 import { ValidHttpResponse } from '../../../packages/handler/response/validHttp.response';
 
 class Controller {
@@ -21,6 +21,11 @@ class Controller {
 
     findById = async req => {
         const data = await this.service.findById(req.params.id);
+        return ValidHttpResponse.toOkResponse(data);
+    };
+
+    findByPhoneNumber = async req => {
+        const data = await this.service.findByPhoneNumber(FindUserDto(req.body));
         return ValidHttpResponse.toOkResponse(data);
     };
 

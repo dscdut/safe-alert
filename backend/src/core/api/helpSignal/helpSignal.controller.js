@@ -35,16 +35,10 @@ class Controller {
     };
 
     createHelpSignal = async req => {
-        const signal = { ...req.body, userId: req.user.payload.id };
-        const data = await this.service.createHelpSignal(createHelpSignalDto(signal), req);
-        return ValidHttpResponse.toCreatedResponse(data);
-    }
-
-    sendNotificationToUsers = async req => {
-        const {helpSignalId} = req.params;
         const userId = req.user.payload.id;
-        const data = await this.service.sendNotificationToUsers(helpSignalId, userId);
-        return ValidHttpResponse.toOkResponse(data);
+        const signal = { ...req.body, userId: req.user.payload.id };
+        const data = await this.service.createHelpSignal(createHelpSignalDto(signal), userId, req);
+        return ValidHttpResponse.toCreatedResponse(data);
     }
 
     findHelpSignalById = async req => {

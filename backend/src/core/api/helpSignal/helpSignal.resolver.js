@@ -23,13 +23,6 @@ export const HelpSignalResolver = Module.builder()
             preAuthorization: true,
         },
         {
-            route: '/sendNoitf/:helpSignalId',
-            method: 'get',
-            params: [helpSignalId],
-            controller: HelpSignalController.sendNotificationToUsers,
-            preAuthorization: true,
-        },
-        {
             route: '/getAllHelpSignals',
             method: 'get',
             controller: HelpSignalController.getAllHelpSignals,

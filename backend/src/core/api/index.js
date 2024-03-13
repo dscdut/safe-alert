@@ -5,6 +5,7 @@ import { HelpSignalResolver } from 'core/api/helpSignal';
 import { HandlerResolver } from '../../packages/handler/HandlerResolver';
 import { AuthResolver } from './auth/auth.resolver';
 import { EmergencyResolver } from './emergency';
+import { RelativeResolver } from './relative';
 import { CommentResolver } from './comment/comment.resolver';
 import { UserReactResolver } from './user-react/user-react.resolver';
 import { ContactResolver } from './contact/contact.resolver';
@@ -18,6 +19,7 @@ export const ModuleResolver = HandlerResolver.builder()
         MediaResolver,
         HelpSignalResolver,
         EmergencyResolver,
+        RelativeResolver
         CommentResolver,
         UserReactResolver,
         ContactResolver,
