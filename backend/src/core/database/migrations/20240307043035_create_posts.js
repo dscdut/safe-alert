@@ -9,6 +9,9 @@ exports.up = async knex => {
         table.string('location', 512).nullable();
         table.text('content');
         table.text('medias').nullable();
+        table.integer('likes_count').nullable();
+        table.integer('dislikes_count').nullable();
+        table.integer('comments_count').nullable();
         table
             .integer('owner_id')
             .unsigned()
