@@ -35,6 +35,7 @@ class PostModel {
   String location;
   List<CommentModel>? comments = [];
   List<ReactModel>? reacts = [];
+  bool? isNew;
   PostModel({
     required this.createdAt,
     required this.author,
@@ -45,6 +46,7 @@ class PostModel {
     this.images,
     this.comments,
     this.reacts,
+    this.isNew = false,
   });
 
   @override

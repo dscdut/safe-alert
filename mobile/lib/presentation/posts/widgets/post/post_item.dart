@@ -92,9 +92,13 @@ class PostItem extends StatelessWidget {
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
         ),
-        const ReactCommentField(
-          isDetail: false,
-        ),
+        postModel.isNew == true
+            ? const ReactCommentField(
+                isNew: true,
+              )
+            : const ReactCommentField(
+                isDetail: false,
+              ),
       ],
     );
   }

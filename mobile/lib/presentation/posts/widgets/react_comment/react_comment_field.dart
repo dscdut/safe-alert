@@ -10,9 +10,11 @@ class ReactCommentField extends StatelessWidget {
   const ReactCommentField({
     super.key,
     this.isDetail,
+    this.isNew = false,
   });
 
   final bool? isDetail;
+  final bool? isNew;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +30,13 @@ class ReactCommentField extends StatelessWidget {
                   color: isLiked ? Colors.blue : Colors.grey,
                 );
               },
-              likeCount: 89,
+              likeCount: isNew == true ? null : 89,
             ),
             TextButton(
               onPressed: () {},
-              child: const Text('4 comments'),
+              child: isNew == true
+                  ? const Icon(Icons.comment)
+                  : const Text('4 comments'),
             ),
           ],
         ),

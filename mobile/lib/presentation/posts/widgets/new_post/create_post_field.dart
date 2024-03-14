@@ -54,70 +54,73 @@ class _CreatePostFieldState extends State<CreatePostField> {
           ),
           Flexible(
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const SizedBox(height: 20.0),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Text(
-                      'How could you help your community?',
-                      style: context.headlineSmall.copyWith(fontSize: 14.0),
-                    ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  TextField(
-                    controller: _postContentController,
-                    autocorrect: false,
-                    enableSuggestions: false,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    minLines: 5,
-                    maxLines: 10,
-                    maxLength: 500,
-                    keyboardType: TextInputType.multiline,
-                  ),
-                  TagsSelection(
-                    updateTagsSelection: (value) {
-                      tags = value;
-                    },
-                  ),
-                  const SizedBox(height: 20.0),
-                  ImageInputPage(
-                    getImages: (value) {
-                      images = value;
-                    },
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        'Upload location: ',
+              child: SizedBox(
+                height: 800,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20.0),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        'How could you help your community?',
                         style: context.headlineSmall.copyWith(fontSize: 14.0),
                       ),
-                      Expanded(
-                        child: TextField(
-                          controller: _locationController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Enter your location',
-                          ),
+                    ),
+                    const SizedBox(height: 8.0),
+                    TextField(
+                      controller: _postContentController,
+                      autocorrect: false,
+                      enableSuggestions: false,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 20.0),
-                  Center(
-                    child: CommonRoundedButton(
-                      onPressed: _uploadNewPost,
-                      content: 'Post',
-                      borderRadius: 16.0,
-                      backgroundColor:
-                          context.themeConfig.buttonBackGroundColor,
+                      minLines: 5,
+                      maxLines: 10,
+                      maxLength: 500,
+                      keyboardType: TextInputType.multiline,
                     ),
-                  ),
-                ],
+                    TagsSelection(
+                      updateTagsSelection: (value) {
+                        tags = value;
+                      },
+                    ),
+                    const SizedBox(height: 20.0),
+                    ImageInputPage(
+                      getImages: (value) {
+                        images = value;
+                      },
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Upload location: ',
+                          style: context.headlineSmall.copyWith(fontSize: 14.0),
+                        ),
+                        Expanded(
+                          child: TextField(
+                            controller: _locationController,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Enter your location',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20.0),
+                    Center(
+                      child: CommonRoundedButton(
+                        onPressed: _uploadNewPost,
+                        content: 'Post',
+                        borderRadius: 16.0,
+                        backgroundColor:
+                            context.themeConfig.buttonBackGroundColor,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -134,6 +137,7 @@ class _CreatePostFieldState extends State<CreatePostField> {
       description: _postContentController.text,
       tags: tags,
       location: _locationController.text,
+      isNew: true,
     );
 
     BlocProvider.of<PostBloc>(context).add(UploadNewPost(newPost: newPost));
