@@ -19,7 +19,7 @@ export const ModuleResolver = HandlerResolver.builder()
         MediaResolver,
         HelpSignalResolver,
         EmergencyResolver,
-        RelativeResolver
+        RelativeResolver,
         CommentResolver,
         UserReactResolver,
         ContactResolver,
