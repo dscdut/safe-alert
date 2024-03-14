@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/data/models/post_model.dart';
+import 'package:flutter_template/presentation/posts/widgets/react_comment/react_comment_field.dart';
 
 class PostItem extends StatelessWidget {
   final PostModel postModel;
@@ -29,40 +30,71 @@ class PostItem extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 12.0),
             Expanded(
               flex: 4,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '${postModel.createdAt.day}/${postModel.createdAt.month}/${postModel.createdAt.year} ${postModel.createdAt.hour}:${postModel.createdAt.minute}',
+                  Row(
+                    children: [
+                      Text(
+                        postModel.author.fullName,
+                        style: context.headlineSmall.copyWith(fontSize: 14),
+                      ),
+                      const SizedBox(width: 12.0),
+                      Text(
+                        '${postModel.createdAt.day}/${postModel.createdAt.month}/${postModel.createdAt.year} ${postModel.createdAt.hour}:${postModel.createdAt.minute}',
+                        style: context.bodySmall,
+                      ),
+                    ],
                   ),
-                  Text(postModel.author.fullName, style: context.titleSmall),
-                  const SizedBox(width: 12.0),
                   Text(
-                    postModel.description,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
+                    postModel.location,
+                    style: context.bodySmall,
+                  ),
+                  const SizedBox(height: 4),
+                  SizedBox(
+                    height: 20,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (_, int index) {
+                        return Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: postModel.tags[index].color,
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0,
+                          ),
+                          child: Text(
+                            postModel.tags[index].name,
+                            style: context.titleSmall.copyWith(
+                              color: context.themeConfig.onPrimaryTextColor,
+                            ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) => const SizedBox(
+                        width: 8.0,
+                      ),
+                      itemCount: postModel.tags.length,
+                    ),
                   ),
                 ],
               ),
             ),
           ],
         ),
-        const SizedBox(height: 12.0),
-        // Container(
-        //   decoration: BoxDecoration(
-        //     color: postModel.tags[0].color,
-        //     borderRadius: BorderRadius.circular(24.0),
-        //   ),
-        //   padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-        //   child: Text(
-        //     postModel.tags[0].name,
-        //     style: context.titleSmall
-        //         .copyWith(color: context.themeConfig.onPrimaryTextColor),
-        //   ),
-        // ),
+        const SizedBox(height: 4.0),
+        Text(
+          postModel.description,
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+        ),
+        const ReactCommentField(
+          isDetail: false,
+        ),
       ],
     );
   }

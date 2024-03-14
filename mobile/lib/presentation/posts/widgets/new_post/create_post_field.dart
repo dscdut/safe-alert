@@ -22,6 +22,7 @@ class _CreatePostFieldState extends State<CreatePostField> {
   final DateTime date = DateTime.now();
   final UserModel author = users[0];
   final _postContentController = TextEditingController();
+  final _locationController = TextEditingController();
   final AssetImage authorAvatar = demoAvater;
   List<File>? images = [];
   List<PostTag> tags = [];
@@ -89,6 +90,23 @@ class _CreatePostFieldState extends State<CreatePostField> {
                       images = value;
                     },
                   ),
+                  Row(
+                    children: [
+                      Text(
+                        'Upload location: ',
+                        style: context.headlineSmall.copyWith(fontSize: 14.0),
+                      ),
+                      Expanded(
+                        child: TextField(
+                          controller: _locationController,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Enter your location',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 20.0),
                   Center(
                     child: CommonRoundedButton(
@@ -115,6 +133,7 @@ class _CreatePostFieldState extends State<CreatePostField> {
       authorAvatar: authorAvatar,
       description: _postContentController.text,
       tags: tags,
+      location: _locationController.text,
     );
 
     BlocProvider.of<PostBloc>(context).add(UploadNewPost(newPost: newPost));

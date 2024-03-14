@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_template/common/extensions/context_extension.dart';
 import 'package:flutter_template/data/models/post_model.dart';
 import 'package:flutter_template/generated/assets.gen.dart';
+import 'package:flutter_template/presentation/posts/widgets/react_comment/react_comment_field.dart';
 
 class PostDetail extends StatelessWidget {
   final PostModel post;
@@ -29,15 +30,69 @@ class PostDetail extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 12.0),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '${post.createdAt.day}/${post.createdAt.month}/${post.createdAt.year}',
-                    ),
-                    Text(post.author.fullName, style: context.titleSmall),
-                  ],
+                Expanded(
+                  flex: 4,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            post.author.fullName,
+                            style: context.headlineSmall.copyWith(fontSize: 14),
+                          ),
+                          const SizedBox(width: 12.0),
+                          Text(
+                            '${post.createdAt.day}/${post.createdAt.month}/${post.createdAt.year} ${post.createdAt.hour}:${post.createdAt.minute}',
+                            style: context.bodySmall,
+                          ),
+                        ],
+                      ),
+                      Text(
+                        post.location,
+                        style: context.bodySmall,
+                      ),
+                      const SizedBox(height: 4),
+                      SizedBox(
+                        height: 20,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (_, int index) {
+                            return Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: post.tags[index].color,
+                                borderRadius: BorderRadius.circular(24.0),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                              ),
+                              child: Text(
+                                post.tags[index].name,
+                                style: context.titleSmall.copyWith(
+                                  color: context.themeConfig.onPrimaryTextColor,
+                                ),
+                              ),
+                            );
+                          },
+                          separatorBuilder: (context, index) => const SizedBox(
+                            width: 8.0,
+                          ),
+                          itemCount: post.tags.length,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+                // Column(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     Text(
+                //       '${post.createdAt.day}/${post.createdAt.month}/${post.createdAt.year}',
+                //     ),
+                //     Text(post.author.fullName, style: context.titleSmall),
+                //   ],
+                // ),
               ],
             ),
             Flexible(
@@ -67,6 +122,7 @@ class PostDetail extends StatelessWidget {
                               ),
                             )
                           : const SizedBox.shrink(),
+                      const ReactCommentField(isDetail: true),
                     ],
                   ),
                 ),

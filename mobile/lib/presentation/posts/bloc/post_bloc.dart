@@ -20,6 +20,7 @@ List<PostModel> modelPosts = [
     description:
         'We provide food packages to those in our neighbourhood who can’t afford to buy food, giving people simple and nutritious food when they need it most. The boxes feature healthy essentials, with plenty of fresh produce, wholefood ingredients and store cupboard ingredients. We combine bulk orders of essentials with food donations from Food Bank AID, The Felix Project, City Harvest and other local partners. The boxes feature healthy essentials, enough food for 3-4 days meals\nIf you would like to enquire about The ARC Food Bank please call Asha on 07727157138 or email on asha@arccollective.co',
     tags: [existingTags[0], existingTags[3]],
+    location: 'At 130 Dien Bien Phu, Thanh Khe, Da Nang',
   ),
   PostModel(
     createdAt: DateTime(2024, 2, 16, 16, 03),
@@ -32,6 +33,7 @@ List<PostModel> modelPosts = [
         'We are calling for donations to help the people in the Central region of Vietnam. Your support will help us provide food, clean water, and shelter to those affected by the floods. Please donate to our bank account: 1234567890',
     tags: [existingTags[3], existingTags[4]],
     authorAvatar: AssetImage(Assets.images.demo.avatar.images2.path),
+    location: 'At 130 Dien Bien Phu, Thanh Khe, Da Nang',
   ),
   PostModel(
     createdAt: DateTime(2024, 2, 16, 8, 25),
@@ -41,6 +43,7 @@ List<PostModel> modelPosts = [
         'Ealing Soup Kitchen is a charity that seeks to help anyone who needs hot, nutritious food & a helping hand.\n'
         'We’ve been running a weekend Soup Kitchen since 1973 at St John’s Church in Ealing for the homeless, vulnerable, and impoverished. We also run Monday & Friday drop-ins where we provide clothes, food, a barber, showers, foot care, practical help, and games',
     tags: [existingTags[3], existingTags[4]],
+    location: 'At 130 Dien Bien Phu, Thanh Khe, Da Nang',
   ),
 ];
 
